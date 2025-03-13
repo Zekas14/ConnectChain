@@ -5,6 +5,7 @@ namespace ConnectChain.Data.Repositories.Repository
     public interface IRepository<Entity>
     {
         void Add(Entity entity);
+        Task AddAsync(Entity entity);
         void SaveInclude(Entity entity, params string[] properties);
         void Delete(Entity entity);
         void HardDelete(Entity entity);
@@ -17,5 +18,6 @@ namespace ConnectChain.Data.Repositories.Repository
 
         Task<Entity> GetByIDAsync(int id);
         void SaveChanges();
+        Task SaveChangesAysnc();
     }
 }

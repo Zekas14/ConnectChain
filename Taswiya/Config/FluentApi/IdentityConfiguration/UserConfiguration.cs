@@ -9,6 +9,7 @@ namespace ConnectChain.Config.FluentApi.IdentityConfiguration
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("Users");
+            builder.UseTptMappingStrategy();
         }
     }
 }

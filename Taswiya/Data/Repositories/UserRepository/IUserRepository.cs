@@ -2,7 +2,6 @@
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel.Authentication;
-using ConnectChain.ViewModel.Authentication.ConfirmEmail;
 using ConnectChain.ViewModel.Authentication.ForgetPassword;
 using ConnectChain.ViewModel.Authentication.ResetPassword;
 using ConnectChain.ViewModel.Authentication.SignIn;

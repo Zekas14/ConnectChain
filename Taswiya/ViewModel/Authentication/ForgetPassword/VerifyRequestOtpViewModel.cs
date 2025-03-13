@@ -6,8 +6,8 @@ namespace ConnectChain.ViewModel.Authentication.ForgetPassword
     {
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
-        public string OTP { get; set; }
+        public string? OTP { get; set; }
     }
 }

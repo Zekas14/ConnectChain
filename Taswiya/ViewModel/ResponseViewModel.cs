@@ -39,5 +39,9 @@ namespace ConnectChain.ViewModel
         {
             return new FaluireResponseViewModel<T>(ErrorCode.UnAuthorized, message ?? ErrorCode.UnAuthorized.ToString());
         }
+        public static FaluireResponseViewModel<T> BadRequest(string message = "")
+        {
+            return new FaluireResponseViewModel<T>(ErrorCode.BadRequest, message ?? ErrorCode.BadRequest.ToString());
+        }
     }
 }

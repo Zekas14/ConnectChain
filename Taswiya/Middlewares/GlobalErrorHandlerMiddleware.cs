@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ConnectChain.Helpers;
+using ConnectChain.ViewModel;
 
 namespace ConnectChain.Middlewares
 {
@@ -30,7 +31,7 @@ namespace ConnectChain.Middlewares
             catch (Exception ex)
             {
                 File.WriteAllText(@"F:\\log.txt", $"error{ex.Message}");
-                var response = EndpointResponse<bool>.Failure(ErrorCode.BadRequest);
+                var response = FaluireResponseViewModel<bool>.BadRequest();
                 await context.Response.WriteAsJsonAsync(response);
             }
 

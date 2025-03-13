@@ -7,31 +7,31 @@ namespace ConnectChain.ViewModel.Authentication
     {
         [Required]
         [DataType(DataType.Text)]
-        public string FirstName { get; set;  }
+        public string? FirstName { get; set;  }
         [Required]
         [DataType(DataType.Text)]
-        public string LastName { get; set;  }
+        public string? LastName { get; set;  }
         [Required]
-        public string PhoneNumber { get;set; }
+        public string? PhoneNumber { get;set; }
         [Required]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
         [Required]
         [DataType(DataType.Text)]
         [MinLength(3)]
 
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [Required]
         [DataType(DataType.Text)]
         [MinLength(3)]
-        public string Country { get; set; }
+        public string? Country { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="Password Not Matched")]
-        public string ConfirmPassword { get; set; }
+        public string? ConfirmPassword { get; set; }
 
     }
    /* public class RegisterUserRequestViewModelValidator : AbstractValidator<UserRegisterRequestViewModel>

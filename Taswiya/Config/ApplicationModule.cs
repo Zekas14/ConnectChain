@@ -4,7 +4,6 @@ using HotelSystem.Data.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System.Reflection;
-using ConnectChain.Controllers.BaseEndpoints;
 using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Data.Repositories.UserRepository;
@@ -23,9 +22,6 @@ namespace ConnectChain.Config
 
 
             builder.RegisterType<MailServices>().As<IMailServices>().InstancePerLifetimeScope();
-            builder.RegisterGeneric(typeof(BaseEndpointParameters<>))
-              .AsSelf()
-              .InstancePerLifetimeScope();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerLifetimeScope();
            #region Register MediatR
             builder.RegisterType<Mediator>()
@@ -39,7 +35,7 @@ namespace ConnectChain.Config
             builder.Register<Func<Type, object>>(ctx =>
             {
                 var context = ctx.Resolve<IComponentContext>();
-                return type => context.ResolveOptional(type);
+                return type => context.ResolveOptional(type)!;
             }).InstancePerLifetimeScope();
 
 

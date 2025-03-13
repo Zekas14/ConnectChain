@@ -15,19 +15,19 @@ namespace ConnectChain.Helpers
             var callBackUrl = $"{request.Scheme}://{request.Host}/api/Account/ConfirmEmail?userId={encodedUserId}";
             return callBackUrl;
         }
-        public static (string, string) ExtractToken(this HttpRequest request)
+        public static string ExtractIdFromToken(this HttpRequest request)
         {
             var authHeader = request.Headers.Authorization.ToString();
             if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer"))
             {
-                return (null, null);
+                return null!;
             }
             var token = authHeader.Substring("Bearer ".Length).Trim();
             var handler = new JwtSecurityTokenHandler();
             var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
             var role = jsonToken!.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
             var id = jsonToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            return (role, id);
+            return id!;
         }
         public static string GetBaseUrl(this HttpRequest request)
         {

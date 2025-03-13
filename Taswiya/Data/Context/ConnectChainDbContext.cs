@@ -10,8 +10,9 @@ namespace ConnectChain.Data.Context
         public ConnectChainDbContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Supplier> Suppliers{ get; set; }
+        public DbSet<Category> Categories { get; set; }
 
-        public DbSet<Invoice> Invoices { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

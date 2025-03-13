@@ -1,17 +1,13 @@
-﻿using Humanizer;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Caching.Memory;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq.Expressions;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel.Authentication;
-using ConnectChain.ViewModel.Authentication.ConfirmEmail;
 using ConnectChain.ViewModel.Authentication.ForgetPassword;
 using ConnectChain.ViewModel.Authentication.ResetPassword;
 using ConnectChain.ViewModel.Authentication.SignIn;
-using static System.Net.WebRequestMethods;
 
 namespace ConnectChain.Data.Repositories.UserRepository
 {
@@ -232,6 +228,16 @@ namespace ConnectChain.Data.Repositories.UserRepository
         }
 
         public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddAsync(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveChangesAysnc()
         {
             throw new NotImplementedException();
         }

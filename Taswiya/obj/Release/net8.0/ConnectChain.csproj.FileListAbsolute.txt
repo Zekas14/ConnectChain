@@ -333,3 +333,4 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\refint\Conn
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChain.pdb
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChain.genruntimeconfig.cache
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ref\ConnectChain.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChain.sourcelink.json

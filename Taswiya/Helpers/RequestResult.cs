@@ -10,12 +10,12 @@
 
         public static RequestResult<T> Failure(ErrorCode errorCode)
         {
-            return new RequestResult<T>(default, false, errorCode.ToString(), errorCode);
+            return new RequestResult<T>(default!, false, errorCode.ToString(), errorCode);
         }
 
         public static RequestResult<T> Failure(ErrorCode errorCode, string message)
         {
-            return new RequestResult<T>(default, false, message, errorCode);
+            return new RequestResult<T>(default!, false, message, errorCode);
         }
     }
 }

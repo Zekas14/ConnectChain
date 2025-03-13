@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using ConnectChain.Data.Repositories.UserRepository;
 using ConnectChain.Helpers;
-using ConnectChain.ViewModel.Authentication.ConfirmEmail;
 
 namespace ConnectChain.Features.AuthManagement.ConfirmEmail.Command
 {

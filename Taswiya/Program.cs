@@ -10,7 +10,6 @@ using ConnectChain.Data.Repositories.UserRepository;
 using ConnectChain.Helpers;
 using AutoMapper;
 using System.Reflection;
-using ConnectChain.Controllers.BaseEndpoints;
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using ConnectChain.Config;
@@ -40,7 +39,6 @@ builder.Services.AddScoped<IMailServices, MailServices>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 builder.Services.AddAutoMapper(typeof(Profile));
 
-builder.Services.AddScoped(typeof(BaseEndpointParameters<>));
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(

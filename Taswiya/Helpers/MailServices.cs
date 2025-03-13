@@ -7,7 +7,7 @@ namespace ConnectChain.Helpers
 {
     public interface IMailServices
     {
-        Task SendEmailAsync(string mailTo, string subject, string body, IList<IFormFile> attachment = null);
+        Task SendEmailAsync(string mailTo, string subject, string body, IList<IFormFile> attachment = null!);
 
     }
 
@@ -15,7 +15,7 @@ namespace ConnectChain.Helpers
     {
         private readonly MailSetting _mailSetting = mailSetting.Value;
 
-        public async Task SendEmailAsync(string mailTo, string subject, string body, IList<IFormFile> attachment = null)
+        public async Task SendEmailAsync(string mailTo, string subject, string body, IList<IFormFile> attachment = null!)
         {
 
             var email = new MimeMessage

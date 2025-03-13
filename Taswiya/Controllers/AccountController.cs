@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
-using ConnectChain.Controllers.BaseEndpoints;
 using ConnectChain.Features.AuthManagement.ConfirmEmail.Command;
 using ConnectChain.Features.AuthManagement.ForgetPassword.Queries;
 using ConnectChain.Features.AuthManagement.Register.Command;
@@ -16,7 +15,6 @@ using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Authentication;
-using ConnectChain.ViewModel.Authentication.ConfirmEmail;
 using ConnectChain.ViewModel.Authentication.ForgetPassword;
 using ConnectChain.ViewModel.Authentication.ResetPassword;
 using ConnectChain.ViewModel.Authentication.SignIn;
@@ -35,7 +33,7 @@ namespace ConnectChain.Controllers
             if (!ModelState.IsValid)
             {
                 
-                var errors =string.Join("," ,ModelState.Select(e => e.Value.Errors));
+                var errors =string.Join("," ,ModelState.Select(e => e.Value!.Errors));
                 return new FaluireResponseViewModel<bool>(ErrorCode.InvalidInput,errors) ;
             }
             var result = await _mediator.Send(new UserRegisterCommand(viewModel,Request.GenerateCallBackUrl));

@@ -7,7 +7,7 @@ using ConnectChain.Models;
 
 namespace HotelSystem.Data.Repository
 {
-    public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel 
+    public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel
     {
         ConnectChainDbContext _context;
         DbSet<Entity> _dbSet;
@@ -30,7 +30,7 @@ namespace HotelSystem.Data.Repository
         {
             var local = _dbSet.Local.FirstOrDefault(x => x.ID == entity.ID);
 
-            EntityEntry entry = null;
+            EntityEntry entry = null!;
 
             if(local is null)
             {
@@ -39,14 +39,14 @@ namespace HotelSystem.Data.Repository
             else
             {
                 entry = _context.ChangeTracker.Entries<Entity>()
-                    .FirstOrDefault(x => x.Entity.ID == entity.ID);
+                    .FirstOrDefault(x => x.Entity.ID == entity.ID)!;
             }
 
             foreach (var property in entry.Properties)
             {
                 if(properties.Contains(property.Metadata.Name))
                 {
-                    property.CurrentValue = entity.GetType().GetProperty(property.Metadata.Name).GetValue(entity);
+                    property.CurrentValue = entity.GetType().GetProperty(property.Metadata.Name)!.GetValue(entity);
                     property.IsModified = true;
                 }
             }
@@ -82,12 +82,12 @@ namespace HotelSystem.Data.Repository
 
         public Entity GetByID(int id)
         {
-            return Get(x => x.ID == id).FirstOrDefault();
+            return Get(x => x.ID == id).FirstOrDefault()??null!;
         }
 
         public async Task<Entity> GetByIDAsync(int id)
         {
-            return await Get(x => x.ID == id).FirstOrDefaultAsync();
+            return await Get(x => x.ID == id).FirstOrDefaultAsync() ?? null!;
         }
 
         public void SaveChanges()
@@ -98,6 +98,19 @@ namespace HotelSystem.Data.Repository
         public async Task<bool> AnyAsync(Expression<Func<Entity, bool>> predicate)
         {
             return await Get(predicate).AnyAsync();
+        }
+
+        public async Task AddAsync(Entity entity)
+        {
+            entity.CreatedDate = DateTime.Now;
+            //entity.CreatedBy = userID;
+
+            await _dbSet.AddAsync(entity);
+        }
+
+        public async Task SaveChangesAysnc()
+        {
+           await _context.SaveChangesAsync();
         }
     }
 }

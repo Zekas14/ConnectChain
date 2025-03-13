@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>flase</InvariantGlobalization>
     <UserSecretsId>5eef6b1a-b384-46a3-a8e5-417583d9b29b</UserSecretsId>
@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <Folder Include="Features\AuthManagement\Register\Queries\" />
+    <Folder Include="Features\ProductManagement\GetProductById\Queries\" />
   </ItemGroup>
 
 </Project>
