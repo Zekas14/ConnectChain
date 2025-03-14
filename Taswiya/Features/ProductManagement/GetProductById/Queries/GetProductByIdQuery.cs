@@ -26,7 +26,6 @@ namespace ConnectChain.Features.ProductManagement.GetProductById.Queries
                 Name = productExistResult.data.Name,
                 Description = productExistResult.data.Description,
                 Price = productExistResult.data.Price,
-                Image = productExistResult.data.Image
             };
             return RequestResult<GetProductResponseViewModel>.Success(requestResult);
         }

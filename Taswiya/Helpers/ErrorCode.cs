@@ -6,6 +6,7 @@
         InvalidInput = 2,
         BadRequest = 400,
         NotFound = 404,
-        UnAuthorized = 401
+        UnAuthorized = 401,
+        InternalServerError = 405
     }
 }

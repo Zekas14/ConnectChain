@@ -41,7 +41,37 @@ namespace ConnectChain.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.Image", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Image", (string)null);
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
@@ -62,9 +92,6 @@ namespace ConnectChain.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -88,7 +115,7 @@ namespace ConnectChain.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", (string)null);
                 });
 
             modelBuilder.Entity("ConnectChain.Models.User", b =>
@@ -312,7 +339,7 @@ namespace ConnectChain.Migrations
                 {
                     b.HasBaseType("ConnectChain.Models.User");
 
-                    b.ToTable("Suppliers");
+                    b.ToTable("Suppliers", (string)null);
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Role", b =>
@@ -320,6 +347,15 @@ namespace ConnectChain.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
                     b.ToTable("Roles", (string)null);
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.Image", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
@@ -406,6 +442,11 @@ namespace ConnectChain.Migrations
                         .HasForeignKey("ConnectChain.Models.Role", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.Product", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>

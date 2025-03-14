@@ -6,7 +6,6 @@ namespace ConnectChain.Models
     {
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public string? Image { get; set; }
         public decimal Price { get; set; }
         public int? Stock { get; set; }
         [ForeignKey("Supplier")]
@@ -15,5 +14,6 @@ namespace ConnectChain.Models
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
+        public ICollection<Image> Images { get; set; } = new List<Image>();
     }
 }

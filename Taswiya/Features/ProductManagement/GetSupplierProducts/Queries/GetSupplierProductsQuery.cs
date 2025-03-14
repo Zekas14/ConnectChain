@@ -22,7 +22,6 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
                     Id = p.ID,
                     Name = p.Name,
                     Description = p.Description,
-                    Image = p.Image,
                     Price = p.Price,
                 });
             if (!products.IsNullOrEmpty())

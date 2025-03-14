@@ -43,6 +43,8 @@ builder.Services.AddScoped<IMailServices, MailServices>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 builder.Services.AddAutoMapper(typeof(Profile));
 
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+builder.Services.AddScoped<CloudinaryService>();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(

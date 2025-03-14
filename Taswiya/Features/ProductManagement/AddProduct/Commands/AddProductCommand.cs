@@ -1,5 +1,6 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Features.CategoryManagement.Common.Queries;
+using ConnectChain.Features.ImageManagement.UploadImage.Command;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
@@ -10,7 +11,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
     {
         public string? Name { get; init; }
         public string? Description { get; init; }
-        public string? Image { get; init; }
+        public IFormFile? Image { get; init; }
         public decimal Price { get; init; }
         public int? Stock { get; init; }
         public string? SupplierId { get; init; }
@@ -20,6 +21,8 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
     {
         private readonly IRepository<Product> repository = repository;
         private readonly IMediator mediator = mediator;
+
+        public string ImageUrl { get; private set; }
 
         public async Task<RequestResult<bool>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
@@ -32,7 +35,6 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
             {
                 Name = request.Name,
                 Description = request.Description,
-                Image = request.Image,
                 Price = request.Price,
                 Stock = request.Stock,
                 SupplierId = request.SupplierId,

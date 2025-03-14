@@ -39,7 +39,6 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
                 ID =request.ProductId ,
                 Name = request.Name,
                 Description = request.Description,
-                Image = request.Image,
                 Price = request.Price,
                 Stock = request.Stock,
                 CategoryId = request.CategoryId
