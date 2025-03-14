@@ -32,7 +32,11 @@ builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSe
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ConnectChainDbContext>()
     .AddDefaultTokenProviders();
-builder.Services.AddDbContext<ConnectChainDbContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ConnectChainDbContext>(options =>
+{
+    options.UseSqlServer(config.GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+}
+);
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMailServices, MailServices>();
@@ -78,7 +82,7 @@ builder.Services.AddCors(options =>
 });
 var app = builder.Build();
 
-//if (!app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
 //{
     app.UseSwagger();
     app.UseSwaggerUI();

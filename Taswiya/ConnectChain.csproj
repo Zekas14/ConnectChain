@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Features\AuthManagement\Register\Queries\" />
-    <Folder Include="Features\ProductManagement\GetProductById\Queries\" />
   </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Models;
+using ConnectChain.Helpers;
 
 namespace HotelSystem.Data.Repository
 {
@@ -111,6 +112,12 @@ namespace HotelSystem.Data.Repository
         public async Task SaveChangesAysnc()
         {
            await _context.SaveChangesAsync();
+        }
+
+        public IQueryable<Entity> GetByPage(PaginationHelper paginationParams)
+        {
+            return GetAll().Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
+                .Take(paginationParams.PageSize);
         }
     }
 }

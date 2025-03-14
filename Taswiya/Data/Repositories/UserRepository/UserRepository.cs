@@ -16,23 +16,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
         private readonly UserManager<User> _userManager = userManager;
         private readonly IMemoryCache _cache = cache;
         private readonly IMailServices _mailServices= mailServices;
-        private static string GenerateOtp()
-        {
-            return new Random().Next(1000, 10000).ToString();
-        }
-        public async  Task<RequestResult<bool>> SendConfirmationEmail(string email,Func<string,string> generateUrl)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
-            {
-                return RequestResult<bool>.Failure(ErrorCode.NotFound, "User Not Found");
-            }
-            var callBackUrl = generateUrl( user.Id);
-            var emailBody = $"<h1>Dear {user.UserName}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
-            await _mailServices.SendEmailAsync(user.Email, "Email Confirmation", emailBody);
-            return RequestResult<bool>.Success(true, "Email Confirmation sent , Please Verify your Email");
-        }
-
+        #region Register
         public async Task<RequestResult<bool>> Register(UserRegisterRequestViewModel viewModel,Func<string, string> generateUrl)
         {
             var user = new User
@@ -60,7 +44,9 @@ namespace ConnectChain.Data.Repositories.UserRepository
             return RequestResult<bool>.Failure(ErrorCode.BadRequest,string.Join(", ",result.Errors.Select(e => e.Description)));
 
         }
+        #endregion
 
+        #region Confirm Email
         public async Task<RequestResult<bool>> ConfirmEmail(string userId)
         {
             if (userId == null )
@@ -82,7 +68,24 @@ namespace ConnectChain.Data.Repositories.UserRepository
             return RequestResult<bool>.Failure(ErrorCode.InvalidInput, $"{string.Join(", ", result.Errors)}");
 
         }
+        #endregion
 
+        #region  Send Confirmation Email
+        public async  Task<RequestResult<bool>> SendConfirmationEmail(string email,Func<string,string> generateUrl)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return RequestResult<bool>.Failure(ErrorCode.NotFound, "User Not Found");
+            }
+            var callBackUrl = generateUrl( user.Id);
+            var emailBody = $"<h1>Dear {user.UserName}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
+            await _mailServices.SendEmailAsync(user.Email, "Email Confirmation", emailBody);
+            return RequestResult<bool>.Success(true, "Email Confirmation sent , Please Verify your Email");
+        }
+        #endregion
+
+        #region Forget Password
         public async Task<RequestResult<bool>> ForgetPassword(string email)
         {
             var user = await userManager.FindByEmailAsync(email);
@@ -95,7 +98,13 @@ namespace ConnectChain.Data.Repositories.UserRepository
             var requestResult = await SendOtp(new SendOtpRequestViewModel { Email = email, OTP = otp, ResetToken = resetToken });
             return requestResult;
         }
-
+        #endregion
+        
+        #region Send Otp
+        private static string GenerateOtp()
+        {
+            return new Random().Next(1000, 10000).ToString();
+        }
         public async Task<RequestResult<bool>> SendOtp(SendOtpRequestViewModel viewModel)
         {
             _cache.Set($"otp", viewModel.OTP, TimeSpan.FromMinutes(15));
@@ -103,6 +112,9 @@ namespace ConnectChain.Data.Repositories.UserRepository
             await mailServices.SendEmailAsync(viewModel.Email, "Otp Verification", $" Your Verification OTP Code is : {viewModel.OTP} ");
             return RequestResult<bool>.Success(true, "Otp Sent Successfully");
         }
+        #endregion
+        
+        #region Verify OTP
         public async Task<RequestResult<bool>> VerifyOtp(VerifyRequestOtpViewModel viewModel)
         {
             string validateToken = null;
@@ -124,6 +136,9 @@ namespace ConnectChain.Data.Repositories.UserRepository
             }
             return RequestResult<bool>.Failure(ErrorCode.NotFound, "User Not Found");
         }
+        #endregion
+        
+        #region ResetPassword
         public async Task<RequestResult<bool>> ResetPassword(ResetPasswordRequestViewModel viewModel)
         {
             var user = await userManager.FindByEmailAsync(viewModel.Email);
@@ -146,6 +161,9 @@ namespace ConnectChain.Data.Repositories.UserRepository
             }
             return RequestResult<bool>.Failure(ErrorCode.NotFound, "User Not Found");
         }
+        #endregion
+        
+        #region Sign In
         public async Task<RequestResult<UserSignInResponseViewModel>> SignIn(UserSignInRequestViewModel viewModel)
         {
             var currentUser = await userManager.FindByEmailAsync(viewModel.Email);
@@ -176,6 +194,9 @@ namespace ConnectChain.Data.Repositories.UserRepository
             };
             return RequestResult<UserSignInResponseViewModel>.Success(user, "User Logged In Successfully");
         }
+        #endregion
+        
+        #region Repository Functions
 
         public void Add(User entity)
         {
@@ -241,6 +262,13 @@ namespace ConnectChain.Data.Repositories.UserRepository
         {
             throw new NotImplementedException();
         }
+
+        public IQueryable<User> GetByPage(PaginationHelper paginationParams)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion    
     }
 
 }

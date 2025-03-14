@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using ConnectChain.Helpers;
+using System.Linq.Expressions;
 
 namespace ConnectChain.Data.Repositories.Repository
 {
@@ -12,6 +13,7 @@ namespace ConnectChain.Data.Repositories.Repository
         IQueryable<Entity> GetAll();
         IQueryable<Entity> GetAllWithDeleted();
         IQueryable<Entity> Get(Expression<Func<Entity, bool>> predicate);
+        IQueryable<Entity> GetByPage(PaginationHelper paginationParams);
 
         Task<bool> AnyAsync(Expression<Func<Entity, bool>> predicate);
         Entity GetByID(int id);

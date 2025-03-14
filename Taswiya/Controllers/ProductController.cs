@@ -1,10 +1,13 @@
 ﻿using ConnectChain.Features.ProductManagement.AddProduct.Command;
 using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
+using ConnectChain.Features.ProductManagement.GetProductById.Queries;
+using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
 using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.AddProduct;
+using ConnectChain.ViewModel.Product.GetProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +21,30 @@ namespace ConnectChain.Controllers
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
+        [HttpGet("GetSupplierProducts")]
+        public async Task<ResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>> GetSupplierProducts()
+        {
+            var supplierId = Request.ExtractIdFromToken();
+            var response = await mediator.Send(new GetSupplierProductsQuery(supplierId));
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
+                : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+        }
+        [HttpGet("GetSupplierProductsByPage")]
+        public async Task<ResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>> 
+        GetSupplierProductsByPage([FromQuery] PaginationHelper paginationParams)
+        {
+            var supplierId = Request.ExtractIdFromToken();
+            var response = await mediator.Send(new GetSupplierProductsByPageQuery(supplierId, paginationParams));
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
+                : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+        } 
+        [HttpGet("GetProductById/{productId:int}")]
+        public async Task<ResponseViewModel<GetProductResponseViewModel>> GetProductById(int productId)
+        {
+            var response = await mediator.Send(new GetProductByIdQuery(productId));
+            return response.isSuccess ? new SuccessResponseViewModel<GetProductResponseViewModel>(response.data)
+                : new FaluireResponseViewModel<GetProductResponseViewModel>(response.errorCode, response.message);
+        }
         [HttpPost("AddProduct")]
         public async Task<ResponseViewModel<bool>> AddProduct(AddProductRequestViewModel viewModel)
         {
