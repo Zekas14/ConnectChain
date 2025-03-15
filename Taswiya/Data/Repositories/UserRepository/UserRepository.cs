@@ -268,7 +268,17 @@ namespace ConnectChain.Data.Repositories.UserRepository
             throw new NotImplementedException();
         }
 
-        #endregion    
+        public IQueryable<User> GetAllWithIncludes(Func<IQueryable<User>, IQueryable<User>> includeExpression)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetByIDWithIncludes(int id, Func<IQueryable<User>, IQueryable<User>> includeExpression)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 
 }

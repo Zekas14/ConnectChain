@@ -22,7 +22,6 @@ namespace HotelSystem.Data.Repository
         public void Add(Entity entity)
         {
             entity.CreatedDate = DateTime.Now;
-            //entity.CreatedBy = userID;
 
             _dbSet.Add(entity);
         }
@@ -64,17 +63,26 @@ namespace HotelSystem.Data.Repository
         {
             _dbSet.Remove(entity);
         }
+        public  Entity GetByIDWithIncludes(int id, Func<IQueryable<Entity>, IQueryable<Entity>> includeExpression)
+        {
+            return GetAllWithIncludes(includeExpression).FirstOrDefault(x => x.ID == id) ?? null!;
+        }
 
+        public IQueryable<Entity> GetAllWithIncludes(Func<IQueryable<Entity>, IQueryable<Entity>> includeExpression)
+        {
+            var set = _dbSet.Where(e => !e.Deleted);
+            return includeExpression(set);
+        }
 
         public IQueryable<Entity> Get(Expression<Func<Entity, bool>> predicate)
         {
             return GetAll().Where(predicate);
         }
 
-        public IQueryable<Entity> GetAll()
-        {
-            return _dbSet.Where(x => ! x.Deleted);
-        }
+            public IQueryable<Entity> GetAll()
+            {
+                return _dbSet.Where(x => ! x.Deleted);
+            }
 
         public IQueryable<Entity> GetAllWithDeleted()
         {

@@ -1,7 +1,6 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
-using ConnectChain.Settings;
 using MediatR;
 
 namespace ConnectChain.Features.ImageManagement.UploadImage.Command

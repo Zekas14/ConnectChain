@@ -57,21 +57,9 @@
               "target": "Package",
               "version": "[1.27.4, )"
             },
-            "CsvHelper": {
-              "target": "Package",
-              "version": "[33.0.1, )"
-            },
-            "EPPlus": {
-              "target": "Package",
-              "version": "[7.6.0, )"
-            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.11.0, )"
-            },
-            "IronXL.Excel": {
-              "target": "Package",
-              "version": "[2025.2.5, )"
             },
             "MailKit": {
               "target": "Package",

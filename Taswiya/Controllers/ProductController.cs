@@ -45,10 +45,11 @@ namespace ConnectChain.Controllers
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
                 : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
         }
-       // [HttpGet("GetFilteredProducts")]
+        // [HttpGet("GetFilteredProducts")]
         /*public async Task<ResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>> GetFilteredProducts([FromQuery] GetFilteredProductsRequestViewModel viewModel)
         {
         }*/
+        [AllowAnonymous]
         [HttpGet("GetProductById/{productId:int}")]
         public async Task<ResponseViewModel<GetProductResponseViewModel>> GetProductById(int productId)
         {
