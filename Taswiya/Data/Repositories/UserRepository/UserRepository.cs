@@ -78,9 +78,13 @@ namespace ConnectChain.Data.Repositories.UserRepository
             {
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "User Not Found");
             }
+            if (user.EmailConfirmed)
+            {
+                return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Email Already Confirmed");
+            }
             var callBackUrl = generateUrl( user.Id);
             var emailBody = $"<h1>Dear {user.UserName}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
-            await _mailServices.SendEmailAsync(user.Email, "Email Confirmation", emailBody);
+            await _mailServices.SendEmailAsync(user.Email!, "Email Confirmation", emailBody);
             return RequestResult<bool>.Success(true, "Email Confirmation sent , Please Verify your Email");
         }
         #endregion

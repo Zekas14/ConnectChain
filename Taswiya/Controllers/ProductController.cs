@@ -1,12 +1,14 @@
 ﻿using ConnectChain.Features.ImageManagement.UploadImage.Command;
 using ConnectChain.Features.ProductManagement.AddProduct.Command;
 using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
+using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
 using ConnectChain.Features.ProductManagement.GetProductById.Queries;
 using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
 using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
 using ConnectChain.Helpers;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.AddProduct;
+using ConnectChain.ViewModel.Product.GetFilteredProducts;
 using ConnectChain.ViewModel.Product.GetProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -20,14 +22,7 @@ namespace ConnectChain.Controllers
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
-        [AllowAnonymous]
-        [HttpPost("Upload Image")]
-        public async Task<ResponseViewModel<string>> UploadImage( IFormFile image)
-        {
-            var response = await mediator.Send(new UploadImageCommand(image));
-            return response.isSuccess ? new SuccessResponseViewModel<string>(response.data)
-                : new FaluireResponseViewModel<string>(response.errorCode, response.message);
-        }
+        
         [HttpGet("GetSupplierProducts")]
         public async Task<ResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>> GetSupplierProducts()
         {
@@ -45,10 +40,13 @@ namespace ConnectChain.Controllers
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
                 : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
         }
-        // [HttpGet("GetFilteredProducts")]
-        /*public async Task<ResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>> GetFilteredProducts([FromQuery] GetFilteredProductsRequestViewModel viewModel)
+        [HttpGet("GetFilteredProducts")]
+        public async Task<ResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>> GetFilteredProducts([FromQuery] GetFilteredProductsRequestViewModel viewModel)
         {
-        }*/
+            var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.PageNumber,viewModel.PageSize,viewModel.Filters));
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
+                : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+        }
         [AllowAnonymous]
         [HttpGet("GetProductById/{productId:int}")]
         public async Task<ResponseViewModel<GetProductResponseViewModel>> GetProductById(int productId)
