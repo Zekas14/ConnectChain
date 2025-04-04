@@ -27,15 +27,10 @@ namespace ConnectChain.Controllers
     {
         private readonly IMediator _mediator = mediator;
         [HttpPost("Register")]
-        public async Task<ResponseViewModel<bool> > Register(UserRegisterRequestViewModel viewModel)
+        public async Task<IActionResult> Register(UserRegisterRequestViewModel viewModel)
         {
             
-            if (!ModelState.IsValid)
-            {
-                
-                var errors =string.Join("," ,ModelState.Select(e => e.Value!.Errors));
-                return new FaluireResponseViewModel<bool>(ErrorCode.InvalidInput,errors) ;
-            }
+            
             var result = await _mediator.Send(new UserRegisterCommand(viewModel,Request.GenerateCallBackUrl));
             if (result.isSuccess)
             {
@@ -45,7 +40,7 @@ namespace ConnectChain.Controllers
 
         }
         [HttpPost("SignIn")]
-        public async Task<ResponseViewModel<UserSignInResponseViewModel>> SignIn(UserSignInRequestViewModel viewModel)
+        public async Task<IActionResult> SignIn(UserSignInRequestViewModel viewModel)
         {
             var result = await _mediator.Send(new UserSignInCommand(viewModel));
             if (result.isSuccess)
@@ -64,8 +59,8 @@ namespace ConnectChain.Controllers
             }
             return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
         }
-        [HttpGet("SendConfirmationEmail")]
-        public async Task<ResponseViewModel<bool>> SendConfirmationEmail(string email)
+        [HttpPost("SendConfirmationEmail")]
+        public async Task<IActionResult> SendConfirmationEmail(string email)
         {
             var result = await _mediator.Send(new SendConfirmationEmailQuery(email, Request.GenerateCallBackUrl));
             if (result.isSuccess)
@@ -75,17 +70,18 @@ namespace ConnectChain.Controllers
             return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPost("ForgetPassword")]
-        public async Task<ResponseViewModel<bool>> ForgetPassword(string email)
+        public async Task<IActionResult> ForgetPassword(string email)
         {
             var result = await _mediator.Send(new UserForgetPasswordQuery(email));
             if (result.isSuccess)
             {
                 return new SuccessResponseViewModel<bool>(result.data, result.message);
             }
+            
             return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPost("VerifyOtp")]
-        public async Task<ResponseViewModel<bool>> VerifyOtp(VerifyRequestOtpViewModel viewModel)
+        public async Task<IActionResult> VerifyOtp(VerifyRequestOtpViewModel viewModel)
         {
             var result = await _mediator.Send(new VerifyOtpCommand(viewModel));
             if (result.isSuccess)
@@ -95,7 +91,7 @@ namespace ConnectChain.Controllers
             return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPut("ResetPassword")]
-        public async Task<ResponseViewModel<bool>> ResetPassword(ResetPasswordRequestViewModel viewModel)
+        public async Task<IActionResult> ResetPassword(ResetPasswordRequestViewModel viewModel)
         {
             var result = await _mediator.Send(new ResetPasswordCommand(viewModel));
             if (result.isSuccess)

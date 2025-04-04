@@ -11,19 +11,9 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Autofac.Ext
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\AutoMapper.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Azure.Core.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Azure.Identity.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\BitMiracle.LibTiff.NET.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\BouncyCastle.Cryptography.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\CsvHelper.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\EPPlus.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\EPPlus.Interfaces.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\EPPlus.System.Drawing.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\FluentValidation.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Humanizer.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\IronSoftware.Logger.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\IronSoftware.Shared.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\IronSoftware.Drawing.Abstractions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\IronSoftware.Drawing.Common.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\IronXL.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\MailKit.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\MediatR.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\MediatR.Contracts.dll
@@ -43,7 +33,6 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.A
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.AspNetCore.OpenApi.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Bcl.Cryptography.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Build.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Build.Framework.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Build.Locator.dll
@@ -71,14 +60,9 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.E
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Caching.Memory.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Configuration.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Configuration.Json.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Identity.Core.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.Extensions.Logging.dll
@@ -93,7 +77,6 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.I
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.IdentityModel.Protocols.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.IdentityModel.Tokens.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.JSInterop.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.NET.StringTools.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Microsoft.OpenApi.dll
@@ -118,9 +101,6 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\NuGet.Packa
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\NuGet.ProjectModel.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\NuGet.Protocol.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\NuGet.Versioning.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\SixLabors.Fonts.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\SixLabors.ImageSharp.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\SixLabors.ImageSharp.Drawing.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -143,7 +123,6 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Runt
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Security.Cryptography.ProtectedData.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Security.Permissions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Text.Encoding.CodePages.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Text.Encodings.Web.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Text.Json.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\System.Windows.Extensions.dll
@@ -305,11 +284,9 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\wi
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net8.0\System.Text.Encoding.CodePages.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChain.csproj.AssemblyReference.cache
@@ -334,3 +311,6 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChai
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChain.genruntimeconfig.cache
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ref\ConnectChain.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\ConnectChain.sourcelink.json
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\CloudinaryDotNet.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Release\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll

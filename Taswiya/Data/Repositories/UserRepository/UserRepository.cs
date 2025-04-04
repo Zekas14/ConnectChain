@@ -8,6 +8,7 @@ using ConnectChain.ViewModel.Authentication;
 using ConnectChain.ViewModel.Authentication.ForgetPassword;
 using ConnectChain.ViewModel.Authentication.ResetPassword;
 using ConnectChain.ViewModel.Authentication.SignIn;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace ConnectChain.Data.Repositories.UserRepository
 {
@@ -19,22 +20,27 @@ namespace ConnectChain.Data.Repositories.UserRepository
         #region Register
         public async Task<RequestResult<bool>> Register(UserRegisterRequestViewModel viewModel,Func<string, string> generateUrl)
         {
-            var user = new User
+            var user = await _userManager.FindByEmailAsync(viewModel.Email);
+            if (user != null)
+            {
+                return RequestResult<bool>.Failure(ErrorCode.BadRequest, "User Already Exists");
+            }
+            user = new User
             {
                 FirstName = viewModel.FirstName,
                 LastName = viewModel.LastName,
                 Email = viewModel.Email,
-                UserName = viewModel.Email,
+                UserName = viewModel.FirstName+ viewModel.LastName,
                 PhoneNumber = viewModel.PhoneNumber,
                 Address = viewModel.Address,
                 Country= viewModel.Country,
             };
-            
-            IdentityResult result = await _userManager.CreateAsync(user, viewModel.Password);
+           
+            IdentityResult result = await _userManager.CreateAsync(user, viewModel.Password!);
             if (result.Succeeded)
             {
-              //  await userManager.AddToRoleAsync(user,"user");
-                var requestResult = await SendConfirmationEmail(user.Id, generateUrl);
+                await userManager.AddToRoleAsync(user,viewModel.Role.ToString());
+                var requestResult = await SendConfirmationEmail(user.Email!, generateUrl);
                 if(!requestResult.isSuccess)
                 {
                     return RequestResult<bool>.Failure(requestResult.errorCode, requestResult.message);
@@ -83,7 +89,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Email Already Confirmed");
             }
             var callBackUrl = generateUrl( user.Id);
-            var emailBody = $"<h1>Dear {user.UserName}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
+            var emailBody = $"<h1>Dear {user.FirstName}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
             await _mailServices.SendEmailAsync(user.Email!, "Email Confirmation", emailBody);
             return RequestResult<bool>.Success(true, "Email Confirmation sent , Please Verify your Email");
         }

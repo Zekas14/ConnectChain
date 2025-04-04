@@ -15,6 +15,8 @@ using Autofac;
 using ConnectChain.Config;
 using ConnectChain.Settings;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.Mvc;
+using ConnectChain.ViewModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,13 +30,27 @@ builder.Host.ConfigureContainer<ContainerBuilder>(container =>
 });
 
 builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSetting"));
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errors = context.ModelState
+            .Where(e => e.Value!.Errors.Count > 0)
+            .SelectMany(e => e.Value!.Errors.Select(err => err.ErrorMessage))
+            .ToList();
+        return new BadRequestObjectResult(new { ErrorCode.InvalidInput, errors});
+    };
+});
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ConnectChainDbContext>()
     .AddDefaultTokenProviders();
-builder.Services.AddDbContext<ConnectChainDbContext>(options =>
+builder.Services.AddDbContext<ConnectChainDbContext>(optionsBuilder =>
 {
-    options.UseSqlServer(config.GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+    optionsBuilder.UseSqlServer(
+        config.GetConnectionString("DefaultConnection"),
+        options => options.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery)
+        ).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 }
 );
 builder.Services.AddMemoryCache();

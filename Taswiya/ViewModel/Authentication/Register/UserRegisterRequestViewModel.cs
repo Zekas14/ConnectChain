@@ -1,8 +1,11 @@
-﻿using FluentValidation;
+﻿using ConnectChain.Models.Enums;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace ConnectChain.ViewModel.Authentication
 {
+    [Index(nameof(Email), IsUnique = true)]
     public class UserRegisterRequestViewModel
     {
         [Required]
@@ -15,6 +18,7 @@ namespace ConnectChain.ViewModel.Authentication
         public string? PhoneNumber { get;set; }
         [Required]
         [EmailAddress]
+        
         public string? Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
@@ -32,6 +36,9 @@ namespace ConnectChain.ViewModel.Authentication
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="Password Not Matched")]
         public string? ConfirmPassword { get; set; }
+        [Required]
+        [AllowedValues(new object[] { Role.Customer, Role.Supplier },ErrorMessage =" Role Should be supplier Or Customer")]
+        public Role Role { get; set; }
 
     }
    /* public class RegisterUserRequestViewModelValidator : AbstractValidator<UserRegisterRequestViewModel>

@@ -14,7 +14,7 @@ namespace ConnectChain.Controllers
     {
         private readonly IMediator mediator = mediator;
         [HttpPost("Upload Image")]
-        public async Task<ResponseViewModel<string>> UploadImage(IFormFile image)
+        public async Task<IActionResult> UploadImage(IFormFile image)
         {
             var response = await mediator.Send(new UploadImageCommand(image));
             return response.isSuccess ? new SuccessResponseViewModel<string>(response.data)
