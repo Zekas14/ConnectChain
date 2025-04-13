@@ -18,7 +18,7 @@ namespace ConnectChain.Controllers
         {
             var response = await mediator.Send(new UploadImageCommand(image));
             return response.isSuccess ? new SuccessResponseViewModel<string>(response.data)
-                : new FaluireResponseViewModel<string>(response.errorCode, response.message);
+                : new FailureResponseViewModel<string>(response.errorCode, response.message);
         }
     }
 }
