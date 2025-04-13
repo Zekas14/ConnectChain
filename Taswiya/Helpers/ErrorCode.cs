@@ -8,6 +8,7 @@
         NotFound = 404,
         UnAuthorized = 401,
         InternalServerError = 405,
-        EmailAlreadyConfirmed = 409
+        EmailAlreadyConfirmed = 409,
+        InternalError = 410,
     }
 }
