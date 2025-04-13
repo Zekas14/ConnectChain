@@ -2,13 +2,12 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Linq.Expressions;
 using ConnectChain.Data.Context;
-using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Models;
 using ConnectChain.Helpers;
 
-namespace HotelSystem.Data.Repository
+namespace ConnectChain.Data.Repositories.Repository
 {
-    public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel
+    public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel 
     {
         ConnectChainDbContext _context;
         DbSet<Entity> _dbSet;
@@ -121,10 +120,16 @@ namespace HotelSystem.Data.Repository
         {
            await _context.SaveChangesAsync();
         }
-
-        public IQueryable<Entity> GetByPage(PaginationHelper paginationParams)
+        public IQueryable<Entity> GetByPage(Expression<Func<Entity, bool>> predicate, PaginationHelper paginationParams)
         {
-            return GetAll().Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
+            return Get(predicate).AsSingleQuery().Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
+                .Take(paginationParams.PageSize);
+
+        }
+        
+        public IQueryable<Entity> GetAllByPage(PaginationHelper paginationParams)
+        {
+            return GetAll().AsSingleQuery().Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
                 .Take(paginationParams.PageSize);
         }
     }

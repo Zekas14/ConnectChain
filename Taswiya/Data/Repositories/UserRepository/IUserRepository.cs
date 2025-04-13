@@ -8,8 +8,7 @@ using ConnectChain.ViewModel.Authentication.SignIn;
 
 namespace ConnectChain.Data.Repositories.UserRepository
 {
-    public interface IUserRepository : IRepository<User>
-    {
+    public interface IUserRepository     {
         public Task<RequestResult<bool>> Register(UserRegisterRequestViewModel viewModel, Func<string, string> generateUrl);
         public Task<RequestResult<bool>> SendConfirmationEmail(string email, Func<string, string> generateUrl);
         public Task<RequestResult<bool>> ConfirmEmail(string userId);

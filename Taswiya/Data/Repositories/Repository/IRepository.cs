@@ -13,7 +13,8 @@ namespace ConnectChain.Data.Repositories.Repository
         IQueryable<Entity> GetAll();
         IQueryable<Entity> GetAllWithDeleted();
         IQueryable<Entity> Get(Expression<Func<Entity, bool>> predicate);
-        IQueryable<Entity> GetByPage(PaginationHelper paginationParams);
+        IQueryable<Entity> GetAllByPage(PaginationHelper paginationParams);
+        IQueryable<Entity> GetByPage(Expression<Func<Entity, bool>> predicate, PaginationHelper paginationParams);
         public IQueryable<Entity> GetAllWithIncludes(Func<IQueryable<Entity>, IQueryable<Entity>> includeExpression);
         Task<bool> AnyAsync(Expression<Func<Entity, bool>> predicate);
         Entity GetByID(int id);
