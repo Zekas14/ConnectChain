@@ -1,14 +1,11 @@
 ﻿using Autofac;
 using FluentValidation;
-using HotelSystem.Data.Repository;
 using MediatR;
-using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Data.Repositories.UserRepository;
 using ConnectChain.Helpers;
-using ConnectChain.Models;
 
 namespace ConnectChain.Config
 {
