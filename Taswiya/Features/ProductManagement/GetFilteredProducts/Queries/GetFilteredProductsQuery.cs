@@ -23,7 +23,7 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
                 PageNumber = request.PageNumber,
                 PageSize = request.PageSize
             };
-            var products = _repository.GetByPage(pagination);
+            var products = _repository.GetAllByPage(pagination);
             var parameter = Expression.Parameter(typeof(Product), "t");
             Expression expression = Expression.Constant(true);
 

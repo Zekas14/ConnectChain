@@ -8,5 +8,6 @@
         public string? Address{ get; set; }
         public string? Token { get; set; }
         public string? Phone { get; internal set; }
+        public string? BusinessType { get; set; }
     }
 }

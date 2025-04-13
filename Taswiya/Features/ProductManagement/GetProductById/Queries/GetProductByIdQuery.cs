@@ -18,13 +18,15 @@ namespace ConnectChain.Features.ProductManagement.GetProductById.Queries
             var product =  await _repository.GetAll()
                 .Where(p=>p.ID==request.Id)
                 .Include(p => p.Images)
+                .Include(p => p.Category)
                 .Select(product => new GetProductResponseViewModel
                 {
                     Id = product.ID,
                     Name = product.Name,
                     Description = product.Description,
                     Price = product.Price,
-                    Images = product.Images.Select(x => x.Url).ToList()
+                    Images = product.Images.Select(x => x.Url).ToList(),
+                    CategoryName = product.Category!.Name    
 
                 }).FirstOrDefaultAsync(cancellationToken);
             if (product is null)
@@ -39,7 +41,7 @@ namespace ConnectChain.Features.ProductManagement.GetProductById.Queries
                 Price = product.Price,
                 Images = product.Images.Select(x => x.Url).ToList()?? new()
            };*/
-            return RequestResult<GetProductResponseViewModel>.Success(product);
+            return RequestResult<GetProductResponseViewModel>.Success(product,"Success");
         }
     }
 }

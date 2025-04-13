@@ -3,6 +3,7 @@ using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel.Product.GetProduct;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
@@ -18,7 +19,7 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
 
         public async Task<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> Handle(GetSupplierProductsByPageQuery request, CancellationToken cancellationToken)
         {
-            var products = repository.GetByPage(request.PaginationParams)
+            var products = repository.GetAllByPage(request.PaginationParams)
                 .Where(p => p.SupplierId == request.SupplierId)
                 .Select(p => new GetProductResponseViewModel
                 {
