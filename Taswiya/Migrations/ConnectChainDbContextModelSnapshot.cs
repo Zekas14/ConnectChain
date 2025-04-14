@@ -15,12 +15,40 @@ namespace ConnectChain.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
+
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ActivityCategory", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ActivityCategories", (string)null);
+                });
 
             modelBuilder.Entity("ConnectChain.Models.Category", b =>
                 {
@@ -174,6 +202,33 @@ namespace ConnectChain.Migrations
                     b.ToTable("OrderItem");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.PaymentMethod", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PaymentMethods", (string)null);
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
                 {
                     b.Property<int>("ID")
@@ -227,6 +282,21 @@ namespace ConnectChain.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Product");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
+                {
+                    b.Property<string>("SupplierID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("PaymentMethodID")
+                        .HasColumnType("int");
+
+                    b.HasKey("SupplierID", "PaymentMethodID");
+
+                    b.HasIndex("PaymentMethodID");
+
+                    b.ToTable("SupplierPaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("ConnectChain.Models.User", b =>
@@ -443,6 +513,12 @@ namespace ConnectChain.Migrations
                     b.HasBaseType("ConnectChain.Models.User");
 
                     b.ToTable("Customer");
+                    b.Property<int?>("ActivityCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("ActivityCategoryId");
+
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
@@ -520,6 +596,25 @@ namespace ConnectChain.Migrations
                     b.Navigation("Supplier");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
+                {
+                    b.HasOne("ConnectChain.Models.PaymentMethod", "PaymentMethod")
+                        .WithMany("SupplierPaymentMethods")
+                        .HasForeignKey("PaymentMethodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
+                        .WithMany("SupplierPaymentMethods")
+                        .HasForeignKey("SupplierID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PaymentMethod");
+
+                    b.Navigation("Supplier");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -573,11 +668,17 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Customer", b =>
                 {
+                    b.HasOne("ActivityCategory", "ActivityCategory")
+                        .WithMany("Suppliers")
+                        .HasForeignKey("ActivityCategoryId");
+
                     b.HasOne("ConnectChain.Models.User", null)
                         .WithOne()
                         .HasForeignKey("ConnectChain.Models.Customer", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("ActivityCategory");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
@@ -592,6 +693,16 @@ namespace ConnectChain.Migrations
             modelBuilder.Entity("ConnectChain.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
+                });
+
+            modelBuilder.Entity("ActivityCategory", b =>
+                {
+                    b.Navigation("Suppliers");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.PaymentMethod", b =>
+                {
+                    b.Navigation("SupplierPaymentMethods");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
@@ -609,6 +720,9 @@ namespace ConnectChain.Migrations
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
                     b.Navigation("Orders");
+                    b.Navigation("Products");
+
+                    b.Navigation("SupplierPaymentMethods");
                 });
 #pragma warning restore 612, 618
         }

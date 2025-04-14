@@ -1,28 +1,76 @@
-﻿using ConnectChain.Data.Context;
-using ConnectChain.Data.Repositories.UserRepository;
+
+﻿using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.SupplierManagment.UpdateSupplierProfile.Command;
 using ConnectChain.Models;
-using Microsoft.AspNetCore.Http;
+using ConnectChain.ViewModel.Supplier;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using ConnectChain.Data.Context;
+using ConnectChain.Features.SupplierManagment.GetSupplierProfile.Query;
 
 namespace ConnectChain.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class SupplierController(ConnectChainDbContext context , UserManager<User> userManager)  : ControllerBase
+    [Route("api/[controller]")]
+    [Authorize]
+    public class SupplierController : ControllerBase
     {
-        private readonly ConnectChainDbContext context = context;
-        private readonly UserManager<User> userManager = userManager;
+        private readonly IMediator _mediator;
+       
 
-        [HttpPost("Create")]
-        public async Task<IActionResult> CreateSupplier( [FromBody] string id)
+        public SupplierController(IMediator mediator , ConnectChainDbContext identityDbContext)
         {
-            Supplier supplier = new Supplier {Id =id  };
-           await userManager.CreateAsync(supplier);
-            context.Add(supplier);
-            context.SaveChanges();
-            return Ok(new { message = "Supplier created successfully" });
+            _mediator = mediator;
+            
+        }
+
+        [HttpPut("updateProfile {SupplierId}")]
+        public async Task<IActionResult> UpdateProfile(string supplierId, [FromBody] SupplierProfileUpdateViewModel model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId != supplierId)
+            {
+                return Unauthorized();
+            }
+            var result = await _mediator.Send(new UpdateSupplierProfileCommand
+            {
+                Id = supplierId,
+                Name = model.Name,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+                ActivityCategoryID = model.ActivityCategoryID,
+                PaymentMethodsIDs = model.PaymentMethodsIDs
+            });
+
+            if (result.isSuccess)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpGet("getProfile/{SupplierId:alpha}")]
+        public async Task<IActionResult> GetProfile(string supplierId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId != supplierId)
+            {
+                return Unauthorized();
+            }
+            var result = await _mediator.Send(new GetSupplierProfileQuery
+            {
+                 SupplierId = supplierId,
+            });
+            return Ok(result);
         }
 
     }
+
 }
