@@ -38,8 +38,7 @@ namespace ConnectChain.Controllers
             var result = await _mediator.Send(new UpdateSupplierProfileCommand
             {
                 Id = supplierId,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
+                Name = model.Name,
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
                 ActivityCategoryID = model.ActivityCategoryID,

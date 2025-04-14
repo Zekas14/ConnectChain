@@ -33,8 +33,7 @@ namespace ConnectChain.Features.SupplierManagment.GetSupplierProfile.Query
 
             return new SupplierProfileViewModel
             {
-                FirstName = supplier.FirstName,
-                LastName = supplier.LastName,
+                
                 PhoneNumber = supplier.PhoneNumber,
                 Address = supplier.Address,
                 Email = supplier.Email,

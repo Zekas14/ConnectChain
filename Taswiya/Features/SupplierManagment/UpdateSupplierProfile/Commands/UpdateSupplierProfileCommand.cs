@@ -12,10 +12,8 @@ namespace ConnectChain.Features.SupplierManagment.UpdateSupplierProfile.Command
     {
         public string Id { get; init; }
         
-        public string? FirstName { get; set; }
-       
-        public string? LastName { get; set; }
-        
+        public string? Name { get; set; }
+      
         public string? PhoneNumber { get; init; }
         
         public string? Address { get; init; }
@@ -45,11 +43,8 @@ namespace ConnectChain.Features.SupplierManagment.UpdateSupplierProfile.Command
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Supplier not found.");
             }
 
-            if (!string.IsNullOrWhiteSpace(request.FirstName))
-                supplier.FirstName = request.FirstName;
-
-            if (!string.IsNullOrWhiteSpace(request.LastName))
-                supplier.LastName = request.LastName;
+            if (!string.IsNullOrWhiteSpace(request.Name))
+                supplier.Name = request.Name;
 
             if (!string.IsNullOrWhiteSpace(request.PhoneNumber))
                 supplier.PhoneNumber = request.PhoneNumber;

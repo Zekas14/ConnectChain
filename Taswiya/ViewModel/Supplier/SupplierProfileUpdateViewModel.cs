@@ -5,9 +5,7 @@ namespace ConnectChain.ViewModel.Supplier
     public class SupplierProfileUpdateViewModel
     {
         [StringLength(50, ErrorMessage = "First name cannot exceed 50 characters.")]
-        public string? FirstName { get; set; }
-        [StringLength(50, ErrorMessage = "First name cannot exceed 50 characters.")]
-        public string? LastName { get; set; }
+        public string? Name { get; set; }
         [Phone(ErrorMessage = "Invalid phone number format.")]
         public string? PhoneNumber { get; init; }
         [StringLength(100, ErrorMessage = "Address cannot exceed 150 characters.")]

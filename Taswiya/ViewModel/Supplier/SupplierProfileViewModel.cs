@@ -5,8 +5,7 @@ namespace ConnectChain.ViewModel.Supplier
 {
     public class SupplierProfileViewModel
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; init; }
         public string PhoneNumber { get; init; }
         public string Address { get; init; }
         public string Email { get; set; }
