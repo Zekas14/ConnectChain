@@ -36,7 +36,7 @@ namespace ConnectChain.Controllers
             {
                 return  new SuccessResponseViewModel<bool>(true,"Email Confirmation Sent , Please Confirm Your Email");
             }
-                return new FaluireResponseViewModel<bool>(ErrorCode.BadRequest, result.message);
+                return new FailureResponseViewModel<bool>(ErrorCode.BadRequest, result.message);
 
         }
         [HttpPost("SignIn")]
@@ -47,7 +47,7 @@ namespace ConnectChain.Controllers
             {
                 return new SuccessResponseViewModel<UserSignInResponseViewModel>(result.data, result.message);
             }
-            return new FaluireResponseViewModel<UserSignInResponseViewModel>(result.errorCode, result.message);
+            return new FailureResponseViewModel<UserSignInResponseViewModel>(result.errorCode, result.message);
         }
         [HttpGet("ConfirmEmail")]
         public async Task<ResponseViewModel<bool>> ConfirmEmail([FromQuery] string userId)
@@ -57,7 +57,7 @@ namespace ConnectChain.Controllers
             {
                 return new SuccessResponseViewModel<bool>(result.data, result.message);
             }
-            return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
+            return new FailureResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPost("SendConfirmationEmail")]
         public async Task<IActionResult> SendConfirmationEmail(string email)
@@ -67,7 +67,7 @@ namespace ConnectChain.Controllers
             {
                 return new SuccessResponseViewModel<bool>(result.data, result.message);
             }
-            return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
+            return new FailureResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPost("ForgetPassword")]
         public async Task<IActionResult> ForgetPassword(string email)
@@ -78,7 +78,7 @@ namespace ConnectChain.Controllers
                 return new SuccessResponseViewModel<bool>(result.data, result.message);
             }
             
-            return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
+            return new FailureResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPost("VerifyOtp")]
         public async Task<IActionResult> VerifyOtp(VerifyRequestOtpViewModel viewModel)
@@ -88,7 +88,7 @@ namespace ConnectChain.Controllers
             {
                 return new SuccessResponseViewModel<bool>(result.data, result.message);
             }
-            return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
+            return new FailureResponseViewModel<bool>(result.errorCode, result.message);
         }
         [HttpPut("ResetPassword")]
         public async Task<IActionResult> ResetPassword(ResetPasswordRequestViewModel viewModel)
@@ -99,7 +99,7 @@ namespace ConnectChain.Controllers
                 return new SuccessResponseViewModel<bool>(result.data, result.message);
             }
             
-            return new FaluireResponseViewModel<bool>(result.errorCode, result.message);
+            return new FailureResponseViewModel<bool>(result.errorCode, result.message);
         }
     }
 }

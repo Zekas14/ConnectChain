@@ -38,7 +38,7 @@ namespace ConnectChain.Helpers
             var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             List<Claim> claims =
                 [
-                    new Claim(ClaimTypes.Name, user.FirstName),
+                    new Claim(ClaimTypes.Name, user.Name!),
                     new Claim(ClaimTypes.NameIdentifier, user.Id),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 ];

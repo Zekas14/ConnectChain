@@ -109,6 +109,84 @@ namespace ConnectChain.Migrations
                     b.ToTable("Image");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.Order", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SupplierId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.OrderItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderItem");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.PaymentMethod", b =>
                 {
                     b.Property<int>("ID")
@@ -150,6 +228,9 @@ namespace ConnectChain.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
@@ -174,6 +255,8 @@ namespace ConnectChain.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("CustomerId");
 
                     b.HasIndex("SupplierId");
 
@@ -206,11 +289,11 @@ namespace ConnectChain.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
+                    b.Property<string>("BusinessType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Country")
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -220,20 +303,14 @@ namespace ConnectChain.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -302,8 +379,6 @@ namespace ConnectChain.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -412,10 +487,11 @@ namespace ConnectChain.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
+            modelBuilder.Entity("ConnectChain.Models.Customer", b =>
                 {
                     b.HasBaseType("ConnectChain.Models.User");
 
+                    b.ToTable("Customer");
                     b.Property<int?>("ActivityCategoryId")
                         .HasColumnType("int");
 
@@ -424,11 +500,11 @@ namespace ConnectChain.Migrations
                     b.ToTable("Suppliers");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Role", b =>
+            modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+                    b.HasBaseType("ConnectChain.Models.User");
 
-                    b.ToTable("Roles", (string)null);
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Image", b =>
@@ -436,6 +512,44 @@ namespace ConnectChain.Migrations
                     b.HasOne("ConnectChain.Models.Product", "Product")
                         .WithMany("Images")
                         .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.Order", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Customer", "Customer")
+                        .WithMany("Orders")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
+                        .WithMany("Orders")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.OrderItem", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConnectChain.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
                 });
@@ -448,8 +562,12 @@ namespace ConnectChain.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
+                    b.HasOne("ConnectChain.Models.Customer", null)
                         .WithMany("Products")
+                        .HasForeignKey("CustomerId");
+
+                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
+                        .WithMany()
                         .HasForeignKey("SupplierId");
 
                     b.Navigation("Category");
@@ -527,7 +645,7 @@ namespace ConnectChain.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
+            modelBuilder.Entity("ConnectChain.Models.Customer", b =>
                 {
                     b.HasOne("ActivityCategory", "ActivityCategory")
                         .WithMany("Suppliers")
@@ -535,20 +653,25 @@ namespace ConnectChain.Migrations
 
                     b.HasOne("ConnectChain.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("ConnectChain.Models.Supplier", "Id")
+                        .HasForeignKey("ConnectChain.Models.Customer", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ActivityCategory");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Role", b =>
+            modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("ConnectChain.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("ConnectChain.Models.Role", "Id")
+                        .HasForeignKey("ConnectChain.Models.Supplier", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.Order", b =>
+                {
+                    b.Navigation("OrderItems");
                 });
 
             modelBuilder.Entity("ActivityCategory", b =>
@@ -566,8 +689,16 @@ namespace ConnectChain.Migrations
                     b.Navigation("Images");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.Customer", b =>
+                {
+                    b.Navigation("Orders");
+
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
+                    b.Navigation("Orders");
                     b.Navigation("Products");
 
                     b.Navigation("SupplierPaymentMethods");

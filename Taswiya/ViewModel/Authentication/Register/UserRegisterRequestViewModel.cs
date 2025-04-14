@@ -10,11 +10,9 @@ namespace ConnectChain.ViewModel.Authentication
     {
         [Required]
         [DataType(DataType.Text)]
-        public string? FirstName { get; set;  }
+        public string? Name { get; set;  }
         [Required]
-        [DataType(DataType.Text)]
-        public string? LastName { get; set;  }
-        [Required]
+        [RegularExpression(@"^01[0125][0-9]{8}$",ErrorMessage = "Invalid Phone Number")]
         public string? PhoneNumber { get;set; }
         [Required]
         [EmailAddress]
@@ -26,18 +24,17 @@ namespace ConnectChain.ViewModel.Authentication
         [Required]
         [DataType(DataType.Text)]
         [MinLength(3)]
-
-        public string? Address { get; set; }
+        public string? BusinessType { get; set; }
         [Required]
         [DataType(DataType.Text)]
         [MinLength(3)]
-        public string? Country { get; set; }
+        public string? Address { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="Password Not Matched")]
         public string? ConfirmPassword { get; set; }
         [Required]
-        [AllowedValues(new object[] { Role.Customer, Role.Supplier },ErrorMessage =" Role Should be supplier Or Customer")]
+        [AllowedValues(new object[] { Role.Customer, Role.Supplier },ErrorMessage =" Role Should be Supplier Or Customer")]
         public Role Role { get; set; }
 
     }

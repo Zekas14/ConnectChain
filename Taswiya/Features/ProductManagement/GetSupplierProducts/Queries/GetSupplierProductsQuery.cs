@@ -4,6 +4,7 @@ using ConnectChain.Models;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.GetProduct;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
@@ -17,16 +18,20 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
         public async Task<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> Handle(GetSupplierProductsQuery request, CancellationToken cancellationToken)
         {
             var products =  repository.Get(p => p.SupplierId == request.SupplierId)
+                .Include(p => p.Images)
+                .Include(p => p.Category)
                 .Select(p => new GetProductResponseViewModel
                 {
                     Id = p.ID,
                     Name = p.Name,
                     Description = p.Description,
                     Price = p.Price,
+                    Images = p.Images.Select(x => x.Url).ToList(),
+                    CategoryName = p.Category!.Name
                 });
             if (!products.IsNullOrEmpty())
             {
-                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(products.ToList());
+                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(products.ToList(),"Success");
             }
             return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
         }

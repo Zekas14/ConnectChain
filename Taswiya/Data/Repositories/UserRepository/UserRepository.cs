@@ -9,46 +9,57 @@ using ConnectChain.ViewModel.Authentication.ForgetPassword;
 using ConnectChain.ViewModel.Authentication.ResetPassword;
 using ConnectChain.ViewModel.Authentication.SignIn;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using ConnectChain.Data.Context;
 
 namespace ConnectChain.Data.Repositories.UserRepository
 {
-    public class UserRepository(UserManager<User> userManager,IMemoryCache cache,IMailServices mailServices) : IUserRepository
+    public class UserRepository(UserManager<User> userManager, IWebHostEnvironment env, IMemoryCache cache, IMailServices mailServices) : IUserRepository
     {
+        
         private readonly UserManager<User> _userManager = userManager;
+        private readonly IWebHostEnvironment env = env;
         private readonly IMemoryCache _cache = cache;
+
         private readonly IMailServices _mailServices= mailServices;
         #region Register
+        private async Task<bool> CheckIfUserExists(string email)
+        {
+            return await _userManager.FindByEmailAsync(email) is not null;
+        }
+        private async Task<RequestResult<bool>> SendConfirmation(User user, Func<string, string> generateUrl)
+        {
+            var result = await SendConfirmationEmail(user.Email!, generateUrl);
+            if (!result.isSuccess)
+                return RequestResult<bool>.Failure(result.errorCode, result.message);
+
+            return RequestResult<bool>.Success(result.data);
+        }
         public async Task<RequestResult<bool>> Register(UserRegisterRequestViewModel viewModel,Func<string, string> generateUrl)
         {
-            var user = await _userManager.FindByEmailAsync(viewModel.Email);
-            if (user != null)
+            if (await CheckIfUserExists(viewModel.Email!))
             {
                 return RequestResult<bool>.Failure(ErrorCode.BadRequest, "User Already Exists");
             }
-            user = new User
-            {
-                FirstName = viewModel.FirstName,
-                LastName = viewModel.LastName,
-                Email = viewModel.Email,
-                UserName = viewModel.FirstName+ viewModel.LastName,
-                PhoneNumber = viewModel.PhoneNumber,
-                Address = viewModel.Address,
-                Country= viewModel.Country,
-            };
-           
+             var user = UserFactory.CreateUser(viewModel);
+            /* user = new User
+             {
+                 FirstName = viewModel.FirstName,
+                 LastName = viewModel.LastName,
+                 Email = viewModel.Email,
+                 UserName = viewModel.FirstName+ viewModel.LastName,
+                 PhoneNumber = viewModel.PhoneNumber,
+                 Address = viewModel.Address,
+                 Country= viewModel.Country,
+             };
+            */
             IdentityResult result = await _userManager.CreateAsync(user, viewModel.Password!);
-            if (result.Succeeded)
-            {
-                await userManager.AddToRoleAsync(user,viewModel.Role.ToString());
-                var requestResult = await SendConfirmationEmail(user.Email!, generateUrl);
-                if(!requestResult.isSuccess)
-                {
-                    return RequestResult<bool>.Failure(requestResult.errorCode, requestResult.message);
-                }
-                return RequestResult<bool>.Success(requestResult.data,requestResult.message);
-            }
-            return RequestResult<bool>.Failure(ErrorCode.BadRequest,string.Join(", ",result.Errors.Select(e => e.Description)));
-
+            if (!result.Succeeded)
+                return RequestResult<bool>.Failure(ErrorCode.BadRequest, string.Join(", ", result.Errors.Select(e => e.Description)));
+            var requestResult = await SendConfirmation(user, generateUrl);
+            if (!requestResult.isSuccess)
+                return requestResult;
+            await _userManager.AddToRoleAsync(user, viewModel.Role.ToString());
+            return RequestResult<bool>.Success(requestResult.data, requestResult.message);
         }
         #endregion
 
@@ -88,8 +99,14 @@ namespace ConnectChain.Data.Repositories.UserRepository
             {
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Email Already Confirmed");
             }
-            var callBackUrl = generateUrl( user.Id);
-            var emailBody = $"<h1>Dear {user.FirstName}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
+            var callbackUrl = generateUrl( user.Id);
+            var templatePath = Path.Combine(env.ContentRootPath, "Templates", "emailTemplate.html");
+            if (!File.Exists(templatePath))
+                return RequestResult<bool>.Failure(ErrorCode.InternalError, "Email template not found");
+            var emailBody = await File.ReadAllTextAsync(templatePath);
+            emailBody = emailBody.Replace("${link}", callbackUrl);
+            emailBody = emailBody.Replace("${name}", user.Name!);
+            // var emailBody = $"<h1>Dear {user.Name}! Welcome To ConnectChain.</h1><p>Please <a href='{callBackUrl}'>Click Here</a> To Confirm Your Email.</p>";
             await _mailServices.SendEmailAsync(user.Email!, "Email Confirmation", emailBody);
             return RequestResult<bool>.Success(true, "Email Confirmation sent , Please Verify your Email");
         }
@@ -151,7 +168,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
         #region ResetPassword
         public async Task<RequestResult<bool>> ResetPassword(ResetPasswordRequestViewModel viewModel)
         {
-            var user = await userManager.FindByEmailAsync(viewModel.Email);
+            var user = await userManager.FindByEmailAsync(viewModel.Email!);
             if (user is not null)
             {
                 if (!_cache.TryGetValue("validateToken", out string validateToken) || validateToken == null)
@@ -179,7 +196,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
             var currentUser = await userManager.FindByEmailAsync(viewModel.Email);
             if (currentUser is null)
             {
-                return RequestResult<UserSignInResponseViewModel>.Failure(ErrorCode.NotFound, "User Not Found");
+                return RequestResult<UserSignInResponseViewModel>.Failure(ErrorCode.NotFound, "Invalid Email or Password");
             }
             if (!currentUser.EmailConfirmed)
             {
@@ -194,28 +211,29 @@ namespace ConnectChain.Data.Repositories.UserRepository
             string tokenData = new JwtSecurityTokenHandler().WriteToken(token);
             UserSignInResponseViewModel user = new()
             {
-                FirstName = currentUser.FirstName,
-                LastName = currentUser.LastName,
-
+                FirstName = currentUser.Name,
                 Email = currentUser.Email,
                 Address = currentUser.Address,
+                BusinessType = currentUser.BusinessType,    
                 Token = tokenData,
                 Phone = currentUser.PhoneNumber,
             };
             return RequestResult<UserSignInResponseViewModel>.Success(user, "User Logged In Successfully");
         }
         #endregion
-        
-        #region Repository Functions
-
         public void Add(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddAsync(User entity)
         {
             throw new NotImplementedException();
         }
 
         public void SaveInclude(User entity, params string[] properties)
         {
-            throw new NotImplementedException();
+            _userManager.UpdateAsync(entity);
         }
 
         public void Delete(User entity)
@@ -243,12 +261,27 @@ namespace ConnectChain.Data.Repositories.UserRepository
             throw new NotImplementedException();
         }
 
+        public IQueryable<User> GetByPage(PaginationHelper paginationParams)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IQueryable<User> GetAllWithIncludes(Func<IQueryable<User>, IQueryable<User>> includeExpression)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> AnyAsync(Expression<Func<User, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
         public User GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetByIDWithIncludes(int id, Func<IQueryable<User>, IQueryable<User>> includeExpression)
         {
             throw new NotImplementedException();
         }
@@ -263,32 +296,11 @@ namespace ConnectChain.Data.Repositories.UserRepository
             throw new NotImplementedException();
         }
 
-        public Task AddAsync(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task SaveChangesAysnc()
         {
             throw new NotImplementedException();
         }
 
-        public IQueryable<User> GetByPage(PaginationHelper paginationParams)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IQueryable<User> GetAllWithIncludes(Func<IQueryable<User>, IQueryable<User>> includeExpression)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetByIDWithIncludes(int id, Func<IQueryable<User>, IQueryable<User>> includeExpression)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
     }
 
 }

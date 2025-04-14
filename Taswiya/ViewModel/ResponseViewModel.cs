@@ -31,6 +31,8 @@ namespace ConnectChain.ViewModel
             {
                 ErrorCode.NotFound => StatusCodes.Status404NotFound,
                 ErrorCode.EmailAlreadyConfirmed => StatusCodes.Status409Conflict,
+                ErrorCode.UnAuthorized => StatusCodes.Status401Unauthorized,
+
                 _ => StatusCodes.Status400BadRequest
             };
         }
@@ -47,26 +49,26 @@ namespace ConnectChain.ViewModel
         }
     }
 
-    public class FaluireResponseViewModel<T> : ResponseViewModel<T>
+    public class FailureResponseViewModel<T> : ResponseViewModel<T>
     {
-        public FaluireResponseViewModel(ErrorCode errorCode, string message = "" )
+        public FailureResponseViewModel(ErrorCode errorCode, string message = "" )
         {
             Data = default;
             IsSuccess = false;
             Message = message;
             ErrorCode = errorCode;
         }
-        public static FaluireResponseViewModel<T> NotFound( string message = "")
+        public static FailureResponseViewModel<T> NotFound( string message = "")
         {
-            return new FaluireResponseViewModel<T>(ErrorCode.NotFound, message ?? ErrorCode.NotFound.ToString());
+            return new FailureResponseViewModel<T>(ErrorCode.NotFound, message ?? ErrorCode.NotFound.ToString());
         }
-        public static FaluireResponseViewModel<T> UnAuthorized(string message = "")
+        public static FailureResponseViewModel<T> UnAuthorized(string message = "")
         {
-            return new FaluireResponseViewModel<T>(ErrorCode.UnAuthorized, message ?? ErrorCode.UnAuthorized.ToString());
+            return new FailureResponseViewModel<T>(ErrorCode.UnAuthorized, message ?? ErrorCode.UnAuthorized.ToString());
         }
-        public static FaluireResponseViewModel<T> BadRequest(string message = "")
+        public static FailureResponseViewModel<T> BadRequest(string message = "")
         {
-            return new FaluireResponseViewModel<T>(ErrorCode.BadRequest, message ?? ErrorCode.BadRequest.ToString());
+            return new FailureResponseViewModel<T>(ErrorCode.BadRequest, message ?? ErrorCode.BadRequest.ToString());
         }
     }
 }

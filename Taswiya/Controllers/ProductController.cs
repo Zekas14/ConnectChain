@@ -18,19 +18,27 @@ namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
-        
+
+        #region GetSupplierProducts
         [HttpGet("GetSupplierProducts")]
-        public async Task<IActionResult> GetSupplierProducts()
+        public async Task<IActionResult> GetSupplierProducts(string supplierId)
         {
-            var supplierId = Request.ExtractIdFromToken();
+           /* var supplierId = Request.ExtractIdFromToken();
+            if (string.IsNullOrEmpty(supplierId))
+            {
+                return new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(ErrorCode.UnAuthorized, ErrorCode.UnAuthorized.ToString());
+            }*/
             var response = await mediator.Send(new GetSupplierProductsQuery(supplierId));
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
-                : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+                : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
         }
+        #endregion
+
+        #region GetSupplierProductsByPage
         [HttpGet("GetSupplierProductsByPage")]
         public async Task<IActionResult> 
         GetSupplierProductsByPage([FromQuery] PaginationHelper paginationParams)
@@ -38,29 +46,38 @@ namespace ConnectChain.Controllers
             var supplierId = Request.ExtractIdFromToken();
             var response = await mediator.Send(new GetSupplierProductsByPageQuery(supplierId, paginationParams));
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
-                : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+                : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
         }
+        #endregion
+
+        #region GetFilteredProducts 
         [HttpGet("GetFilteredProducts")]
         public async Task<IActionResult> GetFilteredProducts([FromQuery] GetFilteredProductsRequestViewModel viewModel)
         {
             var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.PageNumber,viewModel.PageSize,viewModel.Filters));
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
-                : new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+                : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
         }
+        #endregion
+
+        #region GetProductById
         [AllowAnonymous]
         [HttpGet("GetProductById/{productId:int}")]
         public async Task<IActionResult> GetProductById(int productId)
         {
             var response = await mediator.Send(new GetProductByIdQuery(productId));
             return response.isSuccess ? new SuccessResponseViewModel<GetProductResponseViewModel>(response.data)
-                : new FaluireResponseViewModel<GetProductResponseViewModel>(response.errorCode, response.message);
+                : new FailureResponseViewModel<GetProductResponseViewModel>(response.errorCode, response.message);
         }
+        #endregion
+
+        #region Add Product
         [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProduct(AddProductRequestViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var supplierId = Request.ExtractIdFromToken();
+              //  var supplierId = Request.ExtractIdFromToken();
 
                 var response = await mediator.Send(new AddProductCommand
                 {
@@ -68,23 +85,30 @@ namespace ConnectChain.Controllers
                     Description = viewModel.Description,
                     Price = viewModel.Price,
                     Stock = viewModel.Stock,
-                    SupplierId = supplierId,
+                    SupplierId = viewModel.SupplierId,
                     CategoryId = viewModel.CategoryId
                 });
-                return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data)
-                    : new FaluireResponseViewModel<bool>(response.errorCode, response.message);
+                return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data, response.message)
+                    : new FailureResponseViewModel<bool>(response.errorCode, response.message);
 
             }
             var errors = string.Join(", ", ModelState.Select(e => e.Value!.Errors));
-            return new FaluireResponseViewModel<bool>(ErrorCode.BadRequest,errors);
+            return new FailureResponseViewModel<bool>(ErrorCode.BadRequest,errors);
         }
+        #endregion
+
+        #region Delete Product
+
         [HttpDelete("DeleteProduct/{productId:int}")]
         public async Task<IActionResult> DeleteProduct(int productId)
         {
             var response = await mediator.Send(new DeleteProductCommand(productId));
             return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data)
-                : new FaluireResponseViewModel<bool>(response.errorCode, response.message);
+                : new FailureResponseViewModel<bool>(response.errorCode, response.message);
         }
+        #endregion
+
+        #region Update Product
         [HttpPut("UpdateProduct")]
         public async Task<IActionResult> UpdateProduct([FromRoute]int productId,[FromBody]UpdateProductRequestViewModel viewModel)
         {
@@ -101,17 +125,21 @@ namespace ConnectChain.Controllers
                     CategoryId = viewModel.CategoryId
                 });
                 return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data)
-                    : new FaluireResponseViewModel<bool>(response.errorCode, response.message);
+                    : new FailureResponseViewModel<bool>(response.errorCode, response.message);
             }
             var errors = string.Join(", ", ModelState.Select(e => e.Value!.Errors));
-            return  FaluireResponseViewModel<bool>.BadRequest(errors);
+            return  FailureResponseViewModel<bool>.BadRequest(errors);
         }
+        #endregion
+
+        #region Add Product Image
         [HttpPost("AddProductImage")]
         public async Task<IActionResult> AddProductImage( [FromForm ]AddProductImageRequestViewModel viewModel)
         {
             var response = await mediator.Send(new AddProductImageCommand(viewModel.Image, viewModel.ProductId));
             return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data)
-                : new FaluireResponseViewModel<bool>(response.errorCode, response.message);
+                : new FailureResponseViewModel<bool>(response.errorCode, response.message);
         }
+        #endregion
     }
 }

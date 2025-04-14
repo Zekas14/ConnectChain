@@ -42,7 +42,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
             };
             repository.Add(product);
             await repository.SaveChangesAysnc();
-            return RequestResult<bool>.Success(true);
+            return RequestResult<bool>.Success(true,"Product Added Successfully");
         }
     }
 }

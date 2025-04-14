@@ -27,8 +27,8 @@ namespace ConnectChain.Controllers
         [HttpPost("AddCategory")]
         public async Task<IActionResult> AddCategory([FromBody] AddCategoryRequestViewModel model)
         {
-                var result = await _mediator.Send(new AddCategoryCommand(model.Name, model.Description));
-                return new SuccessResponseViewModel<bool>(result.data, result.message);
+            var result = await _mediator.Send(new AddCategoryCommand(model.Name, model.Description));
+            return new SuccessResponseViewModel<bool>(result.data, result.message);
         }
 
     }

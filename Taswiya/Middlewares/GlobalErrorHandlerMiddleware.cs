@@ -31,7 +31,7 @@ namespace ConnectChain.Middlewares
             catch (Exception ex)
             {
                 File.WriteAllText(@"F:\\log.txt", $"error{ex.Message}");
-                var response = FaluireResponseViewModel<bool>.BadRequest();
+                var response = FailureResponseViewModel<bool>.BadRequest();
                 await context.Response.WriteAsJsonAsync(response);
             }
 
