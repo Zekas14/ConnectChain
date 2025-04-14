@@ -11,10 +11,11 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
     {
         public string? Name { get; init; }
         public string? Description { get; init; }
-        public IFormFile? Image { get; init; }
+        public List<IFormFile>? Images { get; init; }
         public decimal Price { get; init; }
-        public int? Stock { get; init; }
+        public int? Stock { get; init; }    
         public string? SupplierId { get; init; }
+        public int MinimumStock { get; init; }
         public int CategoryId { get; init; }
     }
     public class AddProductCommandHandler(IRepository<Product> repository, IMediator mediator) : IRequestHandler<AddProductCommand, RequestResult<bool>>
@@ -22,18 +23,35 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
         private readonly IRepository<Product> repository = repository;
         private readonly IMediator mediator = mediator;
 
-        public string ImageUrl { get; private set; }
 
         public async Task<RequestResult<bool>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             var categoryExistResult = await mediator.Send(new IsCategoryExistQuery(request.CategoryId));
+
             if (!categoryExistResult.isSuccess)
             {
                 return RequestResult<bool>.Failure(categoryExistResult.errorCode, categoryExistResult.message);
             }
+            List<Image> images = new List<Image>();
+            foreach(var image in request.Images)
+            {
+                var uploadImageResult = await mediator.Send(new UploadImageCommand(image));
+                if (!uploadImageResult.isSuccess)
+                {
+                    return RequestResult<bool>.Failure(uploadImageResult.errorCode, uploadImageResult.message);
+                }
+                images.Add(new Image()
+                {
+                    Url = uploadImageResult.data
+                });
+            }
             var product = new Product
             {
+
                 Name = request.Name,
+                Images = images,
+                SKU = Guid.NewGuid(),
+                MinimumStock = request.MinimumStock,
                 Description = request.Description,
                 Price = request.Price,
                 Stock = request.Stock,

@@ -6,6 +6,7 @@ using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Data.Repositories.UserRepository;
 using ConnectChain.Helpers;
+using ConnectChain.Features.SupplierManagement.Common.Queries;
 
 namespace ConnectChain.Config
 {
@@ -16,8 +17,7 @@ namespace ConnectChain.Config
             builder.RegisterType<ConnectChainDbContext>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
             builder.RegisterType(typeof(UserRepository)).As(typeof(IUserRepository)).InstancePerLifetimeScope();
-
-
+           
             builder.RegisterType<MailServices>().As<IMailServices>().InstancePerLifetimeScope();
             builder.RegisterType<UserRepository>().As<IUserRepository>().InstancePerLifetimeScope();
            #region Register MediatR

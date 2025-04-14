@@ -38,6 +38,8 @@
 
   <ItemGroup>
     <Folder Include="Features\AuthManagement\Register\Queries\" />
+    <Folder Include="Features\OrderManagement\GetOrdedByStatus\" />
+    <Folder Include="Features\OrderManagement\PlaceOrder\" />
   </ItemGroup>
 
 </Project>

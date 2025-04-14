@@ -100,15 +100,29 @@ namespace ConnectChain.Migrations
                     b.Property<bool>("Deleted")
                         .HasColumnType("bit");
 
+                    b.Property<decimal>("DeliveryFees")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("SupplierId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -183,11 +197,17 @@ namespace ConnectChain.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MinimumStock")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("SKU")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("Stock")
                         .HasColumnType("int");

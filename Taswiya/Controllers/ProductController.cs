@@ -73,7 +73,7 @@ namespace ConnectChain.Controllers
 
         #region Add Product
         [HttpPost("AddProduct")]
-        public async Task<IActionResult> AddProduct(AddProductRequestViewModel viewModel)
+        public async Task<IActionResult> AddProduct([FromForm]AddProductRequestViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -83,6 +83,8 @@ namespace ConnectChain.Controllers
                 {
                     Name = viewModel.Name,
                     Description = viewModel.Description,
+                    Images = viewModel.Images,
+                    MinimumStock = viewModel.MinimumStock,
                     Price = viewModel.Price,
                     Stock = viewModel.Stock,
                     SupplierId = viewModel.SupplierId,

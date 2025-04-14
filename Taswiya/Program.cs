@@ -17,6 +17,7 @@ using ConnectChain.Settings;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Mvc;
 using ConnectChain.ViewModel;
+using ConnectChain.Features.SupplierManagement.Common.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ConnectChainDbContext>()
     .AddDefaultTokenProviders();
+;
 builder.Services.AddDbContext<ConnectChainDbContext>(optionsBuilder =>
 {
     optionsBuilder.UseSqlServer(
@@ -102,7 +104,8 @@ var app = builder.Build();
 
 //if (app.Environment.IsDevelopment())
 //{
-    app.UseSwagger();
+
+app.UseSwagger();
     app.UseSwaggerUI();
 //}
 app.UseCors("AllowSpecificOrigins");
