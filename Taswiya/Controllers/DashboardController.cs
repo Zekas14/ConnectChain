@@ -8,6 +8,8 @@ using ConnectChain.ViewModel.Dashboard.GetMonthlyStats;
 using ConnectChain.ViewModel.Dashboard.GetTopSoldProducts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ConnectChain.Features.DashboardManagement.GetDashboardSummary.Queries;
+using ConnectChain.ViewModel.Dashboard.GetDashboardSummary;
 
 namespace ConnectChain.Controllers
 {
@@ -49,6 +51,24 @@ namespace ConnectChain.Controllers
             return response != null
                 ? new SuccessResponseViewModel<IReadOnlyList<GetTopSoldProductsResponseViewModel>>(response, "Top sold products retrieved successfully.")
                 : new FailureResponseViewModel<IReadOnlyList<GetTopSoldProductsResponseViewModel>>(ErrorCode.NotFound, "No top sold products found.");
+        }
+
+        [HttpGet("GetOrdersSummary")]
+        public async Task<IActionResult> GetOrdersSummary([FromQuery] string supplierId)
+        {
+            var response = await mediator.Send(new GetOrdersSummaryQuery(supplierId));
+            return response != null
+                ? new SuccessResponseViewModel<OrdersSummaryResponseViewModel>(response, "Orders summary retrieved successfully.")
+                : new FailureResponseViewModel<OrdersSummaryResponseViewModel>(ErrorCode.NotFound, "No orders summary data found.");
+        }
+
+        [HttpGet("GetProductsSummary")]
+        public async Task<IActionResult> GetProductsSummary([FromQuery] string supplierId)
+        {
+            var response = await mediator.Send(new GetProductsSummaryQuery(supplierId));
+            return response != null
+                ? new SuccessResponseViewModel<ProductsSummaryResponseViewModel>(response, "Products summary retrieved successfully.")
+                : new FailureResponseViewModel<ProductsSummaryResponseViewModel>(ErrorCode.NotFound, "No products summary data found.");
         }
     }
 }

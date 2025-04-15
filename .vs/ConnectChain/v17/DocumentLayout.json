@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "D:\\programming\\Garbage_c#\\ConnectChain\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\data\\context\\connectchaindbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\data\\context\\connectchaindbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\dashboardmanagement\\getdashboardsummary\\queries\\getproductssummaryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\dashboardmanagement\\getdashboardsummary\\queries\\getproductssummaryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\dashboard\\getdashboardsummary\\productssummaryresponseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\dashboard\\getdashboardsummary\\productssummaryresponseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\dashboard\\getdashboardsummary\\orderssummaryresponseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\dashboard\\getdashboardsummary\\orderssummaryresponseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\dashboardmanagement\\getdashboardsummary\\queries\\getorderssummaryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\dashboardmanagement\\getdashboardsummary\\queries\\getorderssummaryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\dashboardmanagement\\getdashboardsummary\\queries\\getdashboardsummaryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\dashboardmanagement\\getdashboardsummary\\queries\\getdashboardsummaryquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\dashboardmanagement\\getmonthlystats\\queries\\getmonthlystatsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\dashboardmanagement\\getmonthlystats\\queries\\getmonthlystatsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\data\\context\\connectchaindbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\data\\context\\connectchaindbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\dashboardmanagement\\gettopsoldproducts\\queries\\gettopsoldproducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,14 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\dashboard\\gettopsoldproducts\\gettopsoldproductsresponseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\dashboard\\gettopsoldproducts\\gettopsoldproductsresponseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\suppliermanagment\\updatesupplierprofile\\commands\\updatesupplierprofilecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\suppliermanagment\\updatesupplierprofile\\commands\\updatesupplierprofilecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\suppliermanagment\\getsupplierprofile\\query\\getsupplierprofilequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\suppliermanagment\\getsupplierprofile\\query\\getsupplierprofilequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,46 +106,97 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ConnectChainDbContext.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
-              "RelativeToolTip": "Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA0AAAA2AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ProductsSummaryResponseViewModel.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\ProductsSummaryResponseViewModel.cs",
+              "RelativeDocumentMoniker": "Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\ProductsSummaryResponseViewModel.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\ProductsSummaryResponseViewModel.cs",
+              "RelativeToolTip": "Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\ProductsSummaryResponseViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T16:38:31.25Z",
+              "WhenOpened": "2025-04-15T18:13:18.552Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "OrdersSummaryResponseViewModel.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\OrdersSummaryResponseViewModel.cs",
+              "RelativeDocumentMoniker": "Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\OrdersSummaryResponseViewModel.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\OrdersSummaryResponseViewModel.cs",
+              "RelativeToolTip": "Taswiya\\ViewModel\\Dashboard\\GetDashboardSummary\\OrdersSummaryResponseViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:13:10.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetProductsSummaryQuery.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetProductsSummaryQuery.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetProductsSummaryQuery.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetProductsSummaryQuery.cs",
+              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetProductsSummaryQuery.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAjwBcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:10:25.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetOrdersSummaryQuery.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetOrdersSummaryQuery.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetOrdersSummaryQuery.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetOrdersSummaryQuery.cs",
+              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetOrdersSummaryQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:09:54.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetDashboardSummaryQuery.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetDashboardSummaryQuery.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetDashboardSummaryQuery.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetDashboardSummaryQuery.cs",
+              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetDashboardSummary\\Queries\\GetDashboardSummaryQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T18:06:44.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetMonthlyStatsQuery.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
+              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAuwEEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T13:18:58.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Taswiya\\Controllers\\DashboardController.cs",
               "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "Taswiya\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAADMAAAAAAAAAAAAMwEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-15T15:12:19.463Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GetRevenuePerMonthChart.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
-              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T14:52:45.635Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "GetTopSoldProductsResponseViewModel.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Dashboard\\GetTopSoldProducts\\GetTopSoldProductsResponseViewModel.cs",
               "RelativeDocumentMoniker": "Taswiya\\ViewModel\\Dashboard\\GetTopSoldProducts\\GetTopSoldProductsResponseViewModel.cs",
@@ -141,38 +204,35 @@
               "RelativeToolTip": "Taswiya\\ViewModel\\Dashboard\\GetTopSoldProducts\\GetTopSoldProductsResponseViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T15:02:06.471Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetMonthlyStatsQuery.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
-              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetMonthlyStats\\Queries\\GetMonthlyStatsQuery.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAADwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T13:18:58.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T15:02:06.471Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "UpdateSupplierProfileCommand.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\SupplierManagment\\UpdateSupplierProfile\\Commands\\UpdateSupplierProfileCommand.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Features\\SupplierManagment\\UpdateSupplierProfile\\Commands\\UpdateSupplierProfileCommand.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\SupplierManagment\\UpdateSupplierProfile\\Commands\\UpdateSupplierProfileCommand.cs",
-              "RelativeToolTip": "Taswiya\\Features\\SupplierManagment\\UpdateSupplierProfile\\Commands\\UpdateSupplierProfileCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
+              "Title": "ConnectChainDbContext.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
+              "RelativeToolTip": "Taswiya\\Data\\Context\\ConnectChainDbContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA0AAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T15:12:54.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T16:38:31.25Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
+              "Title": "GetRevenuePerMonthChart.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
+              "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetRevenueChart\\Queries\\GetRevenuePerMonthChart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-15T14:52:45.635Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "GetMonthlyStatsResponseViewModel.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Dashboard\\GetMonthlyStats\\GetMonthlyStatsResponseViewModel.cs",
               "RelativeDocumentMoniker": "Taswiya\\ViewModel\\Dashboard\\GetMonthlyStats\\GetMonthlyStatsResponseViewModel.cs",
@@ -180,12 +240,11 @@
               "RelativeToolTip": "Taswiya\\ViewModel\\Dashboard\\GetMonthlyStats\\GetMonthlyStatsResponseViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T13:29:54.595Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T13:29:54.595Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "GetTopSoldProducts.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\DashboardManagement\\GetTopSoldProducts\\Queries\\GetTopSoldProducts.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\DashboardManagement\\GetTopSoldProducts\\Queries\\GetTopSoldProducts.cs",
@@ -193,25 +252,11 @@
               "RelativeToolTip": "Taswiya\\Features\\DashboardManagement\\GetTopSoldProducts\\Queries\\GetTopSoldProducts.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T14:54:24.308Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T14:54:24.308Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GetSupplierProfileQuery.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\SupplierManagment\\GetSupplierProfile\\Query\\GetSupplierProfileQuery.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Features\\SupplierManagment\\GetSupplierProfile\\Query\\GetSupplierProfileQuery.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\SupplierManagment\\GetSupplierProfile\\Query\\GetSupplierProfileQuery.cs",
-              "RelativeToolTip": "Taswiya\\Features\\SupplierManagment\\GetSupplierProfile\\Query\\GetSupplierProfileQuery.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T15:12:34.4Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Product.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Models\\Product.cs",
               "RelativeDocumentMoniker": "Taswiya\\Models\\Product.cs",
@@ -219,12 +264,11 @@
               "RelativeToolTip": "Taswiya\\Models\\Product.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T15:02:31.816Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T15:02:31.816Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Supplier.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Models\\Supplier.cs",
               "RelativeDocumentMoniker": "Taswiya\\Models\\Supplier.cs",
@@ -232,12 +276,11 @@
               "RelativeToolTip": "Taswiya\\Models\\Supplier.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T14:25:06.636Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T14:25:06.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Months.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Models\\Enums\\Months.cs",
               "RelativeDocumentMoniker": "Taswiya\\Models\\Enums\\Months.cs",
@@ -245,8 +288,7 @@
               "RelativeToolTip": "Taswiya\\Models\\Enums\\Months.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T13:42:38.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T13:42:38.65Z"
             }
           ]
         }

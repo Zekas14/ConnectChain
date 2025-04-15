@@ -165,6 +165,38 @@
   },
   {
     "ContainingType": "ConnectChain.Controllers.DashboardController",
+    "Method": "GetOrdersSummary",
+    "RelativePath": "api/Dashboard/GetOrdersSummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.DashboardController",
+    "Method": "GetProductsSummary",
+    "RelativePath": "api/Dashboard/GetProductsSummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.DashboardController",
     "Method": "GetRevenueChart",
     "RelativePath": "api/Dashboard/GetRevenueChart",
     "HttpMethod": "GET",
@@ -370,19 +402,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "PageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "PageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Filters",
-        "Type": "System.Collections.Generic.Dictionary\u00602[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": false
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Product.GetFilteredProducts.GetFilteredProductsRequestViewModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -454,9 +476,44 @@
         "IsRequired": false
       },
       {
-        "Name": "viewModel",
-        "Type": "ConnectChain.UpdateProductRequestViewModel",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Stock",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Images",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "RemainingImages",
+        "Type": "System.String[]",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinimumStock",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

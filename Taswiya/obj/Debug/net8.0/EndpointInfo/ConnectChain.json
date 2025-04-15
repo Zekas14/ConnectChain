@@ -347,6 +347,48 @@
         }
       }
     },
+    "/api/Dashboard/GetOrdersSummary": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dashboard/GetProductsSummary": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Image/Upload Image": {
       "post": {
         "tags": [
@@ -502,32 +544,25 @@
         "tags": [
           "Product"
         ],
-        "parameters": [
-          {
-            "name": "PageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PageNumber",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Filters",
-            "in": "query",
-            "schema": {
-              "type": "object",
-              "additionalProperties": { }
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetFilteredProductsRequestViewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetFilteredProductsRequestViewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetFilteredProductsRequestViewModel"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -670,8 +705,7 @@
         "parameters": [
           {
             "name": "productId",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -680,19 +714,72 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateProductRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateProductRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateProductRequestViewModel"
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Price": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "Stock": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "RemainingImages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "MinimumStock": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CategoryId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Price": {
+                  "style": "form"
+                },
+                "Stock": {
+                  "style": "form"
+                },
+                "Images": {
+                  "style": "form"
+                },
+                "RemainingImages": {
+                  "style": "form"
+                },
+                "MinimumStock": {
+                  "style": "form"
+                },
+                "CategoryId": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -828,6 +915,18 @@
         },
         "additionalProperties": false
       },
+      "GetFilteredProductsRequestViewModel": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ResetPasswordRequestViewModel": {
         "required": [
           "confirmPassword",
@@ -894,41 +993,6 @@
               "format": "int32"
             },
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateProductRequestViewModel": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "image": {
-            "type": "string",
-            "nullable": true
-          },
-          "price": {
-            "type": "number",
-            "format": "double"
-          },
-          "stock": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "categoryId": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
