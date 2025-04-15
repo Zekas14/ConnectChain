@@ -3,6 +3,7 @@ using ConnectChain.Features.ProductManagement.AddProduct.Command;
 using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
 using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
 using ConnectChain.Features.ProductManagement.GetProductById.Queries;
+using ConnectChain.Features.ProductManagement.GetProductForUpdate;
 using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
 using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
 using ConnectChain.Helpers;
@@ -10,6 +11,7 @@ using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.AddProduct;
 using ConnectChain.ViewModel.Product.GetFilteredProducts;
 using ConnectChain.ViewModel.Product.GetProduct;
+using ConnectChain.ViewModel.Product.GetProductForUpdate;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -143,6 +145,15 @@ namespace ConnectChain.Controllers
             var response = await mediator.Send(new AddProductImageCommand(viewModel.Image, viewModel.ProductId));
             return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data)
                 : new FailureResponseViewModel<bool>(response.errorCode, response.message);
+        }
+        #endregion
+        #region Get Product For Update
+        [HttpGet("GetProductForUpdate")]
+        public async Task<IActionResult> GetProductForUpdate([FromQuery]int productId)
+        {
+            var response = await mediator.Send(new GetProductForUpdateQuery(productId));
+            return response.isSuccess ? new SuccessResponseViewModel<GetProductForUpdateResponseViewModel>(response.data)
+                : new FailureResponseViewModel<GetProductForUpdateResponseViewModel>(response.errorCode, response.message);
         }
         #endregion
     }
