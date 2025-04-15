@@ -235,6 +235,118 @@
         }
       }
     },
+    "/api/Dashboard/GetRevenueChart": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dashboard/GetMonthlyStats": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dashboard/GetTopSoldProducts": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Image/Upload Image": {
       "post": {
         "tags": [
@@ -267,10 +379,82 @@
         }
       }
     },
+    "/api/Order/GetSupplierOrders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "pagination.PageNumber",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pagination.PageSize",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SupplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Order/GetOrderDetails": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Product/GetSupplierProducts": {
       "get": {
         "tags": [
           "Product"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -289,6 +473,8 @@
             "name": "PageNumber",
             "in": "query",
             "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -297,6 +483,8 @@
             "name": "PageSize",
             "in": "query",
             "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
               "type": "integer",
               "format": "int32"
             }
@@ -377,19 +565,69 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/AddProductRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductRequestViewModel"
+                "type": "object",
+                "properties": {
+                  "Name": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Price": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "MinimumStock": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Images": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "format": "binary"
+                    }
+                  },
+                  "Stock": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "SupplierId": {
+                    "type": "string"
+                  },
+                  "CategoryId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "Name": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Price": {
+                  "style": "form"
+                },
+                "MinimumStock": {
+                  "style": "form"
+                },
+                "Images": {
+                  "style": "form"
+                },
+                "Stock": {
+                  "style": "form"
+                },
+                "SupplierId": {
+                  "style": "form"
+                },
+                "CategoryId": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -505,7 +743,7 @@
         }
       }
     },
-    "/api/Supplier/updateProfile {supplierId}": {
+    "/api/Supplier/updateProfile {SupplierId}": {
       "put": {
         "tags": [
           "Supplier"
@@ -546,7 +784,7 @@
         }
       }
     },
-    "/api/Supplier/getProfile {supplierId}": {
+    "/api/Supplier/getProfile/{SupplierId}": {
       "get": {
         "tags": [
           "Supplier"
@@ -557,6 +795,7 @@
             "in": "path",
             "required": true,
             "schema": {
+              "pattern": "^[A-Za-z]*$",
               "type": "string"
             }
           }
@@ -585,37 +824,6 @@
           "description": {
             "minLength": 1,
             "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddProductRequestViewModel": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "price": {
-            "type": "number",
-            "format": "double"
-          },
-          "stock": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "supplierId": {
-            "type": "string",
-            "nullable": true
-          },
-          "categoryId": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -657,13 +865,7 @@
       "SupplierProfileUpdateViewModel": {
         "type": "object",
         "properties": {
-          "firstName": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "lastName": {
+          "name": {
             "maxLength": 50,
             "minLength": 0,
             "type": "string",
@@ -734,29 +936,24 @@
       "UserRegisterRequestViewModel": {
         "required": [
           "address",
+          "businessType",
           "confirmPassword",
-          "country",
           "email",
-          "firstName",
-          "lastName",
+          "name",
           "password",
           "phoneNumber",
           "role"
         ],
         "type": "object",
         "properties": {
-          "firstName": {
-            "minLength": 1,
-            "type": "string",
-            "format": "string"
-          },
-          "lastName": {
+          "name": {
             "minLength": 1,
             "type": "string",
             "format": "string"
           },
           "phoneNumber": {
             "minLength": 1,
+            "pattern": "^01[0125][0-9]{8}$",
             "type": "string"
           },
           "email": {
@@ -769,12 +966,12 @@
             "type": "string",
             "format": "password"
           },
-          "address": {
+          "businessType": {
             "minLength": 3,
             "type": "string",
             "format": "string"
           },
-          "country": {
+          "address": {
             "minLength": 3,
             "type": "string",
             "format": "string"
