@@ -10,7 +10,7 @@ namespace ConnectChain.Data.Context
         public ConnectChainDbContext(DbContextOptions options) : base(options)
         {
         }
-
+        public DbSet<Product> Products { get;set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
