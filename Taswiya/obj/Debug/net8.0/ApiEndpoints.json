@@ -138,6 +138,84 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ConnectChain.Controllers.DashboardController",
+    "Method": "GetMonthlyStats",
+    "RelativePath": "api/Dashboard/GetMonthlyStats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.DashboardController",
+    "Method": "GetRevenueChart",
+    "RelativePath": "api/Dashboard/GetRevenueChart",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.DashboardController",
+    "Method": "GetTopSoldProducts",
+    "RelativePath": "api/Dashboard/GetTopSoldProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ConnectChain.Controllers.ImageController",
     "Method": "UploadImage",
     "RelativePath": "api/Image/Upload Image",
@@ -154,6 +232,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ConnectChain.Controllers.OrderController",
+    "Method": "GetOrderDetails",
+    "RelativePath": "api/Order/GetOrderDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.OrderController",
+    "Method": "GetSupplierOrders",
+    "RelativePath": "api/Order/GetSupplierOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pagination.PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pagination.PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ConnectChain.Controllers.ProductController",
     "Method": "AddProduct",
     "RelativePath": "api/Product/AddProduct",
@@ -162,9 +282,44 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "viewModel",
-        "Type": "ConnectChain.ViewModel.Product.AddProduct.AddProductRequestViewModel",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "MinimumStock",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Images",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Stock",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SupplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -255,7 +410,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "supplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -303,7 +464,7 @@
   {
     "ContainingType": "ConnectChain.Controllers.SupplierController",
     "Method": "GetProfile",
-    "RelativePath": "api/Supplier/getProfile {supplierId}",
+    "RelativePath": "api/Supplier/getProfile/{SupplierId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -319,7 +480,7 @@
   {
     "ContainingType": "ConnectChain.Controllers.SupplierController",
     "Method": "UpdateProfile",
-    "RelativePath": "api/Supplier/updateProfile {supplierId}",
+    "RelativePath": "api/Supplier/updateProfile {SupplierId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
