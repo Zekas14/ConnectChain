@@ -2,7 +2,7 @@
 using ConnectChain.Features.ProductManagement.AddProduct.Command;
 using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
 using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
-using ConnectChain.Features.ProductManagement.GetProductById.Queries;
+using ConnectChain.Features.ProductManagement.GetProductDetails.Queries;
 using ConnectChain.Features.ProductManagement.GetProductForUpdate;
 using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
 using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
@@ -10,8 +10,9 @@ using ConnectChain.Helpers;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.AddProduct;
 using ConnectChain.ViewModel.Product.GetFilteredProducts;
-using ConnectChain.ViewModel.Product.GetProduct;
+using ConnectChain.ViewModel.Product.GetProductDetails;
 using ConnectChain.ViewModel.Product.GetProductForUpdate;
+using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +36,8 @@ namespace ConnectChain.Controllers
                 return new FaluireResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(ErrorCode.UnAuthorized, ErrorCode.UnAuthorized.ToString());
             }*/
             var response = await mediator.Send(new GetSupplierProductsQuery(supplierId));
-            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
-                : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
+                : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
         }
         #endregion
 
@@ -47,8 +48,8 @@ namespace ConnectChain.Controllers
         {
             var supplierId = Request.ExtractIdFromToken();
             var response = await mediator.Send(new GetSupplierProductsByPageQuery(supplierId, paginationParams));
-            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
-                : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
+                : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
         }
         #endregion
 
@@ -57,19 +58,19 @@ namespace ConnectChain.Controllers
         public async Task<IActionResult> GetFilteredProducts(GetFilteredProductsRequestViewModel viewModel)
         {
             var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.Filters));
-            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
-                : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
+                : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
         }
         #endregion
 
-        #region GetProductById
-        [AllowAnonymous]
-        [HttpGet("GetProductById/{productId:int}")]
-        public async Task<IActionResult> GetProductById(int productId)
+        #region Get Product Details
+        [HttpGet("GetProductDetails")]
+        public async Task<IActionResult> GetProductDetails([FromQuery] int productId)
         {
-            var response = await mediator.Send(new GetProductByIdQuery(productId));
-            return response.isSuccess ? new SuccessResponseViewModel<GetProductResponseViewModel>(response.data)
-                : new FailureResponseViewModel<GetProductResponseViewModel>(response.errorCode, response.message);
+            var response = await mediator.Send(new GetProductDetailsQuery(productId));
+            return response.isSuccess ? 
+                new SuccessResponseViewModel<ConnectChain.ViewModel.Product.GetProductDetails.GetProductDetailsResponseViewModel >(response.data)
+                : new FailureResponseViewModel<GetProductDetailsResponseViewModel>(response.errorCode, response.message);
         }
         #endregion
 

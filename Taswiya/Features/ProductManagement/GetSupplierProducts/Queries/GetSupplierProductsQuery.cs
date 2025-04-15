@@ -2,25 +2,25 @@
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel;
-using ConnectChain.ViewModel.Product.GetProduct;
+using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
 {
-    public record GetSupplierProductsQuery(string SupplierId) : IRequest<RequestResult<IReadOnlyList<GetProductResponseViewModel>>>;
+    public record GetSupplierProductsQuery(string SupplierId) : IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>;
     public class GetSupplierProductsQueryHandler(IRepository<Product> repository)
-        : IRequestHandler<GetSupplierProductsQuery, RequestResult<IReadOnlyList<GetProductResponseViewModel>>>
+        : IRequestHandler<GetSupplierProductsQuery, RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>
     {
         private readonly IRepository<Product> repository = repository;
 
-        public async Task<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> Handle(GetSupplierProductsQuery request, CancellationToken cancellationToken)
+        public async Task<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> Handle(GetSupplierProductsQuery request, CancellationToken cancellationToken)
         {
             var products =  repository.Get(p => p.SupplierId == request.SupplierId)
                 .Include(p => p.Images)
                 .Include(p => p.Category)
-                .Select(p => new GetProductResponseViewModel
+                .Select(p => new GetSupplierProductResponseViewModel
                 {
                     Id = p.ID,
                     Name = p.Name,
@@ -31,9 +31,9 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
                 });
             if (!products.IsNullOrEmpty())
             {
-                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(products.ToList(),"Success");
+                return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Success(products.ToList(),"Success");
             }
-            return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
+            return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
         }
     }
 }

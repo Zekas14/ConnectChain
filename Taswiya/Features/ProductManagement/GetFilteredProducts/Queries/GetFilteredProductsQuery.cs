@@ -1,7 +1,7 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
-using ConnectChain.ViewModel.Product.GetProduct;
+using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -11,13 +11,13 @@ using System.Linq.Expressions;
 namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
 {
     public record GetFilteredProductsQuery(Dictionary<string, object> Filters) 
-        : IRequest<RequestResult<IReadOnlyList<GetProductResponseViewModel>>>;
+        : IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>;
 
     public class GetFilteredProdcutsQueryHandler(IRepository<Product> repository):
-        IRequestHandler<GetFilteredProductsQuery, RequestResult<IReadOnlyList<GetProductResponseViewModel>>>    {
+        IRequestHandler<GetFilteredProductsQuery, RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>    {
         private readonly IRepository<Product> _repository = repository;
 
-        public async Task<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
+        public async Task<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
         {
             
             var products = _repository.GetAll();
@@ -26,7 +26,7 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
             if (request.Filters == null || !request.Filters.Any())
             {
                 var data = products.Include(p => p.Supplier)
-                    .Select(t => new GetProductResponseViewModel
+                    .Select(t => new GetSupplierProductResponseViewModel
                     {
                         Id = t.ID,
                         Name = t.Name,
@@ -37,9 +37,9 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
                     });
                 if (!data.IsNullOrEmpty())
                 {
-                    return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(data.ToList());
+                    return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Success(data.ToList());
                 }
-                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
+                return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
             }   
             foreach (var filter in request.Filters)
             {
@@ -53,7 +53,7 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
             var lambda = Expression.Lambda<Func<Product, bool>>(expression, parameter);
 
             var result = products.Where(lambda).Include(p => p.Supplier)
-                .Select(t => new GetProductResponseViewModel
+                .Select(t => new GetSupplierProductResponseViewModel
                 {
                     Id = t.ID,
                     Name = t.Name,
@@ -64,9 +64,9 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
                 });
             if (!result.IsNullOrEmpty())
             {
-                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(result.ToList());
+                return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Success(result.ToList());
             }
-            return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
+            return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
 
         }
     }

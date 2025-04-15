@@ -1,7 +1,7 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
-using ConnectChain.ViewModel.Product.GetProduct;
+using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -9,19 +9,19 @@ using Microsoft.IdentityModel.Tokens;
 namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
 {
     public record GetSupplierProductsByPageQuery(string SupplierId , PaginationHelper PaginationParams)
-        : IRequest<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> ;
+        : IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> ;
 
     public class GetSupplierProductsByPageQueryHandler(IRepository<Product> repository)
 
-        : IRequestHandler<GetSupplierProductsByPageQuery, RequestResult<IReadOnlyList<GetProductResponseViewModel>>>
+        : IRequestHandler<GetSupplierProductsByPageQuery, RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>
     {
         private readonly IRepository<Product> repository = repository;
 
-        public async Task<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> Handle(GetSupplierProductsByPageQuery request, CancellationToken cancellationToken)
+        public async Task<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> Handle(GetSupplierProductsByPageQuery request, CancellationToken cancellationToken)
         {
             var products = repository.GetAllByPage(request.PaginationParams)
                 .Where(p => p.SupplierId == request.SupplierId)
-                .Select(p => new GetProductResponseViewModel
+                .Select(p => new GetSupplierProductResponseViewModel
                 {
                     Id = p.ID,
                     Name = p.Name,
@@ -32,9 +32,9 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
                 });
             if (!products.IsNullOrEmpty())
             {
-                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(products.ToList());
+                return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Success(products.ToList());
             }
-            return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
+            return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
         }
     }
 }

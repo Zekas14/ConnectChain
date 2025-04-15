@@ -1,7 +1,7 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
-using ConnectChain.ViewModel.Product.GetProduct;
+using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 
 namespace ConnectChain.Features.ProductManagement.Common.Queries
