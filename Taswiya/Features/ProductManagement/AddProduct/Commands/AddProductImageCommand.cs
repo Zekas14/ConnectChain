@@ -35,4 +35,5 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
             return RequestResult<bool>.Failure(ErrorCode.InternalServerError, "Failed to upload image");
         }
     }
+    
 }

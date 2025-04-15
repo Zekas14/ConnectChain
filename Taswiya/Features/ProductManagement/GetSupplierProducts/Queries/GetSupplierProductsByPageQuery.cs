@@ -25,8 +25,10 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
                 {
                     Id = p.ID,
                     Name = p.Name,
-                    Description = p.Description,
+                    Stock = p.Stock,
                     Price = p.Price,
+                    Image = p.Images.Select(x => x.Url).FirstOrDefault(),
+                    CategoryName = p.Category!.Name
                 });
             if (!products.IsNullOrEmpty())
             {

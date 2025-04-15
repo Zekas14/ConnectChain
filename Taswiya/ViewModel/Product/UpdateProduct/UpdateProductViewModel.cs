@@ -2,12 +2,13 @@
 {
     public class UpdateProductRequestViewModel
     {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public string? Image { get; set; }
-        public decimal Price { get; set; }
-        public int? Stock { get; set; }
-        public int CategoryId { get; set; }
+        public string? Name { get; init; }
+        public string? Description { get; init; }
+        public decimal Price { get; init; }
+        public int? Stock { get; init; }
+        public List<IFormFile>? Images { get; init; }
+        public string[] RemainingImages { get; init; } = [];
+        public int? MinimumStock { get; init; }
+        public int CategoryId { get; init; }
     }
 }

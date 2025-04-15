@@ -23,9 +23,8 @@ namespace ConnectChain.Features.ProductManagement.GetProductById.Queries
                 {
                     Id = product.ID,
                     Name = product.Name,
-                    Description = product.Description,
                     Price = product.Price,
-                    Images = product.Images.Select(x => x.Url).ToList(),
+                    Image = product.Images.Select(x => x.Url).FirstOrDefault(),
                     CategoryName = product.Category!.Name    
 
                 }).FirstOrDefaultAsync(cancellationToken);

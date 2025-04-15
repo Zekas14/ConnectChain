@@ -14,7 +14,6 @@ namespace ConnectChain.Helpers
             Account account = new Account(cloudinarySettings.CloudName, cloudinarySettings.ApiKey, cloudinarySettings.ApiSecret);
             _cloudinary = new Cloudinary(account);
         }
-        
         public async Task<string> UploadImageAsync(IFormFile file)
         {
             if (file.Length == 0)
@@ -27,6 +26,10 @@ namespace ConnectChain.Helpers
             };
 
             var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+            if (uploadResult.Error != null)
+            {
+                throw new Exception($"Error uploading image: {uploadResult.Error.Message}");
+            }
             return uploadResult.Url.ToString();
         }
     }

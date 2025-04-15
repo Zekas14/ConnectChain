@@ -1,6 +1,5 @@
 
 ﻿using ConnectChain.Data.Repositories.Repository;
-using ConnectChain.Features.SupplierManagment.UpdateSupplierProfile.Command;
 using ConnectChain.Models;
 using ConnectChain.ViewModel.Supplier;
 using MediatR;
@@ -10,7 +9,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ConnectChain.Data.Context;
-using ConnectChain.Features.SupplierManagment.GetSupplierProfile.Query;
+using ConnectChain.Features.SupplierManagement.GetSupplierProfile.Query;
+using ConnectChain.Features.SupplierManagement.UpdateSupplierProfile.Commands;
+using ConnectChain.ViewModel;
+using ConnectChain.Helpers;
 
 namespace ConnectChain.Controllers
 {
@@ -34,7 +36,7 @@ namespace ConnectChain.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId != supplierId)
             {
-                return Unauthorized();
+                return new FailureResponseViewModel<bool>(ErrorCode.NotFound,"Unauthorized");
             }
             var result = await _mediator.Send(new UpdateSupplierProfileCommand
             {
@@ -48,11 +50,11 @@ namespace ConnectChain.Controllers
 
             if (result.isSuccess)
             {
-                return Ok(result);
+                return new SuccessResponseViewModel<bool>(result.data,result.message);
             }
             else
             {
-                return BadRequest(result);
+                return new FailureResponseViewModel<bool>(result.errorCode, result.message);
             }
         }
 

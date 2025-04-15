@@ -15,7 +15,6 @@ namespace ConnectChain.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.2")
@@ -281,7 +280,7 @@ namespace ConnectChain.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
@@ -513,17 +512,16 @@ namespace ConnectChain.Migrations
                     b.HasBaseType("ConnectChain.Models.User");
 
                     b.ToTable("Customer");
-                    b.Property<int?>("ActivityCategoryId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("ActivityCategoryId");
-
-                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
                     b.HasBaseType("ConnectChain.Models.User");
+
+                    b.Property<int?>("ActivityCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("ActivityCategoryId");
 
                     b.ToTable("Suppliers");
                 });
@@ -588,8 +586,9 @@ namespace ConnectChain.Migrations
                         .HasForeignKey("CustomerId");
 
                     b.HasOne("ConnectChain.Models.Supplier", "Supplier")
-                        .WithMany()
-                        .HasForeignKey("SupplierId");
+                        .WithMany("Products")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Category");
 
@@ -668,36 +667,36 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Customer", b =>
                 {
+                    b.HasOne("ConnectChain.Models.User", null)
+                        .WithOne()
+                        .HasForeignKey("ConnectChain.Models.Customer", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
+                {
                     b.HasOne("ActivityCategory", "ActivityCategory")
                         .WithMany("Suppliers")
                         .HasForeignKey("ActivityCategoryId");
 
                     b.HasOne("ConnectChain.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("ConnectChain.Models.Customer", "Id")
+                        .HasForeignKey("ConnectChain.Models.Supplier", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ActivityCategory");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
+            modelBuilder.Entity("ActivityCategory", b =>
                 {
-                    b.HasOne("ConnectChain.Models.User", null)
-                        .WithOne()
-                        .HasForeignKey("ConnectChain.Models.Supplier", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Suppliers");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
-                });
-
-            modelBuilder.Entity("ActivityCategory", b =>
-                {
-                    b.Navigation("Suppliers");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.PaymentMethod", b =>
@@ -720,6 +719,7 @@ namespace ConnectChain.Migrations
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
                     b.Navigation("Orders");
+
                     b.Navigation("Products");
 
                     b.Navigation("SupplierPaymentMethods");

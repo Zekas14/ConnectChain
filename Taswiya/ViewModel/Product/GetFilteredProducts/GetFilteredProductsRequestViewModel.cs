@@ -1,9 +1,10 @@
-﻿namespace ConnectChain.ViewModel.Product.GetFilteredProducts
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ConnectChain.ViewModel.Product.GetFilteredProducts
 {
+    [NotMapped]
     public class GetFilteredProductsRequestViewModel
     {
-        public int PageSize { get; set; }
-        public int PageNumber { get; set; }
-        public Dictionary<string, object> Filters { get;}
+        public Dictionary<string, object>? Filters { get;}
     }
 }

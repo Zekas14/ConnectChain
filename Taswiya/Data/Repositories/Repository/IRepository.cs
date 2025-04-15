@@ -19,7 +19,6 @@ namespace ConnectChain.Data.Repositories.Repository
         Task<bool> AnyAsync(Expression<Func<Entity, bool>> predicate);
         Entity GetByID(int id);
         Entity GetByIDWithIncludes(int id, Func<IQueryable<Entity>, IQueryable<Entity>> includeExpression);
-
         Task<Entity> GetByIDAsync(int id);
         void SaveChanges();
         Task SaveChangesAysnc();

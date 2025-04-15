@@ -52,9 +52,9 @@ namespace ConnectChain.Controllers
 
         #region GetFilteredProducts 
         [HttpGet("GetFilteredProducts")]
-        public async Task<IActionResult> GetFilteredProducts([FromQuery] GetFilteredProductsRequestViewModel viewModel)
+        public async Task<IActionResult> GetFilteredProducts(GetFilteredProductsRequestViewModel viewModel)
         {
-            var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.PageNumber,viewModel.PageSize,viewModel.Filters));
+            var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.Filters));
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.data)
                 : new FailureResponseViewModel<IReadOnlyList<GetProductResponseViewModel>>(response.errorCode, response.message);
         }
@@ -112,7 +112,7 @@ namespace ConnectChain.Controllers
 
         #region Update Product
         [HttpPut("UpdateProduct")]
-        public async Task<IActionResult> UpdateProduct([FromRoute]int productId,[FromBody]UpdateProductRequestViewModel viewModel)
+        public async Task<IActionResult> UpdateProduct(int productId,[FromForm] UpdateProductRequestViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -121,7 +121,9 @@ namespace ConnectChain.Controllers
                     ProductId = productId,
                     Name = viewModel.Name,
                     Description = viewModel.Description,
-                    Image = viewModel.Image,
+                    MinimumStock = viewModel.MinimumStock,
+                    Images = viewModel.Images,
+                    RemainingImages = viewModel.RemainingImages,
                     Price = viewModel.Price,
                     Stock = viewModel.Stock,
                     CategoryId = viewModel.CategoryId

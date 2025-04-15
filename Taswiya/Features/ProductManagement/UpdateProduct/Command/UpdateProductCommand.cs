@@ -12,9 +12,11 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
         public int ProductId { get; init; }
         public string? Name { get; init; }
         public string? Description { get; init; }
-        public string? Image { get; init; }
         public decimal Price { get; init; }
         public int? Stock { get; init; }
+        public List<IFormFile>? Images { get; init; } = [];
+        public string[] RemainingImages { get; init; } = [];
+        public int? MinimumStock { get; init; }
         public int CategoryId { get; init; }
     }
     public class UpdateProductCommandHandler(IRepository<Product> repository, IMediator mediator) : IRequestHandler<UpdateProductCommand, RequestResult<bool>>
@@ -34,6 +36,11 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             {
                 return RequestResult<bool>.Failure(categoryExistResult.errorCode, categoryExistResult.message);
             }
+            var result =  mediator.Send(new UpdateProductImagesCommand(request.ProductId, request.Images!, request.RemainingImages), cancellationToken);
+            if (!result.Result.isSuccess)
+            {
+                return RequestResult<bool>.Failure(result.Result.errorCode, result.Result.message);
+            }
             var product = new Product()
             {
                 ID =request.ProductId ,
@@ -50,10 +57,10 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             productExistResult.data.Price = request.Price;
             productExistResult.data.Stock = request.Stock;
             productExistResult.data.CategoryId = request.CategoryId;*/
-            string[] properties = { "Name", "Description", "Image", "Price", "Stock", "CategoryId" };
+            string[] properties = { nameof(product.Name), nameof(product.Description), nameof(product.Price), nameof(product.Stock), nameof(product.MinimumStock),nameof(product.CategoryId) };
             repository.SaveInclude(product,properties);
             await repository.SaveChangesAysnc();
-            return RequestResult<bool>.Success(true);
+            return RequestResult<bool>.Success(true, "Product Updated Successfully");
         }
     }   
 }

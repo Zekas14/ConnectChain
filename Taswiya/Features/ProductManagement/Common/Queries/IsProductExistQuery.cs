@@ -19,7 +19,7 @@ namespace ConnectChain.Features.ProductManagement.Common.Queries
         public async Task<RequestResult<Product>> Handle(IsProductExistQuery request, CancellationToken cancellationToken)
         {
             var product = await _repository.GetByIDAsync(request.Id);
-            if (product == null)
+            if (product is null)
             {
                 return RequestResult<Product>.Failure(ErrorCode.NotFound, "Product not found");
             }

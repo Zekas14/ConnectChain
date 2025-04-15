@@ -5,11 +5,12 @@ using ConnectChain.ViewModel.Product.GetProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq.Expressions;
 
 namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
 {
-    public record GetFilteredProductsQuery(int PageNumber, int PageSize, Dictionary<string, object> Filters) 
+    public record GetFilteredProductsQuery(Dictionary<string, object> Filters) 
         : IRequest<RequestResult<IReadOnlyList<GetProductResponseViewModel>>>;
 
     public class GetFilteredProdcutsQueryHandler(IRepository<Product> repository):
@@ -18,15 +19,28 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
 
         public async Task<RequestResult<IReadOnlyList<GetProductResponseViewModel>>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
         {
-            PaginationHelper pagination = new()
-            {
-                PageNumber = request.PageNumber,
-                PageSize = request.PageSize
-            };
-            var products = _repository.GetAllByPage(pagination);
+            
+            var products = _repository.GetAll();
             var parameter = Expression.Parameter(typeof(Product), "t");
             Expression expression = Expression.Constant(true);
-
+            if (request.Filters == null || !request.Filters.Any())
+            {
+                var data = products.Include(p => p.Supplier)
+                    .Select(t => new GetProductResponseViewModel
+                    {
+                        Id = t.ID,
+                        Name = t.Name,
+                        Stock = t.Stock,
+                        Price = t.Price,
+                        CategoryName = t.Category!.Name,
+                        Image = t.Images.Select(x => x.Url).FirstOrDefault(),
+                    });
+                if (!data.IsNullOrEmpty())
+                {
+                    return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Success(data.ToList());
+                }
+                return RequestResult<IReadOnlyList<GetProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
+            }   
             foreach (var filter in request.Filters)
             {
                 var property = Expression.Property(parameter, filter.Key);
@@ -43,9 +57,10 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
                 {
                     Id = t.ID,
                     Name = t.Name,
-                    Description = t.Description,
+                    Stock = t.Stock,
                     Price = t.Price,
-
+                    CategoryName = t.Category!.Name,
+                    Image = t.Images.Select(x => x.Url).FirstOrDefault(),
                 });
             if (!result.IsNullOrEmpty())
             {
