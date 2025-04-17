@@ -411,8 +411,8 @@
   },
   {
     "ContainingType": "ConnectChain.Controllers.ProductController",
-    "Method": "GetProductById",
-    "RelativePath": "api/Product/GetProductById/{productId}",
+    "Method": "GetProductDetails",
+    "RelativePath": "api/Product/GetProductDetails",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -420,7 +420,23 @@
       {
         "Name": "productId",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductController",
+    "Method": "GetProductForUpdate",
+    "RelativePath": "api/Product/GetProductForUpdate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

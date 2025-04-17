@@ -570,7 +570,7 @@
         }
       }
     },
-    "/api/Product/GetProductById/{productId}": {
+    "/api/Product/GetProductDetails": {
       "get": {
         "tags": [
           "Product"
@@ -578,8 +578,7 @@
         "parameters": [
           {
             "name": "productId",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -823,6 +822,28 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Product/GetProductForUpdate": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"

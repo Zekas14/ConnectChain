@@ -4,7 +4,7 @@ namespace ConnectChain.ViewModel.Dashboard.GetTopSoldProducts
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public List<string> ImageUrls { get; set; } = new();
+        public string ImageUrl { get; set; } = string.Empty;
         public int TotalSoldQuantity { get; set; }
     }
 }

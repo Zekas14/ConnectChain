@@ -25,8 +25,8 @@ namespace ConnectChain.Controllers
             int currentYear = year ?? DateTime.Now.Year; 
             var response = await mediator.Send(new GetRevenuePerMonthChartQuery(supplierId, currentYear));
             return response != null
-                ? new SuccessResponseViewModel<Dictionary<Months, decimal>>(response, "Revenue chart retrieved successfully.")
-                : new FailureResponseViewModel<Dictionary<Months, decimal>>(ErrorCode.NotFound, "No revenue data found.");
+                ? new SuccessResponseViewModel<Dictionary<int, decimal>>(response, "Revenue chart retrieved successfully.")
+                : new FailureResponseViewModel<Dictionary<int, decimal>>(ErrorCode.NotFound, "No revenue data found.");
         }
 
         [HttpGet("GetMonthlyStats")]
@@ -49,8 +49,8 @@ namespace ConnectChain.Controllers
 
             var response = await mediator.Send(new GetTopSoldProductsQuery(supplierId, currentYear, currentMonth, limit));
             return response != null
-                ? new SuccessResponseViewModel<IReadOnlyList<GetTopSoldProductsResponseViewModel>>(response, "Top sold products retrieved successfully.")
-                : new FailureResponseViewModel<IReadOnlyList<GetTopSoldProductsResponseViewModel>>(ErrorCode.NotFound, "No top sold products found.");
+                ? new SuccessResponseViewModel<ICollection<GetTopSoldProductsResponseViewModel>>(response, "Top sold products retrieved successfully.")
+                : new FailureResponseViewModel<ICollection<GetTopSoldProductsResponseViewModel>>(ErrorCode.NotFound, "No top sold products found.");
         }
 
         [HttpGet("GetOrdersSummary")]
