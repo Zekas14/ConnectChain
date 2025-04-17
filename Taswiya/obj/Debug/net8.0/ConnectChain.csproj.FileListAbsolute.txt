@@ -634,3 +634,4 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\refint\ConnectCh
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.pdb
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.genruntimeconfig.cache
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ref\ConnectChain.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Templates\emailTemplate.html

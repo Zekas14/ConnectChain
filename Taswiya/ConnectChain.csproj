@@ -37,9 +37,13 @@
   </ItemGroup>
 
   <ItemGroup>
+	  
     <Folder Include="Features\AuthManagement\Register\Queries\" />
     <Folder Include="Features\OrderManagement\GetOrdedByStatus\" />
     <Folder Include="Features\OrderManagement\PlaceOrder\" />
+	  <Content Include="Templates\**\*.*">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
   </ItemGroup>
 
 </Project>

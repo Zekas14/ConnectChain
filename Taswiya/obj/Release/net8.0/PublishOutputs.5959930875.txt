@@ -1,6 +1,7 @@
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.exe
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Templates\emailTemplate.html
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.runtimeconfig.json
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.pdb
