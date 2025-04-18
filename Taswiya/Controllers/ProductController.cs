@@ -1,5 +1,6 @@
 ﻿using ConnectChain.Features.ImageManagement.UploadImage.Command;
 using ConnectChain.Features.ProductManagement.AddProduct.Command;
+using ConnectChain.Features.ProductManagement.DeleteProduct;
 using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
 using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
 using ConnectChain.Features.ProductManagement.GetProductDetails.Queries;
@@ -21,7 +22,7 @@ namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    
+   // [Authorize]
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
@@ -80,7 +81,7 @@ namespace ConnectChain.Controllers
         {
             if (ModelState.IsValid)
             {
-              //  var supplierId = Request.ExtractIdFromToken();
+              var supplierId = Request.ExtractIdFromToken();
 
                 var response = await mediator.Send(new AddProductCommand
                 {
@@ -126,12 +127,11 @@ namespace ConnectChain.Controllers
                     Description = viewModel.Description,
                     MinimumStock = viewModel.MinimumStock,
                     Images = viewModel.Images,
-                    RemainingImages = viewModel.RemainingImages,
                     Price = viewModel.Price,
                     Stock = viewModel.Stock,
                     CategoryId = viewModel.CategoryId
                 });
-                return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data)
+                return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data,response.message)
                     : new FailureResponseViewModel<bool>(response.errorCode, response.message);
             }
             var errors = string.Join(", ", ModelState.Select(e => e.Value!.Errors));
@@ -148,6 +148,7 @@ namespace ConnectChain.Controllers
                 : new FailureResponseViewModel<bool>(response.errorCode, response.message);
         }
         #endregion
+
         #region Get Product For Update
         [HttpGet("GetProductForUpdate")]
         public async Task<IActionResult> GetProductForUpdate([FromQuery]int productId)
@@ -155,6 +156,16 @@ namespace ConnectChain.Controllers
             var response = await mediator.Send(new GetProductForUpdateQuery(productId));
             return response.isSuccess ? new SuccessResponseViewModel<GetProductForUpdateResponseViewModel>(response.data)
                 : new FailureResponseViewModel<GetProductForUpdateResponseViewModel>(response.errorCode, response.message);
+        }
+        #endregion
+
+        #region Delete Product Image
+        [HttpDelete("DeleteProductImage/{imageId:int}")]
+        public async Task<IActionResult> DeleteProductImage(int imageId)
+        {
+            var response = await mediator.Send(new DeleteProdcutImageCommand(imageId));
+            return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data,response.message)
+                : new FailureResponseViewModel<bool>(response.errorCode, response.message);
         }
         #endregion
     }

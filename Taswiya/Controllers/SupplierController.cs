@@ -18,7 +18,6 @@ namespace ConnectChain.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
     public class SupplierController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -58,19 +57,26 @@ namespace ConnectChain.Controllers
             }
         }
 
-        [HttpGet("getProfile/{SupplierId:alpha}")]
+        [HttpGet("getProfile/{SupplierId}")]
         public async Task<IActionResult> GetProfile(string supplierId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId != supplierId)
             {
-                return Unauthorized();
+                return new FailureResponseViewModel<SupplierProfileViewModel>(ErrorCode.UnAuthorized,"unathorized");
             }
             var result = await _mediator.Send(new GetSupplierProfileQuery
             {
                  SupplierId = supplierId,
             });
-            return Ok(result);
+            if (result.isSuccess)
+            {
+                return new SuccessResponseViewModel<SupplierProfileViewModel>(result.data, result.message);
+            }
+            else
+            {
+                return new FailureResponseViewModel<SupplierProfileViewModel>(result.errorCode, result.message);
+            }
         }
 
     }

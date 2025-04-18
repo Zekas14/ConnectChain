@@ -1,4 +1,5 @@
 ﻿using ConnectChain.Helpers;
+using ConnectChain.Models;
 using System.Linq.Expressions;
 
 namespace ConnectChain.Data.Repositories.Repository
@@ -22,5 +23,6 @@ namespace ConnectChain.Data.Repositories.Repository
         Task<Entity> GetByIDAsync(int id);
         void SaveChanges();
         Task SaveChangesAysnc();
+        void AddRange(ICollection<Entity> images);
     }
 }

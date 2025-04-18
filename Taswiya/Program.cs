@@ -18,6 +18,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Mvc;
 using ConnectChain.ViewModel;
 using ConnectChain.Features.SupplierManagement.Common.Queries;
+using ConnectChain.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -114,8 +115,8 @@ AutoMapperServices.Mapper = app.Services.GetRequiredService<IMapper>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
+app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 //app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 
 app.Run();

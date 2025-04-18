@@ -7,7 +7,7 @@ using ConnectChain.Helpers;
 
 namespace ConnectChain.Data.Repositories.Repository
 {
-    public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel 
+    public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel
     {
         ConnectChainDbContext _context;
         DbSet<Entity> _dbSet;
@@ -131,6 +131,15 @@ namespace ConnectChain.Data.Repositories.Repository
         {
             return GetAll().AsSingleQuery().Skip((paginationParams.PageNumber - 1) * paginationParams.PageSize)
                 .Take(paginationParams.PageSize);
+        }
+
+        public void AddRange(ICollection<Entity> images)
+        {
+            foreach (var image in images)
+            {
+                image.CreatedDate = DateTime.Now;
+            }
+            _dbSet.AddRange(images);
         }
     }
 }

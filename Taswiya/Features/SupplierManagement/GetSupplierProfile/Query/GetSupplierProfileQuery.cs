@@ -2,15 +2,16 @@
 using Microsoft.EntityFrameworkCore;
 using ConnectChain.Data.Context;
 using ConnectChain.ViewModel.Supplier;
+using ConnectChain.Helpers;
 
 namespace ConnectChain.Features.SupplierManagement.GetSupplierProfile.Query
 {
-    public class GetSupplierProfileQuery : IRequest<SupplierProfileViewModel>
+    public class GetSupplierProfileQuery : IRequest<RequestResult<SupplierProfileViewModel>>
     {
         public string SupplierId { get; set; } = string.Empty;
     }
 
-    public class GetSupplierProfileQueryHandler : IRequestHandler<GetSupplierProfileQuery, SupplierProfileViewModel>
+    public class GetSupplierProfileQueryHandler : IRequestHandler<GetSupplierProfileQuery, RequestResult<SupplierProfileViewModel>>
     {
         private readonly ConnectChainDbContext _dbContext;
 
@@ -19,19 +20,20 @@ namespace ConnectChain.Features.SupplierManagement.GetSupplierProfile.Query
             _dbContext = dbContext;
         }
 
-        public async Task<SupplierProfileViewModel> Handle(GetSupplierProfileQuery request, CancellationToken cancellationToken)
+        public async Task<RequestResult<SupplierProfileViewModel>> Handle(GetSupplierProfileQuery request, CancellationToken cancellationToken)
         {
             var supplier = await _dbContext.Suppliers
                 .Include(s => s.ActivityCategory)
                 .Include(s => s.PaymentMethods)
+
                 .FirstOrDefaultAsync(s => s.Id == request.SupplierId, cancellationToken);
 
             if (supplier == null)
             {
-                throw new KeyNotFoundException("Supplier not found.");
+                return RequestResult<SupplierProfileViewModel>.Failure(ErrorCode.NotFound, "Supplier not found.");
             }
 
-            return new SupplierProfileViewModel
+            SupplierProfileViewModel data = new SupplierProfileViewModel
             {
 
                 PhoneNumber = supplier.PhoneNumber,
@@ -40,6 +42,7 @@ namespace ConnectChain.Features.SupplierManagement.GetSupplierProfile.Query
                 ActivityCategory = supplier.ActivityCategory,
                 PaymentMethods = supplier.PaymentMethods.ToList()
             };
+            return RequestResult<SupplierProfileViewModel>.Success(data, "Supplier profile retrieved successfully.");
         }
     }
 }

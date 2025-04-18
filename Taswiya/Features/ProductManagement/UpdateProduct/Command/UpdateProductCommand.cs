@@ -1,5 +1,6 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Features.CategoryManagement.Common.Queries;
+using ConnectChain.Features.ProductManagement.Common.Commands;
 using ConnectChain.Features.ProductManagement.Common.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -15,8 +16,7 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
         public decimal Price { get; init; }
         public int? Stock { get; init; }
         public List<IFormFile>? Images { get; init; } = [];
-        public string[] RemainingImages { get; init; } = [];
-        public int? MinimumStock { get; init; }
+        public int MinimumStock { get; init; }
         public int CategoryId { get; init; }
     }
     public class UpdateProductCommandHandler(IRepository<Product> repository, IMediator mediator) : IRequestHandler<UpdateProductCommand, RequestResult<bool>>
@@ -36,19 +36,21 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             {
                 return RequestResult<bool>.Failure(categoryExistResult.errorCode, categoryExistResult.message);
             }
-            var result =  mediator.Send(new UpdateProductImagesCommand(request.ProductId, request.Images!, request.RemainingImages), cancellationToken);
-            if (!result.Result.isSuccess)
+            
+            var result = await mediator.Send(new UploadProductImagesCommand(request.Images ?? [],request.ProductId), cancellationToken);
+            if (!result.isSuccess)
             {
-                return RequestResult<bool>.Failure(result.Result.errorCode, result.Result.message);
+                return RequestResult<bool>.Failure(result.errorCode, result.message);
             }
             var product = new Product()
             {
                 ID =request.ProductId ,
                 Name = request.Name,
+                MinimumStock=request.MinimumStock,
                 Description = request.Description,
                 Price = request.Price,
                 Stock = request.Stock,
-                CategoryId = request.CategoryId
+                CategoryId = request.CategoryId,
             };
             /*
             productExistResult.data.Name = request.Name;

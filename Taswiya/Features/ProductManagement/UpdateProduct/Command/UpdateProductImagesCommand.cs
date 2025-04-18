@@ -16,10 +16,28 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             var newImages = request.NewImages;
             if (newImages == null || newImages.Count == 0)
                 return RequestResult<bool>.Success(true);
-            var images = repository.Get(i => i.ProductId == request.ProductId
+            var deletedImages = repository.Get(i => i.ProductId == request.ProductId
             && !request.RemainingImages.Contains(i.Url)).ToList();
+            foreach (var img in deletedImages)
+            { 
+                repository.Delete(img);
+            }
 
-            List<string> urls= new();
+            if (request.NewImages is { Count: > 0 })
+            {
+                foreach (var imageFile in request.NewImages)
+                {
+                    string url = await cloudinaryService.UploadImageAsync(imageFile);
+                    var image = new Image
+                    {
+                        Url = url,
+                        ProductId = request.ProductId
+                    };
+                    repository.Add(image);
+                }
+            }
+    
+            /*         List<string> urls= new();
             for (int i = 0; i < newImages.Count; i++)
             {
                 string url = await cloudinaryService.UploadImageAsync(newImages[i]);
@@ -31,6 +49,7 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
                 };
                 repository.SaveInclude(images[i], [nameof(Image.Url)]);
             }
+   */  
             await repository.SaveChangesAysnc();
             return RequestResult<bool>.Success(true,"Images Updated Sueccessfully");
         }
