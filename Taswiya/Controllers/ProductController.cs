@@ -10,12 +10,12 @@ using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
 using ConnectChain.Helpers;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.AddProduct;
+using ConnectChain.ViewModel.Product.DeletProductImage;
 using ConnectChain.ViewModel.Product.GetFilteredProducts;
 using ConnectChain.ViewModel.Product.GetProductDetails;
 using ConnectChain.ViewModel.Product.GetProductForUpdate;
 using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConnectChain.Controllers
@@ -160,10 +160,10 @@ namespace ConnectChain.Controllers
         #endregion
 
         #region Delete Product Image
-        [HttpDelete("DeleteProductImage/{imageId:int}")]
-        public async Task<IActionResult> DeleteProductImage(int imageId)
+        [HttpDelete("DeleteProductImage")]
+        public async Task<IActionResult> DeleteProductImage(int id)
         {
-            var response = await mediator.Send(new DeleteProdcutImageCommand(imageId));
+            var response = await mediator.Send(new DeleteProdcutImageCommand(id));
             return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data,response.message)
                 : new FailureResponseViewModel<bool>(response.errorCode, response.message);
         }

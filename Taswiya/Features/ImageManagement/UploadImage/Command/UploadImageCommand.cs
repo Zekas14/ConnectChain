@@ -18,7 +18,7 @@ namespace ConnectChain.Features.ImageManagement.UploadImage.Command
             {
                 var image = new Image () { Url = result };
                 repository.Add(image);
-                await repository.SaveChangesAysnc();
+                await repository.SaveChangesAsync();
                 return RequestResult<string>.Success(result);
             }
             return RequestResult<string>.Failure(ErrorCode.InternalServerError, "Failed to upload image");

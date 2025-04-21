@@ -38,8 +38,9 @@
 
   <ItemGroup>
 	  
+    <Folder Include="Features\AuthManagement\Common\Queries\" />
+	  
     <Folder Include="Features\AuthManagement\Register\Queries\" />
-    <Folder Include="Features\OrderManagement\GetOrdedByStatus\" />
     <Folder Include="Features\OrderManagement\PlaceOrder\" />
 	  <Content Include="Templates\**\*.*">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

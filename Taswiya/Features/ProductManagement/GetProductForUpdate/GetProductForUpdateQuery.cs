@@ -20,7 +20,12 @@ namespace ConnectChain.Features.ProductManagement.GetProductForUpdate
             {   
                 return RequestResult<GetProductForUpdateResponseViewModel>.Failure(ErrorCode.NotFound, "Product not found");
             }
-
+            var images = product.Images.Where(i=>!i.Deleted);
+            var data = new Dictionary<int, string>();
+            foreach (var image in images)
+            {
+                data.Add(image.ID, image.Url);
+            }
             var response = new GetProductForUpdateResponseViewModel
             {
                 Name = product.Name,
@@ -28,7 +33,7 @@ namespace ConnectChain.Features.ProductManagement.GetProductForUpdate
                 Price = product.Price,
                 Stock = product.Stock,
                 MinimumStock = product.MinimumStock,
-                ImageUrls = product.Images.Select(i => i.Url).ToList(),
+                ImageUrls = data,
                 CategoryId = product.CategoryId,
                 SupplierId = product.SupplierId!
             };

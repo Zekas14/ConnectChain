@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries
 {
-    public record GetSupplierOrdersQuery(PaginationHelper Pagination , string SupplierId) : IRequest<RequestResult<IReadOnlyList<GetSupplierOrdersResponseViewModel>>>
+    public record GetSupplierOrdersQuery(string SupplierId, OrderStatus? Status = null) : IRequest<RequestResult<IReadOnlyList<GetSupplierOrdersResponseViewModel>>>
     {
     }
     public class GetSupplierOrdersQueryHandler(IRepository<Order> repository,IMediator mediator)
@@ -22,12 +22,12 @@ namespace ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries
 
         public async Task<RequestResult<IReadOnlyList<GetSupplierOrdersResponseViewModel>>> Handle(GetSupplierOrdersQuery request, CancellationToken cancellationToken)
         {
-             var isSupplierFoundResult = await mediator.Send(new IsUserExistsQuery(request.SupplierId));
+             var isSupplierFoundResult = await mediator.Send(new IsSupplierExistsQuery(request.SupplierId));
             if (!isSupplierFoundResult.isSuccess)
             {
                 return RequestResult<IReadOnlyList<GetSupplierOrdersResponseViewModel>>.Failure(isSupplierFoundResult.errorCode,  "Supplier Not Found");
             }
-                var orders = repository.GetByPage(o => o.SupplierId == request.SupplierId,request.Pagination)
+            var orders = repository.Get(o=>o.SupplierId == request.SupplierId)
                 .Include(o => o.OrderItems)
                 .Include(o => o.Customer)
                 .Select(o => new GetSupplierOrdersResponseViewModel
@@ -39,7 +39,33 @@ namespace ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries
                     OrderStatus = o.Status.ToString(),
                     Products = o.OrderItems.Select(oi => oi.Product.Name).ToList(),
                 });
-            if (orders.IsNullOrEmpty())
+            if (request.Status != null)
+            {
+                orders = orders.Where(o => o.OrderStatus == request.Status.ToString());
+                if (!orders.Any())
+                {
+                    return RequestResult<IReadOnlyList<GetSupplierOrdersResponseViewModel>>.Failure(ErrorCode.NotFound, $"No {request.Status} Orders ");
+                }
+
+            }
+            else
+            
+
+                /*                var orders = repository.GetByPage(o => o.SupplierId == request.SupplierId,request.Pagination)
+                                .Include(o => o.OrderItems)
+                                .Include(o => o.Customer)
+                                .Select(o => new GetSupplierOrdersResponseViewModel
+                                {
+                                    Id = o.ID,
+                                    CustomerName = o.Customer.UserName,
+                                    OrderDate = o.CreatedDate.ToString("yyyy-MM-dd"),
+                                    TotalAmount = o.TotalAmount,
+                                    OrderStatus = o.Status.ToString(),
+                                    Products = o.OrderItems.Select(oi => oi.Product.Name).ToList(),
+                                });
+                */
+
+                if (orders.IsNullOrEmpty())
             {
                 return RequestResult< IReadOnlyList<GetSupplierOrdersResponseViewModel>>.Failure(ErrorCode.NotFound,"No Orders yet");
             }

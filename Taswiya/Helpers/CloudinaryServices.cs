@@ -14,6 +14,7 @@ namespace ConnectChain.Helpers
             Account account = new Account(cloudinarySettings.CloudName, cloudinarySettings.ApiKey, cloudinarySettings.ApiSecret);
             _cloudinary = new Cloudinary(account);
         }
+
         public async Task<string> UploadImageAsync(IFormFile file)
         {
             if (file.Length == 0)
@@ -31,6 +32,16 @@ namespace ConnectChain.Helpers
                 throw new Exception($"Error uploading image: {uploadResult.Error.Message}");
             }
             return uploadResult.Url.ToString();
+        }
+        public async Task<string> DeleteImageAsync(string publicId)
+        {
+            var deleteParams = new DeletionParams(publicId);
+            var deletionResult = await _cloudinary.DestroyAsync(deleteParams);
+            if (deletionResult.Error != null)
+            {
+                throw new Exception($"Error deleting image: {deletionResult.Error.Message}");
+            }
+            return deletionResult.Result == "ok" ? "Image deleted successfully" : "Image deletion failed";
         }
     }
 }

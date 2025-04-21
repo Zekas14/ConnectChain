@@ -27,7 +27,7 @@ namespace ConnectChain.Features.ProductManagement.Common.Commands
                 });
             }
             repository.AddRange(images);
-            await repository.SaveChangesAysnc();
+            await repository.SaveChangesAsync();
             return RequestResult<List<Image>>.Success(images, "Images Uploaded Successfully");
 
         }

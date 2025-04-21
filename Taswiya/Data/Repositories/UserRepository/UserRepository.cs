@@ -211,6 +211,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
             string tokenData = new JwtSecurityTokenHandler().WriteToken(token);
             UserSignInResponseViewModel user = new()
             {
+                ID = currentUser.Id,
                 Name = currentUser.Name,
                 Email = currentUser.Email,
                 Address = currentUser.Address,

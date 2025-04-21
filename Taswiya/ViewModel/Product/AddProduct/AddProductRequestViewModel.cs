@@ -1,4 +1,7 @@
-﻿namespace ConnectChain.ViewModel.Product.AddProduct
+﻿using ConnectChain.Attributes;
+using System.ComponentModel.DataAnnotations;
+
+namespace ConnectChain.ViewModel.Product.AddProduct
 {
     public class AddProductRequestViewModel
     {
@@ -6,6 +9,7 @@
         public string? Description { get; set; }
         public decimal Price { get; set; }
         public int MinimumStock { get; set; }
+        [MaxLength(5, ErrorMessage = "Maximum 5 images are allowed.")]
         public List<IFormFile>? Images { get; set; }  = new List<IFormFile>();
         public int? Stock { get; set; }
         public string? SupplierId { get; set; }

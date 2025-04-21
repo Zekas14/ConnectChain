@@ -61,7 +61,7 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             productExistResult.data.CategoryId = request.CategoryId;*/
             string[] properties = { nameof(product.Name), nameof(product.Description), nameof(product.Price), nameof(product.Stock), nameof(product.MinimumStock),nameof(product.CategoryId) };
             repository.SaveInclude(product,properties);
-            await repository.SaveChangesAysnc();
+            await repository.SaveChangesAsync();
             return RequestResult<bool>.Success(true, "Product Updated Successfully");
         }
     }   

@@ -50,7 +50,7 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
                 repository.SaveInclude(images[i], [nameof(Image.Url)]);
             }
    */  
-            await repository.SaveChangesAysnc();
+            await repository.SaveChangesAsync();
             return RequestResult<bool>.Success(true,"Images Updated Sueccessfully");
         }
     }

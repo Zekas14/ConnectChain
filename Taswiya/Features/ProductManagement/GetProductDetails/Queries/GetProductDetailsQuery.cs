@@ -33,7 +33,7 @@ namespace ConnectChain.Features.ProductManagement.GetProductDetails.Queries
                 Price = product.Price,
                 Stock = product.Stock,
                 MinimumStock = product.MinimumStock,
-                ImageUrls = product.Images.Select(i => i.Url).ToList(),
+                ImageUrls = product.Images.Where(i=>!i.Deleted).Select(i => i.Url).ToList(),
                 CategoryName = product.Category.Name,
                 UpdatedDate = product.UpdatedDate
             };

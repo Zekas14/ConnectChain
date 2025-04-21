@@ -1,6 +1,7 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Features.CategoryManagement.Common.Queries;
 using ConnectChain.Features.ImageManagement.UploadImage.Command;
+using ConnectChain.Features.SupplierManagement.Common.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
@@ -27,10 +28,14 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
         public async Task<RequestResult<bool>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             var categoryExistResult = await mediator.Send(new IsCategoryExistQuery(request.CategoryId));
-
+            var isUserExistResult = await mediator.Send(new IsSupplierExistsQuery(request.SupplierId));
             if (!categoryExistResult.isSuccess)
             {
                 return RequestResult<bool>.Failure(categoryExistResult.errorCode, categoryExistResult.message);
+            }
+            if (!isUserExistResult.isSuccess)
+            {
+                return RequestResult<bool>.Failure(isUserExistResult.errorCode, isUserExistResult.message);
             }
             List<Image> images = new List<Image>();
             foreach(var image in request.Images)
@@ -59,7 +64,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
                 CategoryId = request.CategoryId
             };
             repository.Add(product);
-            await repository.SaveChangesAysnc();
+            await repository.SaveChangesAsync();
             return RequestResult<bool>.Success(true,"Product Added Successfully");
         }
     }

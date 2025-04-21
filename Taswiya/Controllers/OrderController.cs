@@ -17,7 +17,7 @@ namespace ConnectChain.Controllers
         [HttpGet("GetSupplierOrders")]
         public async Task<IActionResult> GetSupplierOrders([FromQuery]GetSupplierOrdersRequestViewModel viewModel)
         {
-            var result = await _mediator.Send(new GetSupplierOrdersQuery(viewModel.pagination,viewModel.SupplierId));
+            var result = await _mediator.Send(new GetSupplierOrdersQuery(viewModel.SupplierId,viewModel.OrderStatus));
             if (!result.isSuccess)
             {
                 return new FailureResponseViewModel<GetSupplierOrdersResponseViewModel>(result.errorCode, result.message);

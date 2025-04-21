@@ -29,7 +29,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
                     ProductId = request.ProductId
                 };
                 repository.Add(image);
-                await repository.SaveChangesAysnc();
+                await repository.SaveChangesAsync();
                 return RequestResult<bool>.Success(true);
             }
             return RequestResult<bool>.Failure(ErrorCode.InternalServerError, "Failed to upload image");

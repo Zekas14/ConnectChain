@@ -51,7 +51,6 @@ namespace ConnectChain.Data.Repositories.Repository
             }
         }
 
-
         public void Delete(Entity entity)
         {
             entity.Deleted = true;
@@ -66,7 +65,7 @@ namespace ConnectChain.Data.Repositories.Repository
         {
             return GetAllWithIncludes(includeExpression).FirstOrDefault(x => x.ID == id) ?? null!;
         }
-
+      
         public IQueryable<Entity> GetAllWithIncludes(Func<IQueryable<Entity>, IQueryable<Entity>> includeExpression)
         {
             var set = _dbSet.Where(e => !e.Deleted);
@@ -78,10 +77,10 @@ namespace ConnectChain.Data.Repositories.Repository
             return GetAll().Where(predicate);
         }
 
-            public IQueryable<Entity> GetAll()
-            {
+        public IQueryable<Entity> GetAll()
+        {
                 return _dbSet.Where(x => ! x.Deleted);
-            }
+        }
 
         public IQueryable<Entity> GetAllWithDeleted()
         {
@@ -116,7 +115,7 @@ namespace ConnectChain.Data.Repositories.Repository
             await _dbSet.AddAsync(entity);
         }
 
-        public async Task SaveChangesAysnc()
+        public async Task SaveChangesAsync()
         {
            await _context.SaveChangesAsync();
         }
@@ -141,5 +140,7 @@ namespace ConnectChain.Data.Repositories.Repository
             }
             _dbSet.AddRange(images);
         }
+
+        
     }
 }

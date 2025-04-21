@@ -100,13 +100,16 @@ namespace ConnectChain.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Image");
+                    b.HasIndex("Url");
+
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Order", b =>

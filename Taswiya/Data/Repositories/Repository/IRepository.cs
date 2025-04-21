@@ -22,7 +22,7 @@ namespace ConnectChain.Data.Repositories.Repository
         Entity GetByIDWithIncludes(int id, Func<IQueryable<Entity>, IQueryable<Entity>> includeExpression);
         Task<Entity> GetByIDAsync(int id);
         void SaveChanges();
-        Task SaveChangesAysnc();
+        Task SaveChangesAsync();
         void AddRange(ICollection<Entity> images);
     }
 }

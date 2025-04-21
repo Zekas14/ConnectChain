@@ -21,7 +21,7 @@ namespace ConnectChain.Features.CategoryManagement.AddCategory.Command
             };
 
              await _repository.AddAsync(category);
-            await _repository.SaveChangesAysnc();
+            await _repository.SaveChangesAsync();
             return  RequestResult<bool>.Success(true, "Category added successfully");
         }
     }   

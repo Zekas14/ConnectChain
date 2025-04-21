@@ -21,7 +21,7 @@ namespace ConnectChain.Features.ProductManagement.DeleteProduct.Command
                 return RequestResult<bool>.Failure(productExistResult.errorCode, productExistResult.message);
             }
              _repository.Delete(productExistResult.data);
-            await _repository.SaveChangesAysnc();
+            await _repository.SaveChangesAsync();
             return RequestResult<bool>.Success(true);
         }
     }
