@@ -36,7 +36,8 @@ namespace ConnectChain.Features.OrderManagement.GetOrderDetails.Queries
                 Status = order.Status.ToString(),
                 Products = order.OrderItems.Select(oi => new ProductsOrderedViewModel
                 {
-                    ProductName = oi.Product!.Name,
+                    ProductId = oi.Product.ID,
+                    ProductName = oi.Product.Name!,
                     Quantity = oi.Quantity,
                     ImageUrl = oi.Product.Images.Select(i => i.Url).ToList() ?? [],
                     UnitPrice = oi.UnitPrice,

@@ -193,7 +193,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
         #region Sign In
         public async Task<RequestResult<UserSignInResponseViewModel>> SignIn(UserSignInRequestViewModel viewModel)
         {
-            var currentUser = await userManager.FindByEmailAsync(viewModel.Email);
+            var currentUser = await userManager.FindByEmailAsync(viewModel.Email!);
             if (currentUser is null)
             {
                 return RequestResult<UserSignInResponseViewModel>.Failure(ErrorCode.NotFound, "Invalid Email or Password");
@@ -202,7 +202,7 @@ namespace ConnectChain.Data.Repositories.UserRepository
             {
                 return RequestResult<UserSignInResponseViewModel>.Failure(ErrorCode.InvalidInput, "Email not confirmed. Please check your email inbox to verify your email address.");
             }
-            bool found = await userManager.CheckPasswordAsync(currentUser, viewModel.Password);
+            bool found = await userManager.CheckPasswordAsync(currentUser, viewModel.Password!);
             if (!found)
             {
                 return RequestResult<UserSignInResponseViewModel>.Failure(ErrorCode.InvalidInput, "Invalid Email or Password");
