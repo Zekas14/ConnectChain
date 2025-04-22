@@ -47,7 +47,7 @@ namespace ConnectChain.Controllers
         public async Task<IActionResult> 
         GetSupplierProductsByPage([FromQuery] PaginationHelper paginationParams)
         {
-            var supplierId = Request.ExtractIdFromToken();
+            var supplierId = Request.GetIdFromToken();
             var response = await mediator.Send(new GetSupplierProductsByPageQuery(supplierId, paginationParams));
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
                 : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
@@ -81,7 +81,7 @@ namespace ConnectChain.Controllers
         {
             if (ModelState.IsValid)
             {
-              var supplierId = Request.ExtractIdFromToken();
+              var supplierId = Request.GetIdFromToken();
 
                 var response = await mediator.Send(new AddProductCommand
                 {

@@ -13,6 +13,7 @@ using ConnectChain.Features.SupplierManagement.GetSupplierProfile.Query;
 using ConnectChain.Features.SupplierManagement.UpdateSupplierProfile.Commands;
 using ConnectChain.ViewModel;
 using ConnectChain.Helpers;
+using ConnectChain.Filters;
 
 namespace ConnectChain.Controllers
 {
@@ -29,14 +30,14 @@ namespace ConnectChain.Controllers
             
         }
 
-        [HttpPut("updateProfile {SupplierId}")]
-        public async Task<IActionResult> UpdateProfile(string supplierId, [FromBody] SupplierProfileUpdateViewModel model)
+        [HttpPut("updateProfile")]
+        public async Task<IActionResult> UpdateProfile([FromQuery] string supplierId, [FromBody] SupplierProfileUpdateViewModel model)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            /*var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId != supplierId)
             {
                 return new FailureResponseViewModel<bool>(ErrorCode.NotFound,"Unauthorized");
-            }
+            }*/
             var result = await _mediator.Send(new UpdateSupplierProfileCommand
             {
                 Id = supplierId,
@@ -58,11 +59,12 @@ namespace ConnectChain.Controllers
         }
 
         [HttpGet("GetProfile")]
+        [Authorization(Models.Enums.Role.Supplier)]
         public async Task<IActionResult> GetProfile()
         {
             // var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
                 
-            var userId = Request.ExtractIdFromToken();
+            var userId = Request.GetIdFromToken();
            /* if (userId != supplierId)
             {
                 return new FailureResponseViewModel<SupplierProfileViewModel>(ErrorCode.UnAuthorized, "unathorized");

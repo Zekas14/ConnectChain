@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using ConnectChain.Models;
+using ConnectChain.Models.Enums;
 
 namespace ConnectChain.Helpers
 {
@@ -15,7 +16,22 @@ namespace ConnectChain.Helpers
             var callBackUrl = $"{request.Scheme}://{request.Host}/api/Account/ConfirmEmail?userId={encodedUserId}";
             return callBackUrl;
         }
-        public static string ExtractIdFromToken(this HttpRequest request)
+        public static Role? GetRoleFromToken(this HttpRequest request) 
+        {
+            var jsonToken = request.GetToken();
+            if (jsonToken is null || !UserFactory.IsTokenValid(jsonToken))
+            {
+                return null;
+            }
+            var role  = jsonToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+            return Enum.TryParse<Role>(role, out var parsedRole) ? parsedRole : null;
+        }
+        public static string? GetIdFromToken(this HttpRequest request)
+        {
+            var jsonToken = request.GetToken();
+            return jsonToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+        }
+        public static JwtSecurityToken GetToken(this HttpRequest request)
         {
             var authHeader = request.Headers.Authorization.ToString();
             if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer"))
@@ -24,10 +40,8 @@ namespace ConnectChain.Helpers
             }
             var token = authHeader.Substring("Bearer ".Length).Trim();
             var handler = new JwtSecurityTokenHandler();
-            var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
-            var role = jsonToken!.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
-            var id = jsonToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-            return id!;
+            JwtSecurityToken? jsonToken = handler.ReadToken(token) as JwtSecurityToken ;
+            return jsonToken?? null;
         }
         public static string GetBaseUrl(this HttpRequest request)
         {

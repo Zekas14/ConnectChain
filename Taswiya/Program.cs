@@ -19,12 +19,14 @@ using Microsoft.AspNetCore.Mvc;
 using ConnectChain.ViewModel;
 using ConnectChain.Features.SupplierManagement.Common.Queries;
 using ConnectChain.Middlewares;
+using ConnectChain.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<AuthorizationAttribute>();
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(container =>
 {
