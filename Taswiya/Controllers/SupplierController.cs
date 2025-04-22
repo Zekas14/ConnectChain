@@ -57,17 +57,19 @@ namespace ConnectChain.Controllers
             }
         }
 
-        [HttpGet("getProfile/{SupplierId}")]
-        public async Task<IActionResult> GetProfile(string supplierId)
+        [HttpGet("GetProfile")]
+        public async Task<IActionResult> GetProfile()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userId != supplierId)
+            // var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                
+            var userId = Request.ExtractIdFromToken();
+           /* if (userId != supplierId)
             {
-                return new FailureResponseViewModel<SupplierProfileViewModel>(ErrorCode.UnAuthorized,"unathorized");
-            }
+                return new FailureResponseViewModel<SupplierProfileViewModel>(ErrorCode.UnAuthorized, "unathorized");
+            }*/
             var result = await _mediator.Send(new GetSupplierProfileQuery
             {
-                 SupplierId = supplierId,
+                 SupplierId = userId,
             });
             if (result.isSuccess)
             {
