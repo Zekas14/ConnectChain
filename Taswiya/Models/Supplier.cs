@@ -11,6 +11,7 @@ namespace ConnectChain.Models
         public ICollection<SupplierPaymentMethod> SupplierPaymentMethods { get; set; } = new List<SupplierPaymentMethod>();
         public ICollection<PaymentMethod> PaymentMethods { get; set; } = new List<PaymentMethod>();
         public ICollection<Product> Products { get; set; } = new List<Product>();
+        public ICollection<Notification> Notifications { get; set; } = new List<Notification>();
         public ICollection<Order> Orders{ get; set; } = new List<Order>();
     }
 }
