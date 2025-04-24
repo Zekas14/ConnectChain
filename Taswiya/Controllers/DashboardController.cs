@@ -10,62 +10,69 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ConnectChain.Features.DashboardManagement.GetDashboardSummary.Queries;
 using ConnectChain.ViewModel.Dashboard.GetDashboardSummary;
+using ConnectChain.Filters;
 
 namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorization(roles : Role.Supplier)]
     public class DashboardController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
 
         [HttpGet("GetRevenueChart")]
-        public async Task<IActionResult> GetRevenueChart([FromQuery] string supplierId, [FromQuery] int? year = null)
+        public async Task<IActionResult> GetRevenueChart( [FromQuery] int? year = null)
         {
-            int currentYear = year ?? DateTime.Now.Year; 
-            var response = await mediator.Send(new GetRevenuePerMonthChartQuery(supplierId, currentYear));
+            string? supplierId = Request.GetIdFromToken();
+            var response = await mediator.Send(new GetRevenuePerMonthChartQuery(supplierId!, year ?? DateTime.Now.Year));
             return response != null
                 ? new SuccessResponseViewModel<Dictionary<int, decimal>>(response, "Revenue chart retrieved successfully.")
                 : new FailureResponseViewModel<Dictionary<int, decimal>>(ErrorCode.NotFound, "No revenue data found.");
         }
 
         [HttpGet("GetMonthlyStats")]
-        public async Task<IActionResult> GetMonthlyStats([FromQuery] string supplierId, [FromQuery] int? month = null, [FromQuery] int? year = null)
+        public async Task<IActionResult> GetMonthlyStats([FromQuery] int? month = null, [FromQuery] int? year = null)
         {
             int currentMonth = month ?? DateTime.Now.Month; 
-            int currentYear = year ?? DateTime.Now.Year;   
+            int currentYear = year ?? DateTime.Now.Year;
+            string? supplierId = Request.GetIdFromToken();
 
-            var response = await mediator.Send(new GetMonthlyStatsQuery(supplierId, currentMonth, currentYear));
+            var response = await mediator.Send(new GetMonthlyStatsQuery(supplierId!, currentMonth, currentYear));
             return response != null
                 ? new SuccessResponseViewModel<GetMonthlyStatsResponseViewModel>(response, "Monthly stats retrieved successfully.")
                 : new FailureResponseViewModel<GetMonthlyStatsResponseViewModel>(ErrorCode.NotFound, "No monthly stats found.");
         }
 
         [HttpGet("GetTopSoldProducts")]
-        public async Task<IActionResult> GetTopSoldProducts([FromQuery] string supplierId, [FromQuery] int? year = null, [FromQuery] int? month = null, [FromQuery] int limit = 5)
+        public async Task<IActionResult> GetTopSoldProducts([FromQuery] int? year = null, [FromQuery] int? month = null, [FromQuery] int limit = 5)
         {
             int currentYear = year ?? DateTime.Now.Year; 
-            int currentMonth = month ?? DateTime.Now.Month; 
+            int currentMonth = month ?? DateTime.Now.Month;
+            string? supplierId = Request.GetIdFromToken();
 
-            var response = await mediator.Send(new GetTopSoldProductsQuery(supplierId, currentYear, currentMonth, limit));
+            var response = await mediator.Send(new GetTopSoldProductsQuery(supplierId!, currentYear, currentMonth, limit));
             return response != null
                 ? new SuccessResponseViewModel<ICollection<GetTopSoldProductsResponseViewModel>>(response, "Top sold products retrieved successfully.")
                 : new FailureResponseViewModel<ICollection<GetTopSoldProductsResponseViewModel>>(ErrorCode.NotFound, "No top sold products found.");
         }
 
         [HttpGet("GetOrdersSummary")]
-        public async Task<IActionResult> GetOrdersSummary([FromQuery] string supplierId)
+        public async Task<IActionResult> GetOrdersSummary()
         {
-            var response = await mediator.Send(new GetOrdersSummaryQuery(supplierId));
+            string? supplierId = Request.GetIdFromToken();
+            var response = await mediator.Send(new GetOrdersSummaryQuery(supplierId!));
             return response != null
                 ? new SuccessResponseViewModel<OrdersSummaryResponseViewModel>(response, "Orders summary retrieved successfully.")
                 : new FailureResponseViewModel<OrdersSummaryResponseViewModel>(ErrorCode.NotFound, "No orders summary data found.");
         }
 
         [HttpGet("GetProductsSummary")]
-        public async Task<IActionResult> GetProductsSummary([FromQuery] string supplierId)
+        public async Task<IActionResult> GetProductsSummary()
         {
-            var response = await mediator.Send(new GetProductsSummaryQuery(supplierId));
+            string? supplierId = Request.GetIdFromToken();
+
+            var response = await mediator.Send(new GetProductsSummaryQuery(supplierId!));
             return response != null
                 ? new SuccessResponseViewModel<ProductsSummaryResponseViewModel>(response, "Products summary retrieved successfully.")
                 : new FailureResponseViewModel<ProductsSummaryResponseViewModel>(ErrorCode.NotFound, "No products summary data found.");

@@ -2,6 +2,7 @@
 using ConnectChain.Helpers;
 using ConnectChain.Models.Enums;
 using ConnectChain.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
@@ -19,7 +20,11 @@ namespace ConnectChain.Filters
         }
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            
+            var endpoint = context.HttpContext.GetEndpoint();
+            if (endpoint?.Metadata.GetMetadata<IAllowAnonymous>() is not null)
+            {
+                return;
+            }    
             var request = context.HttpContext.Request;
             if (!request.IsAuthenticated())
             {

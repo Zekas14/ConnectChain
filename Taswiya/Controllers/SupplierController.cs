@@ -14,11 +14,13 @@ using ConnectChain.Features.SupplierManagement.UpdateSupplierProfile.Commands;
 using ConnectChain.ViewModel;
 using ConnectChain.Helpers;
 using ConnectChain.Filters;
+using ConnectChain.Models.Enums;
 
 namespace ConnectChain.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorization(roles : Role.Supplier)]
     public class SupplierController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -31,13 +33,9 @@ namespace ConnectChain.Controllers
         }
 
         [HttpPut("updateProfile")]
-        public async Task<IActionResult> UpdateProfile([FromQuery] string supplierId, [FromBody] SupplierProfileUpdateViewModel model)
+        public async Task<IActionResult> UpdateProfile( [FromBody] SupplierProfileUpdateViewModel model)
         {
-            /*var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userId != supplierId)
-            {
-                return new FailureResponseViewModel<bool>(ErrorCode.NotFound,"Unauthorized");
-            }*/
+            string? supplierId = Request.GetIdFromToken();
             var result = await _mediator.Send(new UpdateSupplierProfileCommand
             {
                 Id = supplierId,
@@ -59,7 +57,6 @@ namespace ConnectChain.Controllers
         }
 
         [HttpGet("GetProfile")]
-        [Authorization(Models.Enums.Role.Supplier)]
         public async Task<IActionResult> GetProfile()
         {
             // var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;

@@ -15,7 +15,6 @@ namespace ConnectChain.Data.Repositories.UserRepository
 {
     public class UserRepository(UserManager<User> userManager, IWebHostEnvironment env, IMemoryCache cache, IMailServices mailServices) : IUserRepository
     {
-        
         private readonly UserManager<User> _userManager = userManager;
         private readonly IWebHostEnvironment env = env;
         private readonly IMemoryCache _cache = cache;
@@ -41,17 +40,6 @@ namespace ConnectChain.Data.Repositories.UserRepository
                 return RequestResult<bool>.Failure(ErrorCode.BadRequest, "User Already Exists");
             }
              var user = UserFactory.CreateUser(viewModel);
-            /* user = new User
-             {
-                 FirstName = viewModel.FirstName,
-                 LastName = viewModel.LastName,
-                 Email = viewModel.Email,
-                 UserName = viewModel.FirstName+ viewModel.LastName,
-                 PhoneNumber = viewModel.PhoneNumber,
-                 Address = viewModel.Address,
-                 Country= viewModel.Country,
-             };
-            */
             IdentityResult result = await _userManager.CreateAsync(user, viewModel.Password!);
             if (!result.Succeeded)
                 return RequestResult<bool>.Failure(ErrorCode.BadRequest, string.Join(", ", result.Errors.Select(e => e.Description)));

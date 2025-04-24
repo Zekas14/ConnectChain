@@ -29,7 +29,7 @@ namespace ConnectChain.Helpers
         public static string? GetIdFromToken(this HttpRequest request)
         {
             var jsonToken = request.GetToken();
-            return jsonToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            return jsonToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value ?? null;
         }
         public static JwtSecurityToken GetToken(this HttpRequest request)
         {

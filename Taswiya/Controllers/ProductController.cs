@@ -1,5 +1,4 @@
-﻿using ConnectChain.Features.ImageManagement.UploadImage.Command;
-using ConnectChain.Features.ProductManagement.AddProduct.Command;
+﻿using ConnectChain.Features.ProductManagement.AddProduct.Command;
 using ConnectChain.Features.ProductManagement.DeleteProduct;
 using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
 using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
@@ -7,28 +6,32 @@ using ConnectChain.Features.ProductManagement.GetProductDetails.Queries;
 using ConnectChain.Features.ProductManagement.GetProductForUpdate;
 using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
 using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
+using ConnectChain.Filters;
 using ConnectChain.Helpers;
+using ConnectChain.Models.Enums;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Product.AddProduct;
-using ConnectChain.ViewModel.Product.DeletProductImage;
 using ConnectChain.ViewModel.Product.GetFilteredProducts;
 using ConnectChain.ViewModel.Product.GetProductDetails;
 using ConnectChain.ViewModel.Product.GetProductForUpdate;
 using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize]
+    // [Authorize]
+    [Authorization(Role.Supplier)]
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
 
         #region GetSupplierProducts
         [HttpGet("GetSupplierProducts")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetSupplierProducts(string supplierId)
         {
            /* var supplierId = Request.ExtractIdFromToken();
@@ -56,6 +59,7 @@ namespace ConnectChain.Controllers
 
         #region GetFilteredProducts 
         [HttpGet("GetFilteredProducts")]
+        
         public async Task<IActionResult> GetFilteredProducts(GetFilteredProductsRequestViewModel viewModel)
         {
             var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.Filters));
@@ -91,7 +95,7 @@ namespace ConnectChain.Controllers
                     MinimumStock = viewModel.MinimumStock,
                     Price = viewModel.Price,
                     Stock = viewModel.Stock,
-                    SupplierId = viewModel.SupplierId,
+                    SupplierId = supplierId,
                     CategoryId = viewModel.CategoryId
                 });
                 return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data, response.message)
