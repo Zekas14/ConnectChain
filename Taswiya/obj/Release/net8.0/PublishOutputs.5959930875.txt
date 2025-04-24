@@ -59,10 +59,13 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.ObjectPool.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Primitives.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.dll
@@ -114,6 +117,7 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.IO.Pipelines.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Net.WebSockets.WebSocketProtocol.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Reflection.MetadataLoadContext.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Runtime.Caching.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.Pkcs.dll

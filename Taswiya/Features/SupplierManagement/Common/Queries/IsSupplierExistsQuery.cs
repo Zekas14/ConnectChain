@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace ConnectChain.Features.SupplierManagement.Common.Queries
 {
     public record IsSupplierExistsQuery(string SupplierId) : IRequest<RequestResult<bool>>;
-    public class IsUserExistsQueryHandler(ConnectChainDbContext context) : IRequestHandler<IsSupplierExistsQuery, RequestResult<bool>>
+    public class ISupplierExistsQueryHandler(ConnectChainDbContext context) : IRequestHandler<IsSupplierExistsQuery, RequestResult<bool>>
     {
         private readonly ConnectChainDbContext context = context;
 

@@ -1,10 +1,14 @@
 ﻿using ConnectChain.Features.OrderManagement.GetOrderDetails.Queries;
 using ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries;
+using ConnectChain.Filters;
+using ConnectChain.Helpers;
+using ConnectChain.Models.Enums;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Order.GetOrderDetails;
 using ConnectChain.ViewModel.Order.GetSupplierOrder;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace ConnectChain.Controllers
 {
@@ -15,9 +19,11 @@ namespace ConnectChain.Controllers
         private readonly IMediator _mediator = mediator;
         #region GetSupplierOrders
         [HttpGet("GetSupplierOrders")]
+        [Authorization(roles:Role.Supplier)]
         public async Task<IActionResult> GetSupplierOrders([FromQuery]GetSupplierOrdersRequestViewModel viewModel)
         {
-            var result = await _mediator.Send(new GetSupplierOrdersQuery(viewModel.SupplierId,viewModel.OrderStatus));
+            string? supplierId = Request.GetIdFromToken();
+            var result = await _mediator.Send(new GetSupplierOrdersQuery(supplierId!,viewModel.OrderStatus));
             if (!result.isSuccess)
             {
                 return new FailureResponseViewModel<GetSupplierOrdersResponseViewModel>(result.errorCode, result.message);
@@ -25,8 +31,10 @@ namespace ConnectChain.Controllers
             return new SuccessResponseViewModel<IReadOnlyList<GetSupplierOrdersResponseViewModel>>(result.data, result.message);
         }
         #endregion 
+
         #region GetOrderDetails 
         [HttpGet("GetOrderDetails")]
+        [Authorization(roles:Role.Supplier)]
         public async Task<IActionResult> GetOrderDetails(int orderId)
         {
             var result = await _mediator.Send(new GetOrderDetailsQuery(orderId));
@@ -35,6 +43,14 @@ namespace ConnectChain.Controllers
                 return new FailureResponseViewModel<GetOrderDetailsResponseViewModel>(result.errorCode, result.message);
             }
             return new SuccessResponseViewModel<GetOrderDetailsResponseViewModel>(result.data, result.message);
+        }
+        #endregion
+        #region Place Order 
+        [HttpPost]
+        [Authorization(roles:Role.Customer)]
+        public IActionResult PlaceOrder()
+        {
+
         }
         #endregion
     }

@@ -7,6 +7,5 @@ namespace ConnectChain.ViewModel.Order.GetSupplierOrder
     {
         
         public OrderStatus? OrderStatus { get; set; } = null;
-        public string SupplierId { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ConnectChain.Models
 {
-    public class Notification :BaseModel 
+    public class Notification : BaseModel 
     {
         public string? Title { get; set; }
         public string? Message { get; set; }

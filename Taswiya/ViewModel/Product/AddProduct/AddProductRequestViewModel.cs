@@ -10,9 +10,9 @@ namespace ConnectChain.ViewModel.Product.AddProduct
         public decimal Price { get; set; }
         public int MinimumStock { get; set; }
         [MaxLength(5, ErrorMessage = "Maximum 5 images are allowed.")]
-        public List<IFormFile>? Images { get; set; }  = new List<IFormFile>();
+        public List<IFormFile>? Images { get; set; } = [];
         public int? Stock { get; set; }
-        public string? SupplierId { get; set; }
+  //      public string? SupplierId { get; set; }
         public int CategoryId { get; set; }
     }
 }
