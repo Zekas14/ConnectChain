@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[1.27.4, )"
             },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.11.0, )"

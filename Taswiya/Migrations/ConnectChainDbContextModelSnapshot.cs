@@ -120,6 +120,9 @@ namespace ConnectChain.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -129,8 +132,8 @@ namespace ConnectChain.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SupplierId")
                         .HasColumnType("nvarchar(450)");
@@ -145,6 +148,8 @@ namespace ConnectChain.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("SupplierId");
 
@@ -579,9 +584,17 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Notification", b =>
                 {
+                    b.HasOne("ConnectChain.Models.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ConnectChain.Models.Supplier", "Supplier")
                         .WithMany("Notifications")
                         .HasForeignKey("SupplierId");
+
+                    b.Navigation("Order");
 
                     b.Navigation("Supplier");
                 });

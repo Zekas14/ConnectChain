@@ -1,12 +1,15 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.OrderManagement.PlaceOrder.Events;
 using ConnectChain.Features.SupplierManagement.Common.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
+using ConnectChain.ViewModel.Order.PlaceOrder;
 using MediatR;
 
 namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
 {
-    public record PlaceOrderCommand(string CustomerId , string SupplierId , List<OrderItem> Items) : IRequest<RequestResult<bool>>;
+    public record PlaceOrderCommand(string CustomerId,decimal SubTotal ,decimal Discount , string Notes,string SupplierId , List<OrderItems> Items,string FcmToken) 
+        : IRequest<RequestResult<bool>>;
     public class PlaceOrderCommandHandler(IMediator mediator, IRepository<Order> repository) : IRequestHandler<PlaceOrderCommand, RequestResult<bool>>
     {
         private readonly IMediator mediator = mediator;
@@ -24,14 +27,18 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
                 CustomerId = request.CustomerId,
                 SupplierId = request.SupplierId,
                 CreatedDate = DateTime.UtcNow,
+                Notes = request.Notes,
+
                 OrderItems = request.Items.Select(i => new OrderItem
                 {
                     ProductId = i.ProductId,
                     Quantity = i.Quantity
+
                 }).ToList(),
             };
             repository.Add(order);
             repository.SaveChanges();
+            await mediator.Publish(new OrderPlacedEvent(request.FcmToken),cancellationToken);
             return RequestResult<bool>.Success(true ,"Order Placed Successfully");
         }
     }

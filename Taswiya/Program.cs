@@ -20,6 +20,8 @@ using ConnectChain.ViewModel;
 using ConnectChain.Features.SupplierManagement.Common.Queries;
 using ConnectChain.Middlewares;
 using ConnectChain.Filters;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +34,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(container =>
 {
     container.RegisterModule(new ApplicationModule());
 });
-
+builder.Configuration.AddEnvironmentVariables();
 builder.Services.Configure<MailSetting>(builder.Configuration.GetSection("MailSetting"));
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -42,14 +44,21 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
             .Where(e => e.Value!.Errors.Count > 0)
             .SelectMany(e => e.Value!.Errors.Select(err => err.ErrorMessage))
             .ToList();
-        return new BadRequestObjectResult(new { ErrorCode.InvalidInput, errors});
+        return new BadRequestObjectResult(new { ConnectChain.Helpers.ErrorCode.InvalidInput, errors});
     };
 });
+var firebaseConfig = builder.Configuration.GetSection("Firebase");
+string? serviceAccountPath = firebaseConfig["ServiceAccountPath"];
 
+// Initialize Firebase
+FirebaseApp.Create(new AppOptions()
+{
+    Credential = GoogleCredential.FromFile(serviceAccountPath),
+});
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ConnectChainDbContext>()
     .AddDefaultTokenProviders();
-;
+
 builder.Services.AddDbContext<ConnectChainDbContext>(optionsBuilder =>
 {
     optionsBuilder.UseSqlServer(

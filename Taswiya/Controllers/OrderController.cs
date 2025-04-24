@@ -1,11 +1,13 @@
 ﻿using ConnectChain.Features.OrderManagement.GetOrderDetails.Queries;
 using ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries;
+using ConnectChain.Features.OrderManagement.PlaceOrder.Command;
 using ConnectChain.Filters;
 using ConnectChain.Helpers;
 using ConnectChain.Models.Enums;
 using ConnectChain.ViewModel;
 using ConnectChain.ViewModel.Order.GetOrderDetails;
 using ConnectChain.ViewModel.Order.GetSupplierOrder;
+using ConnectChain.ViewModel.Order.PlaceOrder;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
@@ -45,13 +47,28 @@ namespace ConnectChain.Controllers
             return new SuccessResponseViewModel<GetOrderDetailsResponseViewModel>(result.data, result.message);
         }
         #endregion
-        #region Place Order 
+
+        #region Place Order
+
         [HttpPost]
-        [Authorization(roles:Role.Customer)]
-        public IActionResult PlaceOrder()
+        [Authorization(roles: Role.Customer)]
+        public async Task<ResponseViewModel<bool>> PlaceOrder(PlaceOrderRequestVeiwModel viewModel)
         {
+            string? customerId = Request.GetIdFromToken();
+            if (customerId == null)
+            {
+                return new FailureResponseViewModel<bool>(ErrorCode.UnAuthorized,"Unauthorized");
+            }
+            var response = await _mediator.Send(new PlaceOrderCommand(customerId,viewModel.SubTotal,viewModel.Discount,viewModel.Notes, viewModel.SupplierId, [.. viewModel.Items], viewModel.FcmToken));
+            if (!response.isSuccess)
+            {
+                return new FailureResponseViewModel<bool>(response.errorCode,response.message);
+
+            }
+            return new SuccessResponseViewModel<bool>(true, response.message);
 
         }
+
         #endregion
     }
 }
