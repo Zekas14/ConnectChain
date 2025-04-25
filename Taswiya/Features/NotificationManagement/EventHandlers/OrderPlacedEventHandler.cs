@@ -15,7 +15,7 @@ namespace ConnectChain.Features.NotificationManagement.EventHandlers
             if (!notification.FcmToken.IsNullOrEmpty())
             {
                 await mediator.Send(new SendNotificationCommand(notification.FcmToken, "اوردر جديد", "تم طلب اوردر جديد", "Order"));
-                await mediator.Send(new AddNotificationCommand("اوردر جديد", "تم طلب اوردر جديد", "Order"));
+                await mediator.Send(new AddNotificationCommand(notification.OrderId,"اوردر جديد", "تم طلب اوردر جديد", "Order"));
             }
         }
     }

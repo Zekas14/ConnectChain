@@ -1,6 +1,7 @@
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.exe
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\appsettings.json
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Config\firebase-service-account.json
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Templates\emailTemplate.html
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\ConnectChain.runtimeconfig.json
@@ -12,7 +13,13 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Azure.Identity.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\BouncyCastle.Cryptography.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\CloudinaryDotNet.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\FirebaseAdmin.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\FluentValidation.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Google.Api.Gax.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Google.Api.Gax.Rest.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Google.Apis.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Google.Apis.Auth.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Google.Apis.Core.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\Humanizer.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\MailKit.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\MediatR.dll
@@ -116,6 +123,7 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Formats.Asn1.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.IO.Pipelines.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Management.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Net.WebSockets.WebSocketProtocol.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\System.Reflection.MetadataLoadContext.dll
@@ -273,6 +281,7 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net7.0\System.Management.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Release\net8.0\PubTmp\Out\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll

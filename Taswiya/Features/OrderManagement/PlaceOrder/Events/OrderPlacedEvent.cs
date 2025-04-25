@@ -2,5 +2,5 @@
 
 namespace ConnectChain.Features.OrderManagement.PlaceOrder.Events
 {
-    public record OrderPlacedEvent(string FcmToken): INotification;
+    public record OrderPlacedEvent(int OrderId,string FcmToken): INotification;
 }

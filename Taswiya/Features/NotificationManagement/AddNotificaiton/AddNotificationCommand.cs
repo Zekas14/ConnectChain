@@ -1,11 +1,12 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
+using MailKit.Search;
 using MediatR;
 
 namespace ConnectChain.Features.NotificationManagement.AddNotificaitonCommand
 {
-    public record AddNotificationCommand(string? Title, string? Body, string? Type) : IRequest<RequestResult<bool>>;
+    public record AddNotificationCommand(int OrderId,string? Title, string? Body, string? Type) : IRequest<RequestResult<bool>>;
     public class AddNotificationHandler(IRepository<Notification> repository) : IRequestHandler<AddNotificationCommand, RequestResult<bool>>
     {
         private readonly IRepository<Notification> repository = repository;
@@ -16,6 +17,7 @@ namespace ConnectChain.Features.NotificationManagement.AddNotificaitonCommand
             {
                 Title = request.Title,
                 Body = request.Body,
+                OrderId = request.OrderId,
                 Type = request.Type,
                 IsRead = false,
             };

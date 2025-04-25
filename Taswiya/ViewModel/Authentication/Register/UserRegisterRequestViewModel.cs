@@ -1,7 +1,7 @@
 ﻿using ConnectChain.Models.Enums;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ConnectChain.ViewModel.Authentication
 {
@@ -18,6 +18,8 @@ namespace ConnectChain.ViewModel.Authentication
         [EmailAddress]
         
         public string? Email { get; set; }
+        [JsonIgnore]
+        public string? FcmToken { get; set; } = string.Empty;
         [Required]
         [DataType(DataType.Password)]
         public string? Password { get; set; }

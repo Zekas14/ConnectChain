@@ -50,7 +50,7 @@ namespace ConnectChain.Controllers
 
         #region Place Order
 
-        [HttpPost]
+        [HttpPost("PlaceOrder")]
         [Authorization(roles: Role.Customer)]
         public async Task<ResponseViewModel<bool>> PlaceOrder(PlaceOrderRequestVeiwModel viewModel)
         {

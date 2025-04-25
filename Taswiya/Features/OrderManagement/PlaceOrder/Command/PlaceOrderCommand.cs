@@ -24,6 +24,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
             }
             var order = new Order
             {
+
                 CustomerId = request.CustomerId,
                 SupplierId = request.SupplierId,
                 CreatedDate = DateTime.UtcNow,
@@ -38,7 +39,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
             };
             repository.Add(order);
             repository.SaveChanges();
-            await mediator.Publish(new OrderPlacedEvent(request.FcmToken),cancellationToken);
+            await mediator.Publish(new OrderPlacedEvent(order.ID,request.FcmToken),cancellationToken);
             return RequestResult<bool>.Success(true ,"Order Placed Successfully");
         }
     }
