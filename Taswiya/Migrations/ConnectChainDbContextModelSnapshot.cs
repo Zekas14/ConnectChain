@@ -132,9 +132,6 @@ namespace ConnectChain.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SupplierId")
                         .HasColumnType("nvarchar(450)");
 
@@ -148,8 +145,6 @@ namespace ConnectChain.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("SupplierId");
 
@@ -587,15 +582,9 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Notification", b =>
                 {
-                    b.HasOne("ConnectChain.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId");
-
                     b.HasOne("ConnectChain.Models.Supplier", "Supplier")
                         .WithMany("Notifications")
                         .HasForeignKey("SupplierId");
-
-                    b.Navigation("Order");
 
                     b.Navigation("Supplier");
                 });

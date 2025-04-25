@@ -10,9 +10,6 @@ namespace ConnectChain.Models
         [ForeignKey("Supplier")]
         public string? SupplierId { get; set; }
         public Supplier? Supplier { get; set; }
-        [ForeignKey("Order")]
-        public int? OrderId { get; set; }
-        public Order? Order { get; set; }
         public bool IsRead { get; set; }
         public string? Type { get; set; }
     }

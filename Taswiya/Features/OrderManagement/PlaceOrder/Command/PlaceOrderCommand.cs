@@ -38,8 +38,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
                 }).ToList(),
             };
             repository.Add(order);
-            repository.SaveChanges();
-            await mediator.Publish(new OrderPlacedEvent(order.ID,request.FcmToken),cancellationToken);
+            await mediator.Publish(new OrderPlacedEvent(order.ID,order.SupplierId,request.FcmToken),cancellationToken);
             return RequestResult<bool>.Success(true ,"Order Placed Successfully");
         }
     }

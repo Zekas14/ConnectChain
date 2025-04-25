@@ -6,7 +6,7 @@ using MediatR;
 
 namespace ConnectChain.Features.NotificationManagement.AddNotificaitonCommand
 {
-    public record AddNotificationCommand(int OrderId,string? Title, string? Body, string? Type) : IRequest<RequestResult<bool>>;
+    public record AddNotificationCommand(int OrderId,string? Title, string? Body, string? Type,string SupplierId) : IRequest<RequestResult<bool>>;
     public class AddNotificationHandler(IRepository<Notification> repository) : IRequestHandler<AddNotificationCommand, RequestResult<bool>>
     {
         private readonly IRepository<Notification> repository = repository;
@@ -17,7 +17,7 @@ namespace ConnectChain.Features.NotificationManagement.AddNotificaitonCommand
             {
                 Title = request.Title,
                 Body = request.Body,
-                OrderId = request.OrderId,
+                SupplierId = request.SupplierId,
                 Type = request.Type,
                 IsRead = false,
             };
