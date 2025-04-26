@@ -59,7 +59,7 @@ namespace ConnectChain.Controllers
             {
                 return new FailureResponseViewModel<bool>(ErrorCode.UnAuthorized,"Unauthorized");
             }
-            var response = await _mediator.Send(new PlaceOrderCommand(customerId,viewModel.SubTotal,viewModel.Discount,viewModel.Notes, viewModel.SupplierId, [.. viewModel.Items], viewModel.FcmToken));
+            var response = await _mediator.Send(new PlaceOrderCommand(customerId,viewModel.SubTotal,viewModel.Discount,viewModel.Notes, viewModel.SupplierId, [.. viewModel.Items]));
             if (!response.isSuccess)
             {
                 return new FailureResponseViewModel<bool>(response.errorCode,response.message);

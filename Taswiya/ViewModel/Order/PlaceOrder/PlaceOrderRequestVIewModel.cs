@@ -14,7 +14,6 @@ namespace ConnectChain.ViewModel.Order.PlaceOrder
         public string? Notes { get; set; }
         public  decimal SubTotal  => Items.Select(oi=>oi.Quantity*oi.UnitPrice).Sum();
         public decimal Discount { get ; set; }
-        public string? FcmToken { get; set; }
 
     }
     public class OrderItems

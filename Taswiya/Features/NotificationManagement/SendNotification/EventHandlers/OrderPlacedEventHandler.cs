@@ -1,6 +1,8 @@
 ﻿using ConnectChain.Features.NotificationManagement.AddNotificaitonCommand;
 using ConnectChain.Features.NotificationManagement.SendNotification.Command;
 using ConnectChain.Features.OrderManagement.PlaceOrder.Events;
+using ConnectChain.Features.SupplierManagement.FcmToken.GetFcmToken.Queries;
+using ConnectChain.Models;
 using MediatR;
 using Microsoft.IdentityModel.Tokens;
 
@@ -12,11 +14,23 @@ namespace ConnectChain.Features.NotificationManagement.SendNotification.EventHan
 
         public async Task Handle(OrderPlacedEvent notification, CancellationToken cancellationToken)
         {
-            if (!notification.FcmToken.IsNullOrEmpty())
+            var  fcmTokenResult = await mediator.Send(new GetFcmTokenQuery(notification.Order.SupplierId));
+            string fcmToken = fcmTokenResult.data;
+            var notificationData = CreateNotificationData(notification.Order);
+            if (!fcmToken.IsNullOrEmpty())
             {
-                await mediator.Send(new SendNotificationCommand(notification.FcmToken, "اوردر جديد", "تم طلب اوردر جديد", "Order"));
+                await mediator.Send(new SendNotificationCommand(fcmToken,notificationData.Title, notificationData.Body, notificationData.Type), cancellationToken);
             }
-            await mediator.Send(new AddNotificationCommand(notification.OrderId, "اوردر جديد", "تم طلب اوردر جديد", "Order", notification.SupplierId));
+            await mediator.Send(new AddNotificationCommand(notificationData.Title, notificationData.Body, notificationData.Type,notification.Order.SupplierId));
+        }
+        private Notification CreateNotificationData(Order order)
+        {
+            return new Notification
+            {
+                Body = $"تم اضافة طلب جديد بتاريخ {order.CreatedDate:yy-mm-dd} , راجع الطلب من قائمة الطلبات",
+                Title = $"طلب جديد",
+                Type = "Order"
+            };
         }
     }
 }

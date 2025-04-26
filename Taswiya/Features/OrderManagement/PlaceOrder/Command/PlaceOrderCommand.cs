@@ -8,7 +8,7 @@ using MediatR;
 
 namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
 {
-    public record PlaceOrderCommand(string CustomerId,decimal SubTotal ,decimal Discount , string Notes,string SupplierId , List<OrderItems> Items,string FcmToken) 
+    public record PlaceOrderCommand(string CustomerId,decimal SubTotal ,decimal Discount , string Notes,string SupplierId , List<OrderItems> Items) 
         : IRequest<RequestResult<bool>>;
     public class PlaceOrderCommandHandler(IMediator mediator, IRepository<Order> repository) : IRequestHandler<PlaceOrderCommand, RequestResult<bool>>
     {
@@ -38,7 +38,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
                 }).ToList(),
             };
             repository.Add(order);
-            await mediator.Publish(new OrderPlacedEvent(order.ID,order.SupplierId,request.FcmToken),cancellationToken);
+            await mediator.Publish(new OrderPlacedEvent(order),cancellationToken);
             return RequestResult<bool>.Success(true ,"Order Placed Successfully");
         }
     }

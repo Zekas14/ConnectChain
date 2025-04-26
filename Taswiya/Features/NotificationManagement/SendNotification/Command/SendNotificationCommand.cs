@@ -1,29 +1,37 @@
-﻿using ConnectChain.Helpers;
-using FirebaseAdmin.Messaging;
-using MediatR;
+﻿    using ConnectChain.Helpers;
+    using FirebaseAdmin.Messaging;
+    using MediatR;
 
-namespace ConnectChain.Features.NotificationManagement.SendNotification.Command
-{
-    public record SendNotificationCommand(string DeviceToken , string Title , string Body , string Type):IRequest<RequestResult<bool>>;
-    public class SendNotificationCommandHandler () : IRequestHandler<SendNotificationCommand, RequestResult<bool>>
+    namespace ConnectChain.Features.NotificationManagement.SendNotification.Command
     {
-        public async Task<RequestResult<bool>> Handle(SendNotificationCommand request, CancellationToken cancellationToken)
+        public record SendNotificationCommand(string DeviceToken , string Title , string Body , string Type):IRequest<RequestResult<bool>>;
+        public class SendNotificationCommandHandler () : IRequestHandler<SendNotificationCommand, RequestResult<bool>>
         {
-            var message = new Message()
+            public async Task<RequestResult<bool>> Handle(SendNotificationCommand request, CancellationToken cancellationToken)
             {
-                Token =request.DeviceToken,
-                Notification = new Notification
+            try
+            {
+                var message = new Message()
                 {
-                    Title = request.Title,
-                    Body = request.Body
-                },
-                
-            };
-            string response = await FirebaseMessaging.DefaultInstance.SendAsync(message,cancellationToken);
-            Console.WriteLine("Successfully sent message: " + response);
-            return RequestResult<bool>.Success(true);
-            
+                    Token = request.DeviceToken,
+                    Notification = new Notification
+                    {
+                        Title = request.Title,
+                        Body = request.Body
+                    },
+
+                };
+                string response = await FirebaseMessaging.DefaultInstance.SendAsync(message, cancellationToken);
+                Console.WriteLine("Successfully sent message: " + response);
+                return RequestResult<bool>.Success(true, "Successfully sent message");
+
+            }
+            catch (FirebaseMessagingException ex) when (ex.MessagingErrorCode == MessagingErrorCode.Unregistered)
+            {
+                return RequestResult<bool>.Failure(ErrorCode.InvalidInput,"Invalid Token. Please refresh.");
+
+            } 
+            }
         }
     }
-}
 
