@@ -9,12 +9,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using ConnectChain.Data.Context;
-using ConnectChain.Features.SupplierManagement.GetSupplierProfile.Query;
-using ConnectChain.Features.SupplierManagement.UpdateSupplierProfile.Commands;
 using ConnectChain.ViewModel;
 using ConnectChain.Helpers;
 using ConnectChain.Filters;
 using ConnectChain.Models.Enums;
+using ConnectChain.Features.SupplierManagement.Supplier.UpdateSupplierProfile.Commands;
+using ConnectChain.Features.SupplierManagement.Supplier.GetSupplierProfile.Query;
+using ConnectChain.Features.SupplierManagement.FcmToken.UpdateFcmToken.Commands;
 
 namespace ConnectChain.Controllers
 {
@@ -79,7 +80,18 @@ namespace ConnectChain.Controllers
                 return new FailureResponseViewModel<SupplierProfileViewModel>(result.errorCode, result.message);
             }
         }
+        [HttpPut("UpdateFcmToken")]
+        public async Task<ResponseViewModel<bool>> UpdateFcmToken([FromHeader] string fcmToken)
+        {
+            var supplierId = Request.GetIdFromToken();
+            var result = await _mediator.Send(new UpdateFcmTokenCommand(supplierId,fcmToken));
+            if (!result.isSuccess)
+            {
+            }
+                return result.isSuccess ? new SuccessResponseViewModel<bool>(result.data, result.message):
+                                 new FailureResponseViewModel<bool>(result.errorCode, result.message);
 
+        }
     }
 
 }

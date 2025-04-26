@@ -18,9 +18,7 @@ namespace ConnectChain.Features.NotificationManagement.SendNotification.Command
                     Body = request.Body
                 },
                 
-                
             };
-           
             string response = await FirebaseMessaging.DefaultInstance.SendAsync(message,cancellationToken);
             Console.WriteLine("Successfully sent message: " + response);
             return RequestResult<bool>.Success(true);
