@@ -6,6 +6,7 @@ using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
 {
@@ -17,6 +18,7 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
 
         public async Task<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> Handle(GetSupplierProductsQuery request, CancellationToken cancellationToken)
         {
+            
             var products =  repository.Get(p => p.SupplierId == request.SupplierId)
                 .Include(p => p.Images)
                 .Include(p => p.Category)

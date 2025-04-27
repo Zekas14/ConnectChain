@@ -5,6 +5,7 @@ using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
 using ConnectChain.Features.ProductManagement.GetProductDetails.Queries;
 using ConnectChain.Features.ProductManagement.GetProductForUpdate;
 using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
+using ConnectChain.Features.ProductManagement.SearchProduct._ََQueries;
 using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
 using ConnectChain.Filters;
 using ConnectChain.Helpers;
@@ -15,6 +16,7 @@ using ConnectChain.ViewModel.Product.GetFilteredProducts;
 using ConnectChain.ViewModel.Product.GetProductDetails;
 using ConnectChain.ViewModel.Product.GetProductForUpdate;
 using ConnectChain.ViewModel.Product.GetSupplierProduct;
+using ConnectChain.ViewModel.Product.SearchProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,9 +31,18 @@ namespace ConnectChain.Controllers
     {
         private readonly IMediator mediator = mediator;
 
+        #region SearchForProduct
+        [HttpGet("SearchForProducts")]
+        [AllowAnonymous]
+        public async Task<ResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>> SearchForProduct(SearchProductRequestViewModel viewModel)
+        {
+            var response = await mediator.Send(new SearchProductQuery(viewModel.SupplierId, viewModel.SearchKey));
+            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
+            : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
+        }
+        #endregion
         #region GetSupplierProducts
         [HttpGet("GetSupplierProducts")]
-        [AllowAnonymous]
         public async Task<IActionResult> GetSupplierProducts(string supplierId)
         {
            /* var supplierId = Request.ExtractIdFromToken();

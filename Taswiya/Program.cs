@@ -70,6 +70,7 @@ builder.Services.AddDbContext<ConnectChainDbContext>(optionsBuilder =>
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMailServices, MailServices>();
+builder.Services.AddScoped<ICacheService, MemoryCacheService>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 builder.Services.AddAutoMapper(typeof(Profile));
 

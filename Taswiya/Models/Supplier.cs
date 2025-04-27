@@ -13,6 +13,7 @@ namespace ConnectChain.Models
         public ICollection<Product> Products { get; set; } = new List<Product>();
         public ICollection<Notification> Notifications { get; set; } = new List<Notification>();
         public ICollection<Order> Orders{ get; set; } = new List<Order>();
+        public ICollection<Rate> Rate{ get; set; } = new List<Rate>();
     }
 }
     

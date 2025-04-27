@@ -21,7 +21,10 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
         {
             var products = repository.GetAllByPage(request.PaginationParams)
                 .Where(p => p.SupplierId == request.SupplierId)
-                .Select(p => new GetSupplierProductResponseViewModel
+                   .Include(p => p.Images)
+                   .Include(p => p.Category)
+                   
+                   .Select(p => new GetSupplierProductResponseViewModel
                 {
                     Id = p.ID,
                     Name = p.Name,

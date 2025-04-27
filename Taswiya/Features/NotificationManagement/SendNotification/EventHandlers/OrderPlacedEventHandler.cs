@@ -14,16 +14,16 @@ namespace ConnectChain.Features.NotificationManagement.SendNotification.EventHan
 
         public async Task Handle(OrderPlacedEvent notification, CancellationToken cancellationToken)
         {
-            var  fcmTokenResult = await mediator.Send(new GetFcmTokenQuery(notification.Order.SupplierId));
-            string fcmToken = fcmTokenResult.data;
+            var  fcmTokenResult = await mediator.Send(new GetFcmTokenQuery(notification.Order.SupplierId),cancellationToken);
             var notificationData = CreateNotificationData(notification.Order);
+            string fcmToken = fcmTokenResult.data;
             if (!fcmToken.IsNullOrEmpty())
             {
                 await mediator.Send(new SendNotificationCommand(fcmToken,notificationData.Title, notificationData.Body, notificationData.Type), cancellationToken);
             }
             await mediator.Send(new AddNotificationCommand(notificationData.Title, notificationData.Body, notificationData.Type,notification.Order.SupplierId));
         }
-        private Notification CreateNotificationData(Order order)
+        private static Notification CreateNotificationData(Order order)
         {
             return new Notification
             {
