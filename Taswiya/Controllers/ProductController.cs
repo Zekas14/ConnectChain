@@ -1,12 +1,11 @@
-﻿using ConnectChain.Features.ProductManagement.AddProduct.Command;
-using ConnectChain.Features.ProductManagement.DeleteProduct;
-using ConnectChain.Features.ProductManagement.DeleteProduct.Command;
-using ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries;
-using ConnectChain.Features.ProductManagement.GetProductDetails.Queries;
-using ConnectChain.Features.ProductManagement.GetProductForUpdate;
-using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
-using ConnectChain.Features.ProductManagement.SearchProduct._ََQueries;
-using ConnectChain.Features.ProductManagement.UpdateProduct.Command;
+﻿using ConnectChain.Features.ProductManagement.Products.DeleteProduct;
+using ConnectChain.Features.ProductManagement.Products.DeleteProduct.Command;
+using ConnectChain.Features.ProductManagement.Products.GetFilteredProducts.Queries;
+using ConnectChain.Features.ProductManagement.Products.GetProductDetails.Queries;
+using ConnectChain.Features.ProductManagement.Products.GetProductForUpdate;
+using ConnectChain.Features.ProductManagement.Products.GetSupplierProducts.Queries;
+using ConnectChain.Features.ProductManagement.Products.UpdateProduct.Command;
+using ConnectChain.Features.ProductManagement.Products.SearchProduct.Queries;
 using ConnectChain.Filters;
 using ConnectChain.Helpers;
 using ConnectChain.Models.Enums;
@@ -20,6 +19,7 @@ using ConnectChain.ViewModel.Product.SearchProduct;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ConnectChain.Features.ProductManagement.Products.AddProduct.Commands;
 
 namespace ConnectChain.Controllers
 {

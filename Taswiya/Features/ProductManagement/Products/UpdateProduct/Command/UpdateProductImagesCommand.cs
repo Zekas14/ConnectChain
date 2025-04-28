@@ -3,7 +3,7 @@ using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
 
-namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
+namespace ConnectChain.Features.ProductManagement.Products.UpdateProduct.Command
 {
     public record UpdateProductImagesCommand(int ProductId, List<IFormFile> NewImages, string[] RemainingImages) : IRequest<RequestResult<bool>>;
     public class UpdateProductImagesCommandHandler(IRepository<Image> repository, CloudinaryService cloudinaryService) : IRequestHandler<UpdateProductImagesCommand, RequestResult<bool>>
@@ -19,7 +19,7 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             var deletedImages = repository.Get(i => i.ProductId == request.ProductId
             && !request.RemainingImages.Contains(i.Url)).ToList();
             foreach (var img in deletedImages)
-            { 
+            {
                 repository.Delete(img);
             }
 
@@ -36,7 +36,7 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
                     repository.Add(image);
                 }
             }
-    
+
             /*         List<string> urls= new();
             for (int i = 0; i < newImages.Count; i++)
             {
@@ -49,9 +49,9 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
                 };
                 repository.SaveInclude(images[i], [nameof(Image.Url)]);
             }
-   */  
+   */
             await repository.SaveChangesAsync();
-            return RequestResult<bool>.Success(true,"Images Updated Sueccessfully");
+            return RequestResult<bool>.Success(true, "Images Updated Sueccessfully");
         }
     }
 }

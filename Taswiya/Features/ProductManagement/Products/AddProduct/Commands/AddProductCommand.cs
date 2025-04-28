@@ -6,7 +6,7 @@ using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
 
-namespace ConnectChain.Features.ProductManagement.AddProduct.Command
+namespace ConnectChain.Features.ProductManagement.Products.AddProduct.Commands
 {
     public record AddProductCommand : IRequest<RequestResult<bool>>
     {
@@ -14,7 +14,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
         public string? Description { get; init; }
         public List<IFormFile>? Images { get; init; }
         public decimal Price { get; init; }
-        public int? Stock { get; init; }    
+        public int? Stock { get; init; }
         public string? SupplierId { get; init; }
         public int MinimumStock { get; init; }
         public int CategoryId { get; init; }
@@ -38,7 +38,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
                 return RequestResult<bool>.Failure(isUserExistResult.errorCode, isUserExistResult.message);
             }
             List<Image> images = new List<Image>();
-            foreach(var image in request.Images)
+            foreach (var image in request.Images)
             {
                 var uploadImageResult = await mediator.Send(new UploadImageCommand(image));
                 if (!uploadImageResult.isSuccess)
@@ -65,7 +65,7 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
             };
             repository.Add(product);
             await repository.SaveChangesAsync();
-            return RequestResult<bool>.Success(true,"Product Added Successfully");
+            return RequestResult<bool>.Success(true, "Product Added Successfully");
         }
     }
 }

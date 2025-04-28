@@ -4,6 +4,7 @@ using ConnectChain.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConnectChain.Migrations
 {
     [DbContext(typeof(ConnectChainDbContext))]
-    partial class ConnectChainDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250428010001_Product Variant & Attributes Model")]
+    partial class ProductVariantAttributesModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -432,42 +435,6 @@ namespace ConnectChain.Migrations
                     b.ToTable("Rate");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Review", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CustomerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Rate")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Reviews");
-                });
-
             modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
                 {
                     b.Property<string>("SupplierID")
@@ -828,25 +795,6 @@ namespace ConnectChain.Migrations
                     b.Navigation("Supplier");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.Review", b =>
-                {
-                    b.HasOne("ConnectChain.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ConnectChain.Models.Product", "Product")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
                 {
                     b.HasOne("ConnectChain.Models.PaymentMethod", "PaymentMethod")
@@ -963,8 +911,6 @@ namespace ConnectChain.Migrations
                     b.Navigation("ProductAttributes");
 
                     b.Navigation("ProductVariants");
-
-                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Customer", b =>

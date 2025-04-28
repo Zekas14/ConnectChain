@@ -6,10 +6,10 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
+namespace ConnectChain.Features.ProductManagement.Products.GetSupplierProducts.Queries
 {
-    public record GetSupplierProductsByPageQuery(string SupplierId , PaginationHelper PaginationParams)
-        : IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> ;
+    public record GetSupplierProductsByPageQuery(string SupplierId, PaginationHelper PaginationParams)
+        : IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>;
 
     public class GetSupplierProductsByPageQueryHandler(IRepository<Product> repository)
 
@@ -23,16 +23,16 @@ namespace ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries
                 .Where(p => p.SupplierId == request.SupplierId)
                    .Include(p => p.Images)
                    .Include(p => p.Category)
-                   
+
                    .Select(p => new GetSupplierProductResponseViewModel
-                {
-                    Id = p.ID,
-                    Name = p.Name,
-                    Stock = p.Stock,
-                    Price = p.Price,
-                    Image = p.Images.Where(i=>!i.Deleted).Select(x => x.Url).FirstOrDefault(),
-                    CategoryName = p.Category!.Name
-                });
+                   {
+                       Id = p.ID,
+                       Name = p.Name,
+                       Stock = p.Stock,
+                       Price = p.Price,
+                       Image = p.Images.Where(i => !i.Deleted).Select(x => x.Url).FirstOrDefault(),
+                       CategoryName = p.Category!.Name
+                   });
             if (!products.IsNullOrEmpty())
             {
                 return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Success(products.ToList());

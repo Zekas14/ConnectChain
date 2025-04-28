@@ -6,7 +6,7 @@ using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
 
-namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
+namespace ConnectChain.Features.ProductManagement.Products.UpdateProduct.Command
 {
     public record UpdateProductCommand : IRequest<RequestResult<bool>>
     {
@@ -36,17 +36,17 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             {
                 return RequestResult<bool>.Failure(categoryExistResult.errorCode, categoryExistResult.message);
             }
-            
-            var result = await mediator.Send(new UploadProductImagesCommand(request.Images ?? [],request.ProductId), cancellationToken);
+
+            var result = await mediator.Send(new UploadProductImagesCommand(request.Images ?? [], request.ProductId), cancellationToken);
             if (!result.isSuccess)
             {
                 return RequestResult<bool>.Failure(result.errorCode, result.message);
             }
             var product = new Product()
             {
-                ID =request.ProductId ,
+                ID = request.ProductId,
                 Name = request.Name,
-                MinimumStock=request.MinimumStock,
+                MinimumStock = request.MinimumStock,
                 Description = request.Description,
                 Price = request.Price,
                 Stock = request.Stock,
@@ -59,10 +59,10 @@ namespace ConnectChain.Features.ProductManagement.UpdateProduct.Command
             productExistResult.data.Price = request.Price;
             productExistResult.data.Stock = request.Stock;
             productExistResult.data.CategoryId = request.CategoryId;*/
-            string[] properties = { nameof(product.Name), nameof(product.Description), nameof(product.Price), nameof(product.Stock), nameof(product.MinimumStock),nameof(product.CategoryId) };
-            repository.SaveInclude(product,properties);
+            string[] properties = { nameof(product.Name), nameof(product.Description), nameof(product.Price), nameof(product.Stock), nameof(product.MinimumStock), nameof(product.CategoryId) };
+            repository.SaveInclude(product, properties);
             await repository.SaveChangesAsync();
             return RequestResult<bool>.Success(true, "Product Updated Successfully");
         }
-    }   
+    }
 }

@@ -5,7 +5,7 @@ using ConnectChain.ViewModel.Product.GetProductDetails;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConnectChain.Features.ProductManagement.GetProductDetails.Queries
+namespace ConnectChain.Features.ProductManagement.Products.GetProductDetails.Queries
 {
     public record GetProductDetailsQuery(int Id) : IRequest<RequestResult<GetProductDetailsResponseViewModel>>;
     public class GetProductDetailsHandler : IRequestHandler<GetProductDetailsQuery, RequestResult<GetProductDetailsResponseViewModel>>
@@ -16,9 +16,9 @@ namespace ConnectChain.Features.ProductManagement.GetProductDetails.Queries
 
         public async Task<RequestResult<GetProductDetailsResponseViewModel>> Handle(GetProductDetailsQuery request, CancellationToken cancellationToken)
         {
-            var product =  _repository.GetByIDWithIncludes(request.Id, p => p
+            var product = _repository.GetByIDWithIncludes(request.Id, p => p
             .Include(p => p.Images)
-            .Include(p=>p.Category));
+            .Include(p => p.Category));
 
             if (product == null)
             {
@@ -33,7 +33,7 @@ namespace ConnectChain.Features.ProductManagement.GetProductDetails.Queries
                 Price = product.Price,
                 Stock = product.Stock,
                 MinimumStock = product.MinimumStock,
-                ImageUrls = product.Images.Where(i=>!i.Deleted).Select(i => i.Url).ToList(),
+                ImageUrls = product.Images.Where(i => !i.Deleted).Select(i => i.Url).ToList(),
                 CategoryName = product.Category.Name,
                 UpdatedDate = product.UpdatedDate
             };

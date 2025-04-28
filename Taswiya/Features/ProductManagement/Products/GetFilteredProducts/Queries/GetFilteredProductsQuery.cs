@@ -8,18 +8,19 @@ using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq.Expressions;
 
-namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
+namespace ConnectChain.Features.ProductManagement.Products.GetFilteredProducts.Queries
 {
-    public record GetFilteredProductsQuery(Dictionary<string, object> Filters) 
+    public record GetFilteredProductsQuery(Dictionary<string, object> Filters)
         : IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>;
 
-    public class GetFilteredProdcutsQueryHandler(IRepository<Product> repository):
-        IRequestHandler<GetFilteredProductsQuery, RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>    {
+    public class GetFilteredProdcutsQueryHandler(IRepository<Product> repository) :
+        IRequestHandler<GetFilteredProductsQuery, RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>
+    {
         private readonly IRepository<Product> _repository = repository;
 
         public async Task<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
         {
-            
+
             var products = _repository.GetAll();
             var parameter = Expression.Parameter(typeof(Product), "t");
             Expression expression = Expression.Constant(true);
@@ -40,7 +41,7 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
                     return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Success(data.ToList());
                 }
                 return RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>.Failure(ErrorCode.NotFound, "No Products found ");
-            }   
+            }
             foreach (var filter in request.Filters)
             {
                 var property = Expression.Property(parameter, filter.Key);
@@ -70,5 +71,5 @@ namespace ConnectChain.Features.ProductManagement.GetFilteredProducts.Queries
 
         }
     }
-    }
+}
 

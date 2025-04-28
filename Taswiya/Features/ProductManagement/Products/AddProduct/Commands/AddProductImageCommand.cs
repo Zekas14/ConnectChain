@@ -4,7 +4,7 @@ using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
 
-namespace ConnectChain.Features.ProductManagement.AddProduct.Command
+namespace ConnectChain.Features.ProductManagement.Products.AddProduct.Commands
 {
     public record AddProductImageCommand(IFormFile Image, int ProductId) : IRequest<RequestResult<bool>>;
     public class AddProductImageCommandHandler(IRepository<Image> repository, IMediator mediator, CloudinaryService cloudinaryService) : IRequestHandler<AddProductImageCommand, RequestResult<bool>>
@@ -35,5 +35,5 @@ namespace ConnectChain.Features.ProductManagement.AddProduct.Command
             return RequestResult<bool>.Failure(ErrorCode.InternalServerError, "Failed to upload image");
         }
     }
-    
+
 }

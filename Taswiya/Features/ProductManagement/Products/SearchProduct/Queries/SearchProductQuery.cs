@@ -1,9 +1,9 @@
-﻿using ConnectChain.Features.ProductManagement.GetSupplierProducts.Queries;
+﻿using ConnectChain.Features.ProductManagement.Products.GetSupplierProducts.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.ViewModel.Product.GetSupplierProduct;
 using MediatR;
 
-namespace ConnectChain.Features.ProductManagement.SearchProduct._ََQueries
+namespace ConnectChain.Features.ProductManagement.Products.SearchProduct.Queries
 {
     public record SearchProductQuery (string SupplierId, string SearchKey) :IRequest<RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>;
     public class SearchProductQueryHandler(IMediator mediator) : IRequestHandler<SearchProductQuery, RequestResult<IReadOnlyList<GetSupplierProductResponseViewModel>>>
