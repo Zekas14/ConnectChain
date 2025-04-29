@@ -1,4 +1,5 @@
-﻿using ConnectChain.Features.ProductManagement.ProductVariants.AddProductVariant.Commands;
+﻿using ConnectChain.Features.ProductManagement.ProductVariant.DeleteProductVariant.Commands;
+using ConnectChain.Features.ProductManagement.ProductVariants.AddProductVariant.Commands;
 using ConnectChain.Features.ProductManagement.ProductVariants.Common.Queries;
 using ConnectChain.Filters;
 using ConnectChain.Models.Enums;
@@ -13,14 +14,9 @@ namespace ConnectChain.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorization(Role.Supplier)]
-    public class ProductVariantController : ControllerBase
+    public class ProductVariantController(IMediator mediator) : ControllerBase
     {
-        private readonly IMediator _mediator;
-
-        public ProductVariantController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+        private readonly IMediator _mediator = mediator;
 
         [HttpPost("AddProductVariant")]
         public async Task<ResponseViewModel<bool>> AddProductVariant(AddProductVariantRequestViewModel viewModel)
@@ -33,6 +29,14 @@ namespace ConnectChain.Controllers
                 Stock = viewModel.Stock,
                 ProductId = viewModel.ProductId
             });
+            return result.isSuccess
+                ? new SuccessResponseViewModel<bool>(result.data, result.message)
+                : new FailureResponseViewModel<bool>(result.errorCode, result.message);
+        }
+        [HttpDelete("DeleteProductVariant/{id}")]
+        public async Task<ResponseViewModel<bool>> DeleteProductVariant(int id)
+        {
+            var result = await _mediator.Send(new DeleteProductVariantCommand(id));
             return result.isSuccess
                 ? new SuccessResponseViewModel<bool>(result.data, result.message)
                 : new FailureResponseViewModel<bool>(result.errorCode, result.message);

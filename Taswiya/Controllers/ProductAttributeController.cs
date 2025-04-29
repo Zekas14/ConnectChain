@@ -1,4 +1,5 @@
 ﻿using ConnectChain.Features.ProductManagement.ProductAttributes.AddProductAttribute.Commands;
+using ConnectChain.Features.ProductManagement.ProductAttributes.DeleteProductAttribute.Commands;
 using ConnectChain.Features.ProductManagement.ProductAttributes.GetProductAttributes.Queries;
 using ConnectChain.Filters;
 using ConnectChain.Models.Enums;
@@ -27,6 +28,14 @@ namespace ConnectChain.Controllers
                 Value = viewModel.Value,
                 ProductId = viewModel.ProductId
             });
+            return result.isSuccess
+                ? new SuccessResponseViewModel<bool>(result.data, result.message)
+                : new FailureResponseViewModel<bool>(result.errorCode, result.message);
+        }
+        [HttpDelete("DeleteProductAttribute/{id}")]
+        public async Task<ResponseViewModel<bool>> DeleteProductAttribute(int id)
+        {
+            var result = await _mediator.Send(new DeleteProductAttributeCommand(id));
             return result.isSuccess
                 ? new SuccessResponseViewModel<bool>(result.data, result.message)
                 : new FailureResponseViewModel<bool>(result.errorCode, result.message);

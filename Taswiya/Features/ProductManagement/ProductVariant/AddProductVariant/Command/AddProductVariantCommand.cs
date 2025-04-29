@@ -17,11 +17,11 @@ namespace ConnectChain.Features.ProductManagement.ProductVariants.AddProductVari
 
     public class AddProductVariantCommandHandler : IRequestHandler<AddProductVariantCommand, RequestResult<bool>>
     {
-        private readonly IRepository<ProductVariant> _variantRepository;
+        private readonly IRepository<Models.ProductVariant> _variantRepository;
         private readonly IMediator _mediator;
 
         public AddProductVariantCommandHandler(
-            IRepository<ProductVariant> variantRepository,
+            IRepository<Models.ProductVariant> variantRepository,
             IMediator mediator)
         {
             _variantRepository = variantRepository;
@@ -30,15 +30,13 @@ namespace ConnectChain.Features.ProductManagement.ProductVariants.AddProductVari
 
         public async Task<RequestResult<bool>> Handle(AddProductVariantCommand request, CancellationToken cancellationToken)
         {
-            // Validate if the product exists
             var productExistResult = await _mediator.Send(new IsProductExistQuery(request.ProductId), cancellationToken);
             if (!productExistResult.isSuccess)
             {
                 return RequestResult<bool>.Failure(productExistResult.errorCode, productExistResult.message);
             }
 
-            // Create new product variant
-            var productVariant = new ProductVariant
+            var productVariant = new Models.ProductVariant
             {
                 Name = request.Name,
                 Type = request.Type,
@@ -47,7 +45,6 @@ namespace ConnectChain.Features.ProductManagement.ProductVariants.AddProductVari
                 ProductId = request.ProductId
             };
 
-            // Add to repository and save
             _variantRepository.Add(productVariant);
             await _variantRepository.SaveChangesAsync();
 
