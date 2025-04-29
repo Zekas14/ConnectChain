@@ -28,6 +28,7 @@ namespace ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries
                 return RequestResult<IReadOnlyList<GetSupplierOrdersResponseViewModel>>.Failure(isSupplierFoundResult.errorCode,  "Supplier Not Found");
             }
             var orders = repository.Get(o=>o.SupplierId == request.SupplierId)
+
                 .Include(o => o.OrderItems)
                 .Include(o => o.Customer)
                 .Select(o => new GetSupplierOrdersResponseViewModel

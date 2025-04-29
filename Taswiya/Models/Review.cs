@@ -5,6 +5,7 @@ namespace ConnectChain.Models
     [Table("Reviews")]
     public class Review : BaseModel
     {
+        public string Body { get; set; }
         public int Rate { get; set; }
         [ForeignKey("Product")]
         public int ProductId { get; set; }

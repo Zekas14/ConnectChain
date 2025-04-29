@@ -20,6 +20,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ConnectChain.Features.ProductManagement.Products.AddProduct.Commands;
+using ConnectChain.ViewModel.Product.CustomerGetProductDetails;
+using ConnectChain.Features.ProductManagement.Products.GetCustomerProductDetails.Queries;
 
 namespace ConnectChain.Controllers
 {
@@ -30,17 +32,29 @@ namespace ConnectChain.Controllers
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
+        #region CustomerGetProductDetails
+        [HttpGet("CustomerGetProductDetails")]
+        [AllowAnonymous]
+
+        public async Task<ResponseViewModel<CustomerProductDetailsResponseViewModel>> CustomerGetProductDetails(int productId)
+        {
+            var response = await mediator.Send(new CustomerGetProductDetailsQuery(productId));
+            return response.isSuccess ? new SuccessResponseViewModel<CustomerProductDetailsResponseViewModel>(response.data, response.message) :
+                new FailureResponseViewModel<CustomerProductDetailsResponseViewModel>(response.errorCode,response.message);
+        }
+        #endregion
 
         #region SearchForProduct
         [HttpGet("SearchForProducts")]
         [AllowAnonymous]
-        public async Task<ResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>> SearchForProduct(SearchProductRequestViewModel viewModel)
+        public async Task<ResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>> SearchForProduct([FromQuery]SearchProductRequestViewModel viewModel)
         {
             var response = await mediator.Send(new SearchProductQuery(viewModel.SupplierId, viewModel.SearchKey));
             return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
             : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
         }
         #endregion
+
         #region GetSupplierProducts
         [HttpGet("GetSupplierProducts")]
         public async Task<IActionResult> GetSupplierProducts(string supplierId)

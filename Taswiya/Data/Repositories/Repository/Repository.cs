@@ -9,8 +9,8 @@ namespace ConnectChain.Data.Repositories.Repository
 {
     public class Repository<Entity> : IRepository<Entity> where Entity : BaseModel
     {
-        ConnectChainDbContext _context;
-        DbSet<Entity> _dbSet;
+        private readonly ConnectChainDbContext _context;
+        private readonly DbSet<Entity> _dbSet;
 
         public Repository(ConnectChainDbContext context)
         {
