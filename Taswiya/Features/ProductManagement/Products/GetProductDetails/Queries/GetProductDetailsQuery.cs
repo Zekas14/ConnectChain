@@ -19,7 +19,6 @@ namespace ConnectChain.Features.ProductManagement.Products.GetProductDetails.Que
             var product = _repository.GetByIDWithIncludes(request.Id, p => p
             .Include(p => p.Images)
             .Include(p => p.Category));
-
             if (product == null)
             {
                 return RequestResult<GetProductDetailsResponseViewModel>.Failure(ErrorCode.NotFound, "Product not found");

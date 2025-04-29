@@ -6,6 +6,8 @@ namespace ConnectChain.Data.Repositories.Repository
 {
     public interface IRepository<Entity>
     {
+        IQueryable<Entity> Table { get; }                  
+        IQueryable<Entity> TableWithDeleted { get; }       
         void Add(Entity entity);
         Task AddAsync(Entity entity);
         void SaveInclude(Entity entity, params string[] properties);

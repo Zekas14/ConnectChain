@@ -17,7 +17,8 @@ namespace ConnectChain.Data.Repositories.Repository
             _context = context;
             _dbSet = context.Set<Entity>();
         }
-
+        public IQueryable<Entity> Table => _dbSet.Where(x => !x.Deleted);
+        public IQueryable<Entity> TableWithDeleted => _dbSet;
         public void Add(Entity entity)
         {
             entity.CreatedDate = DateTime.Now;
