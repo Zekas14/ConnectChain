@@ -29,8 +29,6 @@ namespace ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries
             }
             var orders = repository.Get(o=>o.SupplierId == request.SupplierId)
 
-                .Include(o => o.OrderItems)
-                .Include(o => o.Customer)
                 .Select(o => new GetSupplierOrdersResponseViewModel
                 {
                     Id = o.ID,
@@ -49,24 +47,7 @@ namespace ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries
                 }
 
             }
-            else
-            
-
-                /*                var orders = repository.GetByPage(o => o.SupplierId == request.SupplierId,request.Pagination)
-                                .Include(o => o.OrderItems)
-                                .Include(o => o.Customer)
-                                .Select(o => new GetSupplierOrdersResponseViewModel
-                                {
-                                    Id = o.ID,
-                                    CustomerName = o.Customer.UserName,
-                                    OrderDate = o.CreatedDate.ToString("yyyy-MM-dd"),
-                                    TotalAmount = o.TotalAmount,
-                                    OrderStatus = o.Status.ToString(),
-                                    Products = o.OrderItems.Select(oi => oi.Product.Name).ToList(),
-                                });
-                */
-
-                if (orders.IsNullOrEmpty())
+            if (orders.IsNullOrEmpty())
             {
                 return RequestResult< IReadOnlyList<GetSupplierOrdersResponseViewModel>>.Failure(ErrorCode.NotFound,"No Orders yet");
             }
