@@ -40,9 +40,9 @@ namespace ConnectChain.Features.OrderManagement.GetOrderDetails.Queries
                     ProductName = oi.Product.Name!,
                     Quantity = oi.Quantity,
                     ImageUrl = oi.Product.Images.Select(i => i.Url).ToList() ?? [],
-                    UnitPrice = oi.UnitPrice,
+                    UnitPrice = oi.Product.Price,
                 }).ToList(),
-                SubTotal = order.OrderItems.Select(oi => oi.UnitPrice).Sum(),
+                SubTotal = order.OrderItems.Select(oi => oi.Quantity*oi.Product.Price).Sum(),
             };
             
             return RequestResult<GetOrderDetailsResponseViewModel>.Success(data,"Success");

@@ -6,6 +6,7 @@ namespace ConnectChain.Models
     {
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public string SupplierId { get; set; }
+        public Guid OrderNumber { get; set; }   
         public Supplier Supplier { get; set; }
         public string CustomerId { get; set; }
         public Customer Customer { get; set; }

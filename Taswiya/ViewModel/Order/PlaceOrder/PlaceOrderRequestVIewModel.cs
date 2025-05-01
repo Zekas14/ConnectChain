@@ -6,8 +6,6 @@ namespace ConnectChain.ViewModel.Order.PlaceOrder
     public class PlaceOrderRequestVeiwModel
     {
         [Required]
-        public string? SupplierId { get; set; }
-        [Required]
         public string? PaymentMethod { get; set; }
         [MinLength(1)]
         public ICollection<OrderItems> Items { get; set; } = new List<OrderItems>();
