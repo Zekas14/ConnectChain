@@ -104,7 +104,7 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.UpdateSupplierProfil
                     }
                 }
             }
-
+            _dbContext.Suppliers.Update(supplier);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return RequestResult<bool>.Success(true, "User profile updated successfully.");

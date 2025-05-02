@@ -46,6 +46,7 @@
 	  <Content Include="Templates\**\*.*">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
+	  <Folder Include="Features\ProductManagement\Reviews\GetReviewsByProduct\" />
   </ItemGroup>
 
 </Project>

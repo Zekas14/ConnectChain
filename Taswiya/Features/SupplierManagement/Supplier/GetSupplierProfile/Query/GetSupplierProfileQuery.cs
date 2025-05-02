@@ -35,7 +35,7 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.GetSupplierProfile.Q
 
             SupplierProfileViewModel data = new SupplierProfileViewModel
             {
-
+                Name = supplier.Name,
                 PhoneNumber = supplier.PhoneNumber,
                 Address = supplier.Address,
                 Email = supplier.Email,

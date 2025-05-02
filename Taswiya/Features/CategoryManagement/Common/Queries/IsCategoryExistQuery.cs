@@ -5,10 +5,10 @@ using MediatR;
 
 namespace ConnectChain.Features.CategoryManagement.Common.Queries
 {
-    public record IsCategoryExistQuery<entity>(int CategoryId) : IRequest<RequestResult<bool>> where entity :BaseModel;
-    public class IsCategoryExistQueryHandler<entity>(IRepository<entity> repository) : IRequestHandler<IsCategoryExistQuery<entity>, RequestResult<bool>>
+    public record IsCategoryExistQuery(int CategoryId) : IRequest<RequestResult<bool>> ;
+    public class IsCategoryExistQueryHandler(IRepository<Category> repository) : IRequestHandler<IsCategoryExistQuery, RequestResult<bool>>
     {
-        private readonly IRepository<entity> repository = repository;
+        private readonly IRepository<Category> repository = repository;
 
 
 
