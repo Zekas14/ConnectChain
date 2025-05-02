@@ -20,6 +20,7 @@ namespace ConnectChain.Features.NotificationManagement.GetNotification.Queries
                 Body = n.Body,
                 Type= n.Type,
                 IsRead = n.IsRead,
+                Date= n.CreatedDate.Date.ToString(),
                 Title= n.Title,
             });
             if (notifications.IsNullOrEmpty())

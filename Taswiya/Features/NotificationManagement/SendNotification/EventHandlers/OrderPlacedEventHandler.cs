@@ -27,7 +27,7 @@ namespace ConnectChain.Features.NotificationManagement.SendNotification.EventHan
         {
             return new Notification
             {
-                Body = $"تم اضافة طلب جديد بتاريخ {order.CreatedDate:yy-mm-dd} , راجع الطلب من قائمة الطلبات",
+                Body = $"تم اضافة طلب جديد بتاريخ {order.CreatedDate.Date.ToString()} , راجع الطلب من قائمة الطلبات",
                 Title = $"طلب جديد",
                 Type = "Order"
             };
