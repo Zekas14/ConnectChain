@@ -1,5 +1,6 @@
 ﻿using Azure;
 using ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command;
+using ConnectChain.Features.CartManagement.Cart.Commands.ClearCart;
 using ConnectChain.Features.CartManagement.Cart.Commands.RemoveFromCart;
 using ConnectChain.Features.CartManagement.Cart.Commands.UpdateCartItem;
 using ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query;
@@ -22,7 +23,7 @@ namespace ConnectChain.Controllers
     public class CartController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
-        [HttpGet]
+        [HttpGet("GetCartItems")]
         public async Task<ResponseViewModel<GetCartItemsResponseViewModel>> GetCart()
         {
             string? customerId = Request.GetIdFromToken();
@@ -49,7 +50,16 @@ namespace ConnectChain.Controllers
             new FailureResponseViewModel<bool>(response.errorCode, response.message);
 
         }
-        [HttpPut("RemoveFromCart")]
+        [HttpDelete("ClearCart")]
+        public async Task<ResponseViewModel<bool>> ClearCart()
+        {
+            string? customerId = Request.GetIdFromToken();
+            var response = await mediator.Send(new ClearCartCommand(customerId!));
+            return response.isSuccess ? new SuccessResponseViewModel<bool>(true, response.message) :
+            new FailureResponseViewModel<bool>(response.errorCode, response.message);
+
+        }
+        [HttpPut("UpdateCartItem")]
         public async Task<ResponseViewModel<bool>> RemoveFromCart(UpdateCartRequestViewModel viewModel)
         {
             string? customerId = Request.GetIdFromToken();
