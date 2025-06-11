@@ -46,7 +46,6 @@
 	  <Content Include="Templates\**\*.*">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
-	  <Folder Include="Features\CartManagement\Cart\Commands\RemoveFromCart\" />
 	  <Folder Include="Features\ProductManagement\Reviews\GetReviewsByProduct\" />
   </ItemGroup>
 
