@@ -17,7 +17,7 @@ namespace ConnectChain.Models
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
-      
+        public ICollection<CartItem> CartItems { get; set; }
         public ICollection<Image> Images { get; set; } = new List<Image>();
         public ICollection<ProductVariant> ProductVariants { get; set; }= new List<ProductVariant>();
         public ICollection<ProductAttribute> ProductAttributes { get; set; }= new List<ProductAttribute>();

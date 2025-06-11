@@ -23,26 +23,25 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.GetSupplierProfile.Q
         public async Task<RequestResult<SupplierProfileViewModel>> Handle(GetSupplierProfileQuery request, CancellationToken cancellationToken)
         {
             var supplier = await _dbContext.Suppliers
-                .Include(s => s.ActivityCategory)
-                .Include(s => s.PaymentMethods)
+                .Where(s=>s.Id== request.SupplierId)
+                .Select(supplier=>new SupplierProfileViewModel 
+                {
+                    Name = supplier.Name,
+                    PhoneNumber = supplier.PhoneNumber,
+                    Address = supplier.Address,
+                    Email = supplier.Email,
+                 //   ActivityCategory = supplier.ActivityCategory,
+                    PaymentMethods = supplier.PaymentMethods.ToList()
 
-                .FirstOrDefaultAsync(s => s.Id == request.SupplierId, cancellationToken);
+                }).FirstOrDefaultAsync(cancellationToken);
 
             if (supplier == null)
             {
                 return RequestResult<SupplierProfileViewModel>.Failure(ErrorCode.NotFound, "Supplier not found.");
             }
 
-            SupplierProfileViewModel data = new SupplierProfileViewModel
-            {
-                Name = supplier.Name,
-                PhoneNumber = supplier.PhoneNumber,
-                Address = supplier.Address,
-                Email = supplier.Email,
-                ActivityCategory = supplier.ActivityCategory,
-                PaymentMethods = supplier.PaymentMethods.ToList()
-            };
-            return RequestResult<SupplierProfileViewModel>.Success(data, "Supplier profile retrieved successfully.");
+            
+            return RequestResult<SupplierProfileViewModel>.Success(supplier, "Supplier profile retrieved successfully.");
         }
     }
 }

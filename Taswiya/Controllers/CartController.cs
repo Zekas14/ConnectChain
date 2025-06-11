@@ -1,0 +1,40 @@
+﻿using ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command;
+using ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query;
+using ConnectChain.Filters;
+using ConnectChain.Helpers;
+using ConnectChain.Models.Enums;
+using ConnectChain.ViewModel;
+using ConnectChain.ViewModel.Cart.AddToCart;
+using ConnectChain.ViewModel.Cart.GetCartItems;
+using ConnectChain.ViewModel.Category.GetCategory;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ConnectChain.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorization(Role.Customer)]
+    public class CartController(IMediator mediator) : ControllerBase
+    {
+        private readonly IMediator mediator = mediator;
+        [HttpGet]
+        public async Task<ResponseViewModel<GetCartItemsResponseViewModel>> GetCart()
+        {
+            string? customerId = Request.GetIdFromToken();
+            var result = await mediator.Send(new GetCartQuery(customerId!));
+            return result.isSuccess ?
+                new SuccessResponseViewModel<GetCartItemsResponseViewModel>(result.data,result.message):
+                new FailureResponseViewModel<GetCartItemsResponseViewModel>(result.errorCode,result.message);
+                ;
+        }
+        [HttpPost("AddItemToCart")]
+        public async Task<ResponseViewModel<bool>> AddToCart(AddToCartRequestViewModel viewModel,CancellationToken cancellationToken)
+        {
+            string? customerId = Request.GetIdFromToken();
+           var response = await mediator.Send(new AddToCartCommand(customerId!,viewModel.ProductId,viewModel.Quantity),cancellationToken);
+            return response.isSuccess ? new SuccessResponseViewModel<bool>(true,response.message):
+                new  FailureResponseViewModel<bool>(response.errorCode,response.message);
+        }
+    }
+}

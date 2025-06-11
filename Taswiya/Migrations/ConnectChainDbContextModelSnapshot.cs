@@ -53,6 +53,76 @@ namespace ConnectChain.Migrations
                     b.ToTable("ActivityCategories", (string)null);
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.Cart", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique()
+                        .HasFilter("[CustomerId] IS NOT NULL");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.CartItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItem");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Category", b =>
                 {
                     b.Property<int>("ID")
@@ -721,6 +791,34 @@ namespace ConnectChain.Migrations
                     b.ToTable("Suppliers");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.Cart", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Customer", "Customer")
+                        .WithOne("Cart")
+                        .HasForeignKey("ConnectChain.Models.Cart", "CustomerId");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.CartItem", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Cart", "Cart")
+                        .WithMany("Items")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConnectChain.Models.Product", "Product")
+                        .WithMany("CartItems")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Image", b =>
                 {
                     b.HasOne("ConnectChain.Models.Product", "Product")
@@ -950,6 +1048,11 @@ namespace ConnectChain.Migrations
                     b.Navigation("Suppliers");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.Cart", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Order", b =>
                 {
                     b.Navigation("OrderItems");
@@ -962,6 +1065,8 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
                 {
+                    b.Navigation("CartItems");
+
                     b.Navigation("Images");
 
                     b.Navigation("ProductAttributes");
@@ -973,6 +1078,9 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Customer", b =>
                 {
+                    b.Navigation("Cart")
+                        .IsRequired();
+
                     b.Navigation("Orders");
 
                     b.Navigation("Products");

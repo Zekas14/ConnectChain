@@ -33,7 +33,6 @@ namespace ConnectChain.Helpers
             var request = new HttpRequestMessage(HttpMethod.Post, "https://fcm.googleapis.com/fcm/send");
             request.Headers.Authorization = new AuthenticationHeaderValue("key", "=" + serverKey);
             request.Content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
-
             var response = await httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
         }
