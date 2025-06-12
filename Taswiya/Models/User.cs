@@ -9,5 +9,7 @@ namespace ConnectChain.Models
         public string? Address { get; set; }
         public string? ImageUrl { get; set; }
         public string? FcmToken { get;set; }   
+        public IEnumerable<UserPaymentMethod> UserPaymentMethods { get; set; } = [];
+        public ICollection<UserShippingAddress> UserShippingAddresses { get; } = [];
     }
 }

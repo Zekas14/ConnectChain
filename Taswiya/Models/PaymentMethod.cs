@@ -6,7 +6,6 @@ namespace ConnectChain.Models
     {
         
         public string Name { get; set; } = string.Empty;
-        public IEnumerable<SupplierPaymentMethod> SupplierPaymentMethods { get; set; } = new List<SupplierPaymentMethod>();
-        public IEnumerable<Supplier> Suppliers { get; set; } = new List<Supplier>();
+        public IEnumerable<UserPaymentMethod> UserPaymentMethods { get; set; } = [];
     }
 }

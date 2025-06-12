@@ -336,10 +336,15 @@ namespace ConnectChain.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("SupplierId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("PaymentMethods", (string)null);
                 });
@@ -542,21 +547,6 @@ namespace ConnectChain.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
-                {
-                    b.Property<string>("SupplierID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("PaymentMethodID")
-                        .HasColumnType("int");
-
-                    b.HasKey("SupplierID", "PaymentMethodID");
-
-                    b.HasIndex("PaymentMethodID");
-
-                    b.ToTable("SupplierPaymentMethods", (string)null);
-                });
-
             modelBuilder.Entity("ConnectChain.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -637,6 +627,87 @@ namespace ConnectChain.Migrations
                     b.ToTable("Users", (string)null);
 
                     b.UseTptMappingStrategy();
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.UserPaymentMethod", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PaymentMethodID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("PaymentMethodID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("UserPaymentMethod");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.UserShippingAddress", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Apartment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Region")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserShippingAddress");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -875,6 +946,13 @@ namespace ConnectChain.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.PaymentMethod", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Supplier", null)
+                        .WithMany("PaymentMethods")
+                        .HasForeignKey("SupplierId");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
                 {
                     b.HasOne("ConnectChain.Models.Category", "Category")
@@ -949,23 +1027,34 @@ namespace ConnectChain.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("ConnectChain.Models.SupplierPaymentMethod", b =>
+            modelBuilder.Entity("ConnectChain.Models.UserPaymentMethod", b =>
                 {
                     b.HasOne("ConnectChain.Models.PaymentMethod", "PaymentMethod")
-                        .WithMany("SupplierPaymentMethods")
+                        .WithMany("UserPaymentMethods")
                         .HasForeignKey("PaymentMethodID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
-                        .WithMany("SupplierPaymentMethods")
-                        .HasForeignKey("SupplierID")
+                    b.HasOne("ConnectChain.Models.User", "Supplier")
+                        .WithMany("UserPaymentMethods")
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("PaymentMethod");
 
                     b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.UserShippingAddress", b =>
+                {
+                    b.HasOne("ConnectChain.Models.User", "User")
+                        .WithMany("UserShippingAddresses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1060,7 +1149,7 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.PaymentMethod", b =>
                 {
-                    b.Navigation("SupplierPaymentMethods");
+                    b.Navigation("UserPaymentMethods");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Product", b =>
@@ -1074,6 +1163,13 @@ namespace ConnectChain.Migrations
                     b.Navigation("ProductVariants");
 
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.User", b =>
+                {
+                    b.Navigation("UserPaymentMethods");
+
+                    b.Navigation("UserShippingAddresses");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Customer", b =>
@@ -1092,11 +1188,11 @@ namespace ConnectChain.Migrations
 
                     b.Navigation("Orders");
 
+                    b.Navigation("PaymentMethods");
+
                     b.Navigation("Products");
 
                     b.Navigation("Rate");
-
-                    b.Navigation("SupplierPaymentMethods");
                 });
 #pragma warning restore 612, 618
         }

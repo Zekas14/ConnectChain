@@ -1,6 +1,8 @@
 ﻿using Azure;
 using ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command;
 using ConnectChain.Features.CartManagement.Cart.Commands.ClearCart;
+using ConnectChain.Features.CartManagement.Cart.Commands.DecrementCartItem;
+using ConnectChain.Features.CartManagement.Cart.Commands.IncrementCartItem;
 using ConnectChain.Features.CartManagement.Cart.Commands.RemoveFromCart;
 using ConnectChain.Features.CartManagement.Cart.Commands.UpdateCartItem;
 using ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query;
@@ -64,6 +66,23 @@ namespace ConnectChain.Controllers
         {
             string? customerId = Request.GetIdFromToken();
             var response = await mediator.Send(new UpdateCartItemCommand(customerId!,viewModel.ItemId,viewModel.Quantity));
+            return response.isSuccess ? new SuccessResponseViewModel<bool>(true, response.message) :
+            new FailureResponseViewModel<bool>(response.errorCode, response.message);
+
+        }   
+        [HttpPut("IncrementCartItem")]
+        public async Task<ResponseViewModel<bool>> IncrementCartItem(int itemId)
+        {
+            string? customerId = Request.GetIdFromToken();
+            var response = await mediator.Send(new IncrementCartItemCommand(customerId!,itemId));
+            return response.isSuccess ? new SuccessResponseViewModel<bool>(true, response.message) :
+            new FailureResponseViewModel<bool>(response.errorCode, response.message);
+
+        }[HttpPut("DecrementCartItem")]
+        public async Task<ResponseViewModel<bool>> DecrementCartItem(int itemId)
+        {
+            string? customerId = Request.GetIdFromToken();
+            var response = await mediator.Send(new DecrementCartItemCommand(customerId!,itemId));
             return response.isSuccess ? new SuccessResponseViewModel<bool>(true, response.message) :
             new FailureResponseViewModel<bool>(response.errorCode, response.message);
 

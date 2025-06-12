@@ -28,7 +28,7 @@ namespace ConnectChain.Config.FluentApi
             builder.Property(pm => pm.UpdatedDate);
 
             // Many-to-Many relationship with Supplier through SupplierPaymentMethod
-            builder.HasMany(pm => pm.Suppliers)
+           /* builder.HasMany(pm => pm.U)
                    .WithMany(s => s.PaymentMethods)
                    .UsingEntity<SupplierPaymentMethod>(
                           join => join
@@ -43,7 +43,7 @@ namespace ConnectChain.Config.FluentApi
                        {
                            join.HasKey(spm => new { spm.SupplierID, spm.PaymentMethodID });
                            join.ToTable("SupplierPaymentMethods");
-                       });
+                       });*/
         }
     }
 
