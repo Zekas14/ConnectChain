@@ -1,10 +1,12 @@
-﻿using ConnectChain.Features.OrderManagement.GetOrderDetails.Queries;
+﻿using ConnectChain.Features.OrderManagement.GetCheckOutSummary.Query;
+using ConnectChain.Features.OrderManagement.GetOrderDetails.Queries;
 using ConnectChain.Features.OrderManagement.GetSupplierOrders.Queries;
 using ConnectChain.Features.OrderManagement.PlaceOrder.Command;
 using ConnectChain.Filters;
 using ConnectChain.Helpers;
 using ConnectChain.Models.Enums;
 using ConnectChain.ViewModel;
+using ConnectChain.ViewModel.Order.GetCheckOutSummary;
 using ConnectChain.ViewModel.Order.GetOrderDetails;
 using ConnectChain.ViewModel.Order.GetSupplierOrder;
 using ConnectChain.ViewModel.Order.PlaceOrder;
@@ -52,14 +54,14 @@ namespace ConnectChain.Controllers
 
         [HttpPost("PlaceOrder")]
         [Authorization(roles: Role.Customer)]
-        public async Task<ResponseViewModel<bool>> PlaceOrder(PlaceOrderRequestVeiwModel viewModel)
+        public async Task<ResponseViewModel<bool>> PlaceOrder(PlaceOrderRequestViewModel viewModel)
         {
             string? customerId = Request.GetIdFromToken();
             if (customerId == null)
             {
                 return new FailureResponseViewModel<bool>(ErrorCode.UnAuthorized,"Unauthorized");
             }
-            var response = await _mediator.Send(new PlaceOrderCommand(customerId,viewModel.SubTotal,viewModel.Discount,viewModel.Notes??"", [.. viewModel.Items]));
+            var response = await _mediator.Send(new PlaceOrderCommand(customerId,viewModel.Discount,viewModel.Notes??""));
             if (!response.isSuccess)
             {
                 return new FailureResponseViewModel<bool>(response.errorCode,response.message);
@@ -72,7 +74,21 @@ namespace ConnectChain.Controllers
         #endregion
 
         #region GetCheckOutSummary 
-        
+        [HttpGet("GetCheckOutSummary")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<CheckoutSummaryResponseViewModel>> GetCheckOutSummary()
+        {
+            var customerId = Request.GetIdFromToken();
+            if (customerId == null)
+            {
+                return new FailureResponseViewModel<CheckoutSummaryResponseViewModel>(ErrorCode.UnAuthorized, "Unauthorized");
+            }
+            var response = await _mediator.Send(new GetCheckoutSummaryQuery(customerId));
+            return response.isSuccess ?
+                  new SuccessResponseViewModel<CheckoutSummaryResponseViewModel>(response.data, response.message) :
+                  new FailureResponseViewModel<CheckoutSummaryResponseViewModel>(response.errorCode,response.message);
+
+        }
         #endregion
     }
 }

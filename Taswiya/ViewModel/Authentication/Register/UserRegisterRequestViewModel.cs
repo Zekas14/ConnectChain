@@ -18,8 +18,6 @@ namespace ConnectChain.ViewModel.Authentication
         [EmailAddress]
         
         public string? Email { get; set; }
-        [JsonIgnore]
-        public string? FcmToken { get; set; } = string.Empty;
         [Required]
         [DataType(DataType.Password)]
         public string? Password { get; set; }

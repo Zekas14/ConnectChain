@@ -27,9 +27,8 @@ namespace ConnectChain.Controllers
     {
         private readonly IMediator _mediator = mediator;
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromHeader] string fcmToken,UserRegisterRequestViewModel viewModel)
+        public async Task<IActionResult> Register(UserRegisterRequestViewModel viewModel)
         {
-            viewModel.FcmToken = fcmToken;
             
             var result = await _mediator.Send(new UserRegisterCommand(viewModel,Request.GenerateCallBackUrl));
             if (result.isSuccess)

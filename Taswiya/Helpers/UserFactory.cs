@@ -22,7 +22,6 @@ namespace ConnectChain.Helpers
                     PhoneNumber = viewModel.PhoneNumber,
                     Address = viewModel.Address,
                     BusinessType = viewModel.BusinessType,
-                    FcmToken = viewModel.FcmToken,
                 },
                 Role.Customer => new Customer
                 {
@@ -32,7 +31,6 @@ namespace ConnectChain.Helpers
                     PhoneNumber = viewModel.PhoneNumber,
                     Address = viewModel.Address,
                     BusinessType = viewModel.BusinessType,
-                    FcmToken = viewModel.FcmToken,
                 },
                 _ => throw new ArgumentOutOfRangeException(nameof(viewModel.Role), "Unsupported Role")
             };
