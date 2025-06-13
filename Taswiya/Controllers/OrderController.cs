@@ -70,5 +70,9 @@ namespace ConnectChain.Controllers
         }
 
         #endregion
+
+        #region GetCheckOutSummary 
+        
+        #endregion
     }
 }
