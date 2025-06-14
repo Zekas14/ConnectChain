@@ -1,4 +1,5 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.CartManagement.CartItem.Commands.AddCartItem;
 using ConnectChain.Features.ProductManagement.Common.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -25,15 +26,14 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command
             if (request.Quantity <= 0)
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Quantity must be greater than 0.");
 
-            var productExists = await _mediator.Send(new IsProductExistQuery(request.ProductId));
+            var productExists = await _mediator.Send(new IsProductExistQuery(request.ProductId), cancellationToken);
             if (!productExists.isSuccess)
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Product Not Found");
 
             var cacheKey = $"cart:{request.CustomerId}";
-            if (!_cache.TryGetValue(cacheKey, out Models.Cart existingCart))
-            {
-                existingCart = _repository.Get(c => c.CustomerId == request.CustomerId)
+            var existingCart = _repository.Get(c => c.CustomerId == request.CustomerId)
                     .Include(c => c.Items)
+                    .AsTracking()
                     .FirstOrDefault();
 
                 if (existingCart == null)
@@ -41,31 +41,30 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command
                     existingCart = new Models.Cart
                     {
                         CustomerId = request.CustomerId,
-                        Items = new List<CartItem>()
+                        Items = new List<Models.CartItem>()
                     };
                     _repository.Add(existingCart);
                 }
-
-                _cache.Set(cacheKey, existingCart, TimeSpan.FromMinutes(10));
-            }
+                _cache.Remove(cacheKey);
 
             if (request.Quantity > productExists.data.Stock)
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Requested quantity exceeds stock.");
 
-            var existingItem = existingCart.Items.FirstOrDefault(i => i.ProductId == request.ProductId);
+            var existingItem = existingCart!.Items.FirstOrDefault(i => i.ProductId == request.ProductId);
             if (existingItem != null)
             {
                 existingItem.Quantity += request.Quantity;
             }
             else
             {
-                existingCart.Items.Add(new CartItem
+                existingCart.Items.Add(new Models.CartItem
                 {
                     ProductId = request.ProductId,
-                    Quantity = request.Quantity
+                    Quantity = request.Quantity,
+                    UnitPrice = productExists.data.Price*request.Quantity
                 });
-            }
 
+            }
             await _repository.SaveChangesAsync();
 
             _cache.Set(cacheKey, existingCart, TimeSpan.FromMinutes(10));

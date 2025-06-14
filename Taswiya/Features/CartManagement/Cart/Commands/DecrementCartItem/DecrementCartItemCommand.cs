@@ -15,8 +15,9 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.DecrementCartItem
         public async Task<RequestResult<bool>> Handle(DecrementCartItemCommand request, CancellationToken cancellationToken)
         {
             var cart = await _repository.Get(
-                c => c.CustomerId == request.CustomerId
-            ).Include(c=>c.Items)
+                c => c.CustomerId == request.CustomerId)
+                .Include(c => c.Items)
+            .AsTracking()
             .FirstOrDefaultAsync(cancellationToken);
 
             if (cart == null)

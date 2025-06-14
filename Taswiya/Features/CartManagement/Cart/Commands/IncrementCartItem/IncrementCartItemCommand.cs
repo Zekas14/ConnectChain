@@ -19,18 +19,19 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.IncrementCartItem
             var cart = await _repository.Get(
                 c => c.CustomerId == request.CustomerId)
                 .Include(c=>c.Items)
+                .AsTracking()
                 .FirstOrDefaultAsync(cancellationToken);
 
             if (cart == null)
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Cart not found.");
+            var product = await _mediator.Send(new IsProductExistQuery(request.ProductId), cancellationToken);
+            if (!product.isSuccess)
+                return RequestResult<bool>.Failure(ErrorCode.NotFound, "Product not found.");
+
 
             var item = cart.Items.FirstOrDefault(i => i.ProductId == request.ProductId);
             if (item == null)
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Product not in cart.");
-
-            var product = await _mediator.Send(new IsProductExistQuery(request.ProductId), cancellationToken);
-            if (!product.isSuccess)
-                return RequestResult<bool>.Failure(ErrorCode.NotFound, "Product not found.");
 
             if (item.Quantity + 1 > product.data.Stock)
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "No more stock available.");

@@ -17,6 +17,7 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.ClearCart
         {
             var cart = repository.Get(c => c.CustomerId == request.CustomerId)
                 .Include(c => c.Items)
+                .AsTracking()
                 .FirstOrDefault();
 
             if (cart == null)

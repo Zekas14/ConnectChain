@@ -12,7 +12,7 @@ namespace ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query
     public class GetCartQueryHandler(IRepository<Models.Cart> cartRepo, IMemoryCache memoryCache)
         : IRequestHandler<GetCartQuery, RequestResult<GetCartItemsResponseViewModel>>
     {
-        private readonly IRepository<Models.Cart> _cartRepo = cartRepo;
+        private readonly IRepository<Models.Cart> cartRepo = cartRepo;
         private readonly IMemoryCache memoryCache = memoryCache;
 
         public async Task<RequestResult<GetCartItemsResponseViewModel>> Handle(GetCartQuery request, CancellationToken cancellationToken)
@@ -21,7 +21,7 @@ namespace ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query
 
             if (memoryCache.TryGetValue(cacheKey, out GetCartItemsResponseViewModel? cachedCart))
             {
-                return RequestResult<GetCartItemsResponseViewModel>.Success(cachedCart, "Cart retrieved from cache.");
+                return RequestResult<GetCartItemsResponseViewModel>.Success(cachedCart!, "Cart retrieved from cache.");
             }
 
             var cart = await cartRepo.Get(c => c.CustomerId == request.CustomerId)
