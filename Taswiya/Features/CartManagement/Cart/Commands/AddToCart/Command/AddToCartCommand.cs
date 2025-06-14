@@ -1,8 +1,6 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
-using ConnectChain.Features.CartManagement.CartItem.Commands.AddCartItem;
 using ConnectChain.Features.ProductManagement.Common.Queries;
 using ConnectChain.Helpers;
-using ConnectChain.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
