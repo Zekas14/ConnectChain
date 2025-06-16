@@ -134,6 +134,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.9.0, )"
+            },
+            "microsoft.ML": {
+              "target": "Package",
+              "version": "[4.0.2, )"
             }
           },
           "imports": [
