@@ -3,5 +3,5 @@ using MediatR;
 
 namespace ConnectChain.Features.OrderManagement.PlaceOrder.Events
 {
-    public record OrderPlacedEvent(Order Order): INotification;
+    public record OrderPlacedEvent(Order Order,List<Product> Products): INotification;
 }

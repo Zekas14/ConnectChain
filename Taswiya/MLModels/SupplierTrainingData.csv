@@ -1,0 +1,6 @@
+BusinessType,Address,Rating,ProductType,Fits
+Medical,Cairo,4.5,Pharmaceuticals,1
+Medical,Giza,3.0,Pharmaceuticals,0
+Fashion,Giza,4.3,Clothing,1
+Electronics,Cairo,2.5,Mobiles,0
+Medical,Cairo,4.8,Pharmaceuticals,1

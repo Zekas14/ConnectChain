@@ -19,7 +19,7 @@ namespace ConnectChain.Features.NotificationManagement.SendNotification.EventHan
             string fcmToken = fcmTokenResult.data;
             if (!fcmToken.IsNullOrEmpty())
             {
-                await mediator.Send(new SendNotificationCommand(fcmToken,notificationData.Title, notificationData.Body, notificationData.Type), cancellationToken);
+                    await mediator.Send(new SendNotificationCommand(fcmToken,notificationData.Title, notificationData.Body, notificationData.Type), cancellationToken);
             }
             await mediator.Send(new AddNotificationCommand(notificationData.Title, notificationData.Body, notificationData.Type,notification.Order.SupplierId));
         }

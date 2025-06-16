@@ -476,6 +476,52 @@ namespace ConnectChain.Migrations
                     b.ToTable("ProductVariant");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.RFQ", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ShareBusinessCard")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("RFQ");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Rate", b =>
                 {
                     b.Property<int>("ID")
@@ -545,6 +591,37 @@ namespace ConnectChain.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.RfqAttachment", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FileUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RfqId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("RfqId");
+
+                    b.ToTable("RfqAttachment");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.User", b =>
@@ -997,6 +1074,17 @@ namespace ConnectChain.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.RFQ", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Customer", "Customer")
+                        .WithMany("RFQs")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.Rate", b =>
                 {
                     b.HasOne("ConnectChain.Models.Supplier", "Supplier")
@@ -1025,6 +1113,17 @@ namespace ConnectChain.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ConnectChain.Models.RfqAttachment", b =>
+                {
+                    b.HasOne("ConnectChain.Models.RFQ", "RFQ")
+                        .WithMany("Attachments")
+                        .HasForeignKey("RfqId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RFQ");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.UserPaymentMethod", b =>
@@ -1165,6 +1264,11 @@ namespace ConnectChain.Migrations
                     b.Navigation("Reviews");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.RFQ", b =>
+                {
+                    b.Navigation("Attachments");
+                });
+
             modelBuilder.Entity("ConnectChain.Models.User", b =>
                 {
                     b.Navigation("UserPaymentMethods");
@@ -1180,6 +1284,8 @@ namespace ConnectChain.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Products");
+
+                    b.Navigation("RFQs");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>

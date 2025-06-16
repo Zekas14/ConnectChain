@@ -32,6 +32,15 @@ namespace ConnectChain.Helpers
                     Address = viewModel.Address,
                     BusinessType = viewModel.BusinessType,
                 },
+                Role.Admin => new Admin
+                {
+                    Name = viewModel.Name,
+                    Email = viewModel.Email,
+                    UserName = viewModel.Email,
+                    PhoneNumber = viewModel.PhoneNumber,
+                    Address = viewModel.Address,
+                    BusinessType = viewModel.BusinessType,
+                },
                 _ => throw new ArgumentOutOfRangeException(nameof(viewModel.Role), "Unsupported Role")
             };
         }
