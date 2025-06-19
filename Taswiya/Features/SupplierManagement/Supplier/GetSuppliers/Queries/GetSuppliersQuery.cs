@@ -56,6 +56,7 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.GetSuppliers.Queries
                 Id = s.Id,
                 Name = s.Name,
                 BusinessType = s.BusinessType,
+                ImageUrl = s.ImageUrl,
                 Rating = s.Rating,
             }).ToList();
             if (result.IsNullOrEmpty())
