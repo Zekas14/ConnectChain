@@ -1,3 +1,4 @@
+using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -16,22 +17,20 @@ namespace ConnectChain.Features.CustomerManagement.UpdateCustomerProfile.Command
         public string? ImageUrl { get; set; }
     }
 
-    public class UpdateCustomerProfileCommandHandler(IRepository<Customer> repository) 
+    public class UpdateCustomerProfileCommandHandler(ConnectChainDbContext context) 
         : IRequestHandler<UpdateCustomerProfileCommand, RequestResult<bool>>
     {
-        private readonly IRepository<Customer> _repository = repository;
+        private readonly ConnectChainDbContext context = context;
 
         public async Task<RequestResult<bool>> Handle(UpdateCustomerProfileCommand request, CancellationToken cancellationToken)
         {
-            var customer = await _repository.Get(c => c.Id == request.CustomerId)
-                .FirstOrDefaultAsync(cancellationToken);
+            var customer = await context.Set<Customer>().AsTracking().FirstOrDefaultAsync(c => c.Id == request.CustomerId, cancellationToken);
 
             if (customer == null)
             {
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Customer not found.");
             }
 
-            // Update only the fields that are provided (not null or empty)
             if (!string.IsNullOrWhiteSpace(request.Name))
                 customer.Name = request.Name;
 
@@ -47,8 +46,8 @@ namespace ConnectChain.Features.CustomerManagement.UpdateCustomerProfile.Command
             if (!string.IsNullOrWhiteSpace(request.ImageUrl))
                 customer.ImageUrl = request.ImageUrl;
 
-            _repository.Update(customer);
-            await _repository.SaveChangesAsync();
+            context.Update(customer);
+            await context.SaveChangesAsync();
 
             return RequestResult<bool>.Success(true, "Customer profile updated successfully.");
         }
