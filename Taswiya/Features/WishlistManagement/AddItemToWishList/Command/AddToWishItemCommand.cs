@@ -1,7 +1,9 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.ProductManagement.Common.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConnectChain.Features.WishlistManagement.AddItemToWishList.Command
 {
@@ -13,6 +15,13 @@ namespace ConnectChain.Features.WishlistManagement.AddItemToWishList.Command
 
         public async Task<RequestResult<bool>> Handle(AddToWishItemCommand request, CancellationToken cancellationToken)
         {
+            
+            var existingWishItem = await _repository.Get(w => w.ProductId == request.ProductId && w.CustomerId == request.CustomerId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            if (existingWishItem != null)
+                return RequestResult<bool>.Failure(ErrorCode.BadRequest, "Product is already in wishlist.");
+
             var wishItem = new WishlistItem
             {
                 ProductId = request.ProductId,
