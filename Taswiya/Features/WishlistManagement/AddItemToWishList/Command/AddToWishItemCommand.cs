@@ -15,7 +15,10 @@ namespace ConnectChain.Features.WishlistManagement.AddItemToWishList.Command
 
         public async Task<RequestResult<bool>> Handle(AddToWishItemCommand request, CancellationToken cancellationToken)
         {
-            
+            var productExists = await _mediator.Send(new IsProductExistQuery(request.ProductId), cancellationToken);
+            if (!productExists.isSuccess)
+                return RequestResult<bool>.Failure(ErrorCode.NotFound, "Product not found.");
+
             var existingWishItem = await _repository.Get(w => w.ProductId == request.ProductId && w.CustomerId == request.CustomerId)
                 .FirstOrDefaultAsync(cancellationToken);
 
