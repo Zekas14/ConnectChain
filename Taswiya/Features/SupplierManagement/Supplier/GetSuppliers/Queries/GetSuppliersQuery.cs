@@ -29,6 +29,7 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.GetSuppliers.Queries
                 .Include(s => s.Products)
                 .ThenInclude(p => p.Category)
                 .Include(s => s.Rate)
+                .Where(s=>s.BusinessType==customer.BusinessType)
                 .Select(s=>new
                 {
                     s.Id,

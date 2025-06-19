@@ -17,20 +17,14 @@ namespace ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query
 
         public async Task<RequestResult<GetCartItemsResponseViewModel>> Handle(GetCartQuery request, CancellationToken cancellationToken)
         {
-            string cacheKey = $"cart:{request.CustomerId}";
-
-            if (memoryCache.TryGetValue(cacheKey, out GetCartItemsResponseViewModel? cachedCart))
-            {
-                return RequestResult<GetCartItemsResponseViewModel>.Success(cachedCart!, "Cart retrieved from cache.");
-            }
-
-            var cart = await cartRepo.Get(c => c.CustomerId == request.CustomerId)
+          
+              var cart = await cartRepo.Get(c => c.CustomerId == request.CustomerId)
                 .Include(c => c.Items)
                 .ThenInclude(c => c.Product)
                 .ThenInclude(p => p.Images)
                 .Select(c => new GetCartItemsResponseViewModel
                 {
-                    Total = c.Items.Select(i => i.UnitPrice * i.Quantity).Sum(),
+                    Total = c.Items.Select(i => i.UnitPrice).Sum(),
                     Items = c.Items.Select(i => new CartItemViewModel
                     {
                         ProductId = i.ProductId,
@@ -45,8 +39,6 @@ namespace ConnectChain.Features.CartManagement.Cart.Queries.GetCart.Query
 
             if (cart == null)
                 return RequestResult<GetCartItemsResponseViewModel>.Failure(ErrorCode.NotFound, "No cart found for this customer");
-
-            memoryCache.Set(cacheKey, cart, TimeSpan.FromMinutes(30));
 
             return RequestResult<GetCartItemsResponseViewModel>.Success(cart, "Cart retrieved successfully.");
         }

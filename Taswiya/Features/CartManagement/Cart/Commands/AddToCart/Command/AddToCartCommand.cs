@@ -16,7 +16,7 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command
     : IRequestHandler<AddToCartCommand, RequestResult<bool>>
     {
         private readonly IRepository<Models.Cart> _repository = repository;
-        private readonly IMediator _mediator = mediator;
+        private readonly IMediator _mediator = mediator;    
         private readonly IMemoryCache _cache = cache;
 
         public async Task<RequestResult<bool>> Handle(AddToCartCommand request, CancellationToken cancellationToken)
@@ -28,7 +28,6 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command
             if (!productExists.isSuccess)
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Product Not Found");
 
-            var cacheKey = $"cart:{request.CustomerId}";
             var existingCart = _repository.Get(c => c.CustomerId == request.CustomerId)
                     .Include(c => c.Items)
                     .AsTracking()
@@ -43,7 +42,6 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command
                     };
                     _repository.Add(existingCart);
                 }
-                _cache.Remove(cacheKey);
 
             if (request.Quantity > productExists.data.Stock)
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Requested quantity exceeds stock.");
@@ -65,7 +63,6 @@ namespace ConnectChain.Features.CartManagement.Cart.Commands.AddToCart.Command
             }
             await _repository.SaveChangesAsync();
 
-            _cache.Set(cacheKey, existingCart, TimeSpan.FromMinutes(10));
 
             return RequestResult<bool>.Success(true, "Product added to cart.");
         }
