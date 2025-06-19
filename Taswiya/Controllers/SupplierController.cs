@@ -2,6 +2,7 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Models;
 using ConnectChain.ViewModel.Supplier;
+using ConnectChain.ViewModel.Supplier.FindSuppliers;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -16,6 +17,7 @@ using ConnectChain.Models.Enums;
 using ConnectChain.Features.SupplierManagement.Supplier.UpdateSupplierProfile.Commands;
 using ConnectChain.Features.SupplierManagement.Supplier.GetSupplierProfile.Query;
 using ConnectChain.Features.SupplierManagement.FcmToken.UpdateFcmToken.Commands;
+using ConnectChain.Features.SupplierManagement.FindSuppliers.Queries;
 using ConnectChain.Features.SupplierManagement.Supplier.GetSuppliers.Queries;
 using ConnectChain.ViewModel.Supplier.GetSuppliers;
 
@@ -109,6 +111,54 @@ namespace ConnectChain.Controllers
             }
             return new FailureResponseViewModel<IReadOnlyList<GetSuppliersResponseViewModel>>(response.errorCode,response.message);
         }
-    }
 
+        [HttpGet("SearchByName")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>> SearchByName([FromQuery] string searchName )
+        {
+            var result = await _mediator.Send(new SearchSuppliersByNameQuery(searchName));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("GetByBusinessType")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>> GetByBusinessType([FromQuery] string businessType)
+        {
+            var result = await _mediator.Send(new GetSuppliersByBusinessTypeQuery(businessType));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("FilterByRating")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>> FilterByRating(
+            [FromQuery] double minRating = 0.0,
+            [FromQuery] double maxRating = 5.0,
+            [FromQuery] string? businessType = null)
+        {
+            var result = await _mediator.Send(new FilterSuppliersByRatingQuery(minRating, maxRating, businessType));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("Search")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>> Search(
+            [FromQuery] string? searchName = null,
+            [FromQuery] string? businessType = null,
+            [FromQuery] double? minRating = null,
+            [FromQuery] double? maxRating = null
+           )
+        {
+            var result = await _mediator.Send(new SearchSuppliersQuery(searchName, businessType, minRating, maxRating));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.errorCode, result.message);
+        }
+
+    }
 }
