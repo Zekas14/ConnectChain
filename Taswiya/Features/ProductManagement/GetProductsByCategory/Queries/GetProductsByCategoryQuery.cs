@@ -1,4 +1,5 @@
 using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.CategoryManagement.Common.Queries;
 using ConnectChain.Features.WishlistManagement.GetWishlistProducts.Queries;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -7,24 +8,26 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries
+namespace ConnectChain.Features.ProductManagement.GetProductsByCategory.Queries
 {
-    public record GetProductsByBusinessTypeQuery(string BusinessType, string? CustomerId = null) 
+    public record GetProductsByCategoryQuery(int CategoryId, string? CustomerId = null) 
         : IRequest<RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>>;
     
-    public class GetProductsByBusinessTypeQueryHandler(IRepository<Product> repository, IMediator mediator) 
-        : IRequestHandler<GetProductsByBusinessTypeQuery, RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>>
+    public class GetProductsByCategoryQueryHandler(IRepository<Product> repository, IMediator mediator) 
+        : IRequestHandler<GetProductsByCategoryQuery, RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>>
     {
         private readonly IRepository<Product> _repository = repository;
         private readonly IMediator _mediator = mediator;
 
-        public async Task<RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>> Handle(GetProductsByBusinessTypeQuery request, CancellationToken cancellationToken)
+        public async Task<RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>> Handle(GetProductsByCategoryQuery request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(request.BusinessType))
+            var isCategoryExist = await _mediator.Send(new IsCategoryExistQuery(request.CategoryId));
+            if(!isCategoryExist.isSuccess)
             {
-                return RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>.Failure(ErrorCode.BadRequest, "Business type cannot be empty.");
+                return RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>.Failure(isCategoryExist.errorCode,isCategoryExist.message);
             }
 
+            // Get customer's wishlist using the existing wishlist query if customer ID is provided
             var customerWishlistProductIds = new List<int>();
             if (!string.IsNullOrWhiteSpace(request.CustomerId))
             {
@@ -34,10 +37,10 @@ namespace ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries
                     : new List<int>();
             }
 
+            // Get products by category using repository
             var query = _repository.Get(p => !p.Deleted && 
-                                            p.Supplier != null && 
-                                            p.Supplier.BusinessType != null &&
-                                            p.Supplier.BusinessType.Equals(request.BusinessType, StringComparison.OrdinalIgnoreCase))
+                                            p.CategoryId == request.CategoryId &&
+                                            p.Supplier != null)
                 .Include(p => p.Supplier)
                     .ThenInclude(s => s.Rate)
                 .Include(p => p.Category)
@@ -63,12 +66,11 @@ namespace ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries
                 .ThenByDescending(p => p.CreatedDate);
 
             
-
             var products = await query.ToListAsync(cancellationToken);
 
             if (products.IsNullOrEmpty())
             {
-                return RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>.Failure(ErrorCode.NotFound, $"No products found from suppliers with business type '{request.BusinessType}'.");
+                return RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>.Failure(ErrorCode.NotFound, $"No products found in category with ID {request.CategoryId}.");
             }
 
             return RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>.Success(products, "Products retrieved successfully.");

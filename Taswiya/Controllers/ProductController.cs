@@ -23,6 +23,7 @@ using ConnectChain.Features.ProductManagement.Products.AddProduct.Commands;
 using ConnectChain.ViewModel.Product.CustomerGetProductDetails;
 using ConnectChain.Features.ProductManagement.Products.GetCustomerProductDetails.Queries;
 using ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries;
+using ConnectChain.Features.ProductManagement.GetProductsByCategory.Queries;
 using ConnectChain.ViewModel.Product.GetCustomerProducts;
 
 namespace ConnectChain.Controllers
@@ -225,11 +226,11 @@ namespace ConnectChain.Controllers
         [Authorization(Role.Customer)]
 
         public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetByBusinessType(
-            [FromQuery] string businessType,
-            [FromQuery] PaginationHelper? paginationParams = null)
+            [FromQuery] string businessType
+          )
         {
             string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
-            var result = await mediator.Send(new GetProductsByBusinessTypeQuery(businessType, customerId, paginationParams));
+            var result = await mediator.Send(new GetProductsByBusinessTypeQuery(businessType, customerId));
             return result.isSuccess
                 ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
                 : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
@@ -272,6 +273,36 @@ namespace ConnectChain.Controllers
 
             var result = await mediator.Send(new GetFilteredProductsForCustomerQuery(
                 customerId, null, true, null, null, null, minSupplierRating, onlyInStock));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("GetProductsByCategory")]
+        public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetProductsByCategory(
+            [FromQuery] int categoryId,
+            [FromQuery] PaginationHelper? paginationParams = null)
+        {
+            string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
+            var result = await mediator.Send(new GetProductsByCategoryQuery(categoryId, customerId, paginationParams));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("GetFilteredProductsByCategory")]
+        public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetFilteredProductsByCategory(
+            [FromQuery] int categoryId,
+            [FromQuery] string? businessType = null,
+            [FromQuery] decimal? minPrice = null,
+            [FromQuery] decimal? maxPrice = null,
+            [FromQuery] double? minSupplierRating = null,
+            [FromQuery] bool onlyInStock = false,
+            [FromQuery] PaginationHelper? paginationParams = null)
+        {
+            string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
+            var result = await mediator.Send(new GetFilteredProductsByCategoryQuery(
+                categoryId, customerId, businessType, minPrice, maxPrice, minSupplierRating, onlyInStock, paginationParams));
             return result.isSuccess
                 ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
                 : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
