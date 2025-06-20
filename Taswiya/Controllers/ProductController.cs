@@ -22,13 +22,14 @@ using Microsoft.AspNetCore.Mvc;
 using ConnectChain.Features.ProductManagement.Products.AddProduct.Commands;
 using ConnectChain.ViewModel.Product.CustomerGetProductDetails;
 using ConnectChain.Features.ProductManagement.Products.GetCustomerProductDetails.Queries;
+using ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries;
+using ConnectChain.ViewModel.Product.GetCustomerProducts;
 
 namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     // [Authorize]
-    [Authorization(Role.Supplier)]
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
@@ -44,19 +45,10 @@ namespace ConnectChain.Controllers
         }
         #endregion
 
-        #region SearchForProduct
-        [HttpGet("SearchForProducts")]
-        [AllowAnonymous]
-        public async Task<ResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>> SearchForProduct([FromQuery]SearchProductRequestViewModel viewModel)
-        {
-            var response = await mediator.Send(new SearchProductQuery(viewModel.SupplierId, viewModel.SearchKey));
-            return response.isSuccess ? new SuccessResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.data)
-            : new FailureResponseViewModel<IReadOnlyList<GetSupplierProductResponseViewModel>>(response.errorCode, response.message);
-        }
-        #endregion
-
+   
         #region GetSupplierProducts
         [HttpGet("GetSupplierProducts")]
+
         public async Task<IActionResult> GetSupplierProducts(string supplierId)
         {
            /* var supplierId = Request.ExtractIdFromToken();
@@ -72,6 +64,7 @@ namespace ConnectChain.Controllers
 
         #region GetSupplierProductsByPage
         [HttpGet("GetSupplierProductsByPage")]
+        [Authorization(Role.Supplier)]
         public async Task<IActionResult> 
         GetSupplierProductsByPage([FromQuery] PaginationHelper paginationParams)
         {
@@ -84,7 +77,7 @@ namespace ConnectChain.Controllers
 
         #region GetFilteredProducts 
         [HttpGet("GetFilteredProducts")]
-        
+        [Authorization(Role.Supplier)]
         public async Task<IActionResult> GetFilteredProducts(GetFilteredProductsRequestViewModel viewModel)
         {
             var response = await mediator.Send(new GetFilteredProductsQuery(viewModel.Filters));
@@ -95,6 +88,8 @@ namespace ConnectChain.Controllers
 
         #region Get Product Details
         [HttpGet("GetProductDetails")]
+        [Authorization(Role.Supplier)]
+
         public async Task<IActionResult> GetProductDetails([FromQuery] int productId)
         {
             var response = await mediator.Send(new GetProductDetailsQuery(productId));
@@ -106,6 +101,7 @@ namespace ConnectChain.Controllers
 
         #region Add Product
         [HttpPost("AddProduct")]
+        [Authorization(Role.Supplier)]
         public async Task<IActionResult> AddProduct([FromForm]AddProductRequestViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -135,6 +131,7 @@ namespace ConnectChain.Controllers
         #region Delete Product
 
         [HttpDelete("DeleteProduct/{productId:int}")]
+        [Authorization(Role.Supplier)]
         public async Task<IActionResult> DeleteProduct(int productId)
         {
             var response = await mediator.Send(new DeleteProductCommand(productId));
@@ -145,6 +142,8 @@ namespace ConnectChain.Controllers
 
         #region Update Product
         [HttpPut("UpdateProduct")]
+        [Authorization(Role.Supplier)]
+
         public async Task<IActionResult> UpdateProduct(int productId,[FromForm] UpdateProductRequestViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -170,6 +169,8 @@ namespace ConnectChain.Controllers
 
         #region Add Product Image
         [HttpPost("AddProductImage")]
+        [Authorization(Role.Supplier)]
+
         public async Task<IActionResult> AddProductImage( [FromForm ]AddProductImageRequestViewModel viewModel)
         {
             var response = await mediator.Send(new AddProductImageCommand(viewModel.Image, viewModel.ProductId));
@@ -180,6 +181,8 @@ namespace ConnectChain.Controllers
 
         #region Get Product For Update
         [HttpGet("GetProductForUpdate")]
+        [Authorization(Role.Supplier)]
+
         public async Task<IActionResult> GetProductForUpdate([FromQuery]int productId)
         {
             var response = await mediator.Send(new GetProductForUpdateQuery(productId));
@@ -190,11 +193,88 @@ namespace ConnectChain.Controllers
 
         #region Delete Product Image
         [HttpDelete("DeleteProductImage")]
+        [Authorization(Role.Supplier)]
+
         public async Task<IActionResult> DeleteProductImage(int id)
         {
             var response = await mediator.Send(new DeleteProdcutImageCommand(id));
             return response.isSuccess ? new SuccessResponseViewModel<bool>(response.data,response.message)
                 : new FailureResponseViewModel<bool>(response.errorCode, response.message);
+        }
+        #endregion
+
+        #region Customer Products 
+        [HttpGet("GetMatchedProducts")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetMatchedProducts(
+           )
+        {
+            string? customerId = Request.GetIdFromToken();
+            if (customerId == null)
+            {
+                return new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(ErrorCode.UnAuthorized, "Unauthorized");
+            }
+
+            var result = await mediator.Send(new GetProductsForCustomerQuery(customerId));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("GetByBusinessType")]
+        [Authorization(Role.Customer)]
+
+        public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetByBusinessType(
+            [FromQuery] string businessType,
+            [FromQuery] PaginationHelper? paginationParams = null)
+        {
+            string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
+            var result = await mediator.Send(new GetProductsByBusinessTypeQuery(businessType, customerId, paginationParams));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("Search")]
+        [Authorization(Role.Customer)]
+
+        public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> Search(
+            [FromQuery] string? businessType = null,
+            [FromQuery] bool matchCustomerBusinessType = false,
+            [FromQuery] int? categoryId = null,
+            [FromQuery] decimal? minPrice = null,
+            [FromQuery] decimal? maxPrice = null,
+            [FromQuery] double? minSupplierRating = null,
+            [FromQuery] bool onlyInStock = false
+           )
+        {
+            string? customerId = Request.GetIdFromToken();
+            var result = await mediator.Send(new GetFilteredProductsForCustomerQuery(
+                customerId, businessType, matchCustomerBusinessType, categoryId,
+                minPrice, maxPrice, minSupplierRating, onlyInStock));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
+        }
+
+        [HttpGet("GetRecommendedForCustomer")]
+        [Authorization(Role.Customer)]
+        public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetRecommendedForCustomer(
+            [FromQuery] double minSupplierRating = 4.0,
+            [FromQuery] bool onlyInStock = true
+ )
+        {
+            string? customerId = Request.GetIdFromToken();
+            if (customerId == null)
+            {
+                return new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(ErrorCode.UnAuthorized, "Unauthorized");
+            }
+
+            var result = await mediator.Send(new GetFilteredProductsForCustomerQuery(
+                customerId, null, true, null, null, null, minSupplierRating, onlyInStock));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
+                : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
         }
         #endregion
     }

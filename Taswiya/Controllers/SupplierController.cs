@@ -124,9 +124,10 @@ namespace ConnectChain.Controllers
 
         [HttpGet("GetByBusinessType")]
         [Authorization(Role.Customer)]
-        public async Task<ResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>> GetByBusinessType([FromQuery] string businessType)
+        public async Task<ResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>> GetAllMtachedSuppliers([FromQuery] string businessType)
         {
-            var result = await _mediator.Send(new GetSuppliersByBusinessTypeQuery(businessType));
+            var customerId = Request.GetIdFromToken();
+            var result = await _mediator.Send(new GetSuppliersByBusinessTypeQuery(customerId));
             return result.isSuccess
                 ? new SuccessResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.data, result.message)
                 : new FailureResponseViewModel<IReadOnlyList<FindSuppliersResponseViewModel>>(result.errorCode, result.message);

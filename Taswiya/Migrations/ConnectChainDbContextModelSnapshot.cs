@@ -967,6 +967,9 @@ namespace ConnectChain.Migrations
                     b.Property<int?>("ActivityCategoryId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
                     b.HasIndex("ActivityCategoryId");
 
                     b.ToTable("Suppliers");
