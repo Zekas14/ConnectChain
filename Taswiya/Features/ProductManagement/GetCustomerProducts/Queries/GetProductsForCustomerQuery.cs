@@ -38,11 +38,7 @@ namespace ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries
                 ? wishlistResult.data.Select(w => w.ProductId).ToList() 
                 : new List<int>();
 
-            // Get products from suppliers with the same business type using repository
-            var query = _repository.Get(p => !p.Deleted && 
-                                            p.Supplier != null && 
-                                            p.Supplier.BusinessType != null &&
-                                            p.Supplier.BusinessType.Equals(isCustomerExist.data.BusinessType, StringComparison.OrdinalIgnoreCase))
+            var query = _repository.Get(p => p.Supplier.BusinessType.ToLower() == isCustomerExist.data.BusinessType.ToLower())
                 .Include(p => p.Supplier)
                     .ThenInclude(s => s.Rate)
                 .Include(p => p.Category)

@@ -280,11 +280,11 @@ namespace ConnectChain.Controllers
 
         [HttpGet("GetProductsByCategory")]
         public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetProductsByCategory(
-            [FromQuery] int categoryId,
-            [FromQuery] PaginationHelper? paginationParams = null)
+            [FromQuery] int categoryId
+            )
         {
             string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
-            var result = await mediator.Send(new GetProductsByCategoryQuery(categoryId, customerId, paginationParams));
+            var result = await mediator.Send(new GetProductsByCategoryQuery(categoryId, customerId));
             return result.isSuccess
                 ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
                 : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);
@@ -297,12 +297,11 @@ namespace ConnectChain.Controllers
             [FromQuery] decimal? minPrice = null,
             [FromQuery] decimal? maxPrice = null,
             [FromQuery] double? minSupplierRating = null,
-            [FromQuery] bool onlyInStock = false,
-            [FromQuery] PaginationHelper? paginationParams = null)
+            [FromQuery] bool onlyInStock = false)
         {
-            string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
+            string? customerId = Request.GetIdFromToken(); 
             var result = await mediator.Send(new GetFilteredProductsByCategoryQuery(
-                categoryId, customerId, businessType, minPrice, maxPrice, minSupplierRating, onlyInStock, paginationParams));
+                categoryId, customerId, businessType, minPrice, maxPrice, minSupplierRating, onlyInStock));
             return result.isSuccess
                 ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)
                 : new FailureResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.errorCode, result.message);

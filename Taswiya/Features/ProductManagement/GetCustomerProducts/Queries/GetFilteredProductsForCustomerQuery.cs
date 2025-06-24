@@ -67,7 +67,7 @@ namespace ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries
             if (!string.IsNullOrWhiteSpace(targetBusinessType))
             {
                 query = query.Where(p => p.Supplier.BusinessType != null &&
-                                       p.Supplier.BusinessType.Equals(targetBusinessType, StringComparison.OrdinalIgnoreCase));
+                                       p.Supplier.BusinessType.ToLower()==targetBusinessType.ToLower());
             }
 
             // Apply category filter

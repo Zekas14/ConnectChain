@@ -56,7 +56,7 @@ namespace ConnectChain.Features.ProductManagement.GetProductsByCategory.Queries
             if (!string.IsNullOrWhiteSpace(request.BusinessType))
             {
                 query = query.Where(p => p.Supplier.BusinessType != null &&
-                                       p.Supplier.BusinessType.Equals(request.BusinessType, StringComparison.OrdinalIgnoreCase));
+                                       p.Supplier.BusinessType.ToLower() == request.BusinessType.ToLower());
             }
 
             if (request.MinPrice.HasValue)

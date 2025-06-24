@@ -148,6 +148,10 @@ namespace ConnectChain.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("imageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
@@ -206,9 +210,6 @@ namespace ConnectChain.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<string>("SupplierId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -218,9 +219,12 @@ namespace ConnectChain.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Notification");
                 });
@@ -1014,11 +1018,11 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Notification", b =>
                 {
-                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
+                    b.HasOne("ConnectChain.Models.User", "User")
                         .WithMany("Notifications")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("Supplier");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Order", b =>
@@ -1328,6 +1332,8 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.User", b =>
                 {
+                    b.Navigation("Notifications");
+
                     b.Navigation("UserPaymentMethods");
 
                     b.Navigation("UserShippingAddresses");
@@ -1349,8 +1355,6 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
-                    b.Navigation("Notifications");
-
                     b.Navigation("Orders");
 
                     b.Navigation("PaymentMethods");

@@ -23,6 +23,8 @@ namespace ConnectChain.Features.OrderManagement.GetCustomerOrders.Queries
                     .ThenInclude(p => p.Images)
                 .Include(o => o.Supplier)
                 .OrderByDescending(o => o.CreatedDate)
+                .AsEnumerable()
+
                   .GroupBy(o => o.OrderNumber)
                 .Select(group => new GetCustomerOrdersResponseViewModel
                 {
@@ -33,7 +35,7 @@ namespace ConnectChain.Features.OrderManagement.GetCustomerOrders.Queries
                     SubTotal = group.Sum(o => o.SubTotal),
                     DeliveryFees = group.Sum(o => o.DeliveryFees),
                     Discount = group.Sum(o => o.Discount),
-                    TotalAmount = group.Sum(o => o.TotalAmount),
+                   // TotalAmount = group.Sum(o => o.TotalAmount),
                     TotalItems = group.SelectMany(o => o.OrderItems).Sum(oi => oi.Quantity),
                     Products = group.SelectMany(o => o.OrderItems.Select(oi => new CustomerOrderProductViewModel
                     {
@@ -55,7 +57,6 @@ namespace ConnectChain.Features.OrderManagement.GetCustomerOrders.Queries
                 return RequestResult<IReadOnlyList<GetCustomerOrdersResponseViewModel>>.Failure(ErrorCode.NotFound, "No orders found for this customer.");
             }
 
-            //
             return RequestResult<IReadOnlyList<GetCustomerOrdersResponseViewModel>>.Success(orders, "Customer orders retrieved successfully.");
         }
     }

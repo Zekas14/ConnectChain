@@ -37,7 +37,7 @@ namespace ConnectChain.Features.ProductManagement.GetCustomerProducts.Queries
             var query = _repository.Get(p => !p.Deleted && 
                                             p.Supplier != null && 
                                             p.Supplier.BusinessType != null &&
-                                            p.Supplier.BusinessType.Equals(request.BusinessType, StringComparison.OrdinalIgnoreCase))
+                                            p.Supplier.BusinessType.ToLower()==request.BusinessType.ToLower())
                 .Include(p => p.Supplier)
                     .ThenInclude(s => s.Rate)
                 .Include(p => p.Category)

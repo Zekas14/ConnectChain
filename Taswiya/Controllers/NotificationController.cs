@@ -23,7 +23,11 @@ namespace ConnectChain.Controllers
             var response = await mediator.Send(new GetNotificationQuery(supplierId!));
             return response.isSuccess ?
                 new SuccessResponseViewModel<IReadOnlyList<GetNotificationResponseViewModel>>(response.data, response.message) :
-                new FailureResponseViewModel<IReadOnlyList<GetNotificationResponseViewModel>>(response.errorCode,response.message); 
+                new FailureResponseViewModel<IReadOnlyList<GetNotificationResponseViewModel>>(response.errorCode,response.message);
         }
-    }
+
+     
+        
+
+        }
 }

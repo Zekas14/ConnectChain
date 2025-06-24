@@ -10,6 +10,7 @@ namespace ConnectChain.Data.Repositories.Repository
         IQueryable<Entity> TableWithDeleted { get; }       
         void Add(Entity entity);
         Task AddAsync(Entity entity);
+        void Update(Entity entity);
         void SaveInclude(Entity entity, params string[] properties);
         void Delete(Entity entity);
         void HardDelete(Entity entity);

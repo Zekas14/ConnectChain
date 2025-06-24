@@ -11,5 +11,6 @@ namespace ConnectChain.Models
         public string? FcmToken { get;set; }   
         public IEnumerable<UserPaymentMethod> UserPaymentMethods { get; set; } = [];
         public ICollection<UserShippingAddress> UserShippingAddresses { get; } = [];
+        public ICollection<Notification> Notifications { get; set; } = [];
     }
 }

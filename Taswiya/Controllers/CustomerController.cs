@@ -1,5 +1,6 @@
 using ConnectChain.Features.CustomerManagement.GetCustomerProfile.Queries;
 using ConnectChain.Features.CustomerManagement.UpdateCustomerProfile.Commands;
+using ConnectChain.Features.CustomerManagement.FcmToken.UpdateCustomerFcmToken.Commands;
 using ConnectChain.Filters;
 using ConnectChain.Helpers;
 using ConnectChain.Models.Enums;
@@ -56,6 +57,20 @@ namespace ConnectChain.Controllers
                 : new FailureResponseViewModel<bool>(result.errorCode, result.message);
         }
 
-        
+        [HttpPut("UpdateFcmToken")]
+        public async Task<ResponseViewModel<bool>> UpdateFcmToken([FromHeader] string fcmToken)
+        {
+            string? customerId = Request.GetIdFromToken();
+            if (customerId == null)
+            {
+                return new FailureResponseViewModel<bool>(ErrorCode.UnAuthorized, "Unauthorized");
+            }
+
+            var result = await _mediator.Send(new UpdateCustomerFcmTokenCommand(customerId, fcmToken));
+            return result.isSuccess
+                ? new SuccessResponseViewModel<bool>(result.data, result.message)
+                : new FailureResponseViewModel<bool>(result.errorCode, result.message);
+        }
+
     }
 }
