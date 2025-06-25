@@ -192,158 +192,6 @@
         }
       }
     },
-    "/api/Cart/GetCartItems": {
-      "get": {
-        "tags": [
-          "Cart"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/AddItemToCart": {
-      "post": {
-        "tags": [
-          "Cart"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddToCartRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddToCartRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddToCartRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/RemoveFromCart": {
-      "delete": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "itemId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/ClearCart": {
-      "delete": {
-        "tags": [
-          "Cart"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/UpdateCartItem": {
-      "put": {
-        "tags": [
-          "Cart"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCartRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCartRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCartRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/IncrementCartItem": {
-      "put": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "itemId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Cart/DecrementCartItem": {
-      "put": {
-        "tags": [
-          "Cart"
-        ],
-        "parameters": [
-          {
-            "name": "itemId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Category/GetAll": {
       "get": {
         "tags": [
@@ -394,6 +242,13 @@
         ],
         "parameters": [
           {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "year",
             "in": "query",
             "schema": {
@@ -415,6 +270,13 @@
           "Dashboard"
         ],
         "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "month",
             "in": "query",
@@ -445,6 +307,13 @@
           "Dashboard"
         ],
         "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
           {
             "name": "year",
             "in": "query",
@@ -483,6 +352,15 @@
         "tags": [
           "Dashboard"
         ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -494,6 +372,15 @@
       "get": {
         "tags": [
           "Dashboard"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -534,30 +421,6 @@
         }
       }
     },
-    "/api/MLModel/Train": {
-      "post": {
-        "tags": [
-          "MLModel"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Notification/GetSupplierNotifications": {
-      "get": {
-        "tags": [
-          "Notification"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/Order/GetSupplierOrders": {
       "get": {
         "tags": [
@@ -565,10 +428,30 @@
         ],
         "parameters": [
           {
-            "name": "OrderStatus",
+            "name": "pagination.PageNumber",
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/OrderStatus"
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pagination.PageSize",
+            "in": "query",
+            "schema": {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "SupplierId",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -591,101 +474,6 @@
             "schema": {
               "type": "integer",
               "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Order/PlaceOrder": {
-      "post": {
-        "tags": [
-          "Order"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaceOrderRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaceOrderRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/PlaceOrderRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Order/GetCheckOutSummary": {
-      "get": {
-        "tags": [
-          "Order"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Product/CustomerGetProductDetails": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "productId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Product/SearchForProducts": {
-      "get": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "SupplierId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SearchKey",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -830,7 +618,6 @@
                     "format": "int32"
                   },
                   "Images": {
-                    "maxItems": 5,
                     "type": "array",
                     "items": {
                       "type": "string",
@@ -840,6 +627,9 @@
                   "Stock": {
                     "type": "integer",
                     "format": "int32"
+                  },
+                  "SupplierId": {
+                    "type": "string"
                   },
                   "CategoryId": {
                     "type": "integer",
@@ -864,6 +654,9 @@
                   "style": "form"
                 },
                 "Stock": {
+                  "style": "form"
+                },
+                "SupplierId": {
                   "style": "form"
                 },
                 "CategoryId": {
@@ -922,14 +715,6 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "required": [
-                  "CategoryId",
-                  "Description",
-                  "MinimumStock",
-                  "Name",
-                  "Price",
-                  "Stock"
-                ],
                 "type": "object",
                 "properties": {
                   "Name": {
@@ -951,6 +736,12 @@
                     "items": {
                       "type": "string",
                       "format": "binary"
+                    }
+                  },
+                  "RemainingImages": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
                     }
                   },
                   "MinimumStock": {
@@ -977,6 +768,9 @@
                   "style": "form"
                 },
                 "Images": {
+                  "style": "form"
+                },
+                "RemainingImages": {
                   "style": "form"
                 },
                 "MinimumStock": {
@@ -1057,612 +851,20 @@
         }
       }
     },
-    "/api/Product/DeleteProductImage": {
-      "delete": {
-        "tags": [
-          "Product"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ProductAttribute/AddProductAttribute": {
-      "post": {
-        "tags": [
-          "ProductAttribute"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductAttributeRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductAttributeRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductAttributeRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ProductAttribute/DeleteProductAttribute/{id}": {
-      "delete": {
-        "tags": [
-          "ProductAttribute"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ProductAttribute/GetProductAttributes/{productId}": {
-      "get": {
-        "tags": [
-          "ProductAttribute"
-        ],
-        "parameters": [
-          {
-            "name": "productId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ProductVariant/AddProductVariant": {
-      "post": {
-        "tags": [
-          "ProductVariant"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductVariantRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductVariantRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddProductVariantRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ProductVariant/DeleteProductVariant/{id}": {
-      "delete": {
-        "tags": [
-          "ProductVariant"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/ProductVariant/GetProductVariants/{productId}": {
-      "get": {
-        "tags": [
-          "ProductVariant"
-        ],
-        "parameters": [
-          {
-            "name": "productId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Quotation/Create": {
-      "post": {
-        "tags": [
-          "Quotation"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateQuotationViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateQuotationViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateQuotationViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Quotation/{quotationId}": {
-      "get": {
-        "tags": [
-          "Quotation"
-        ],
-        "parameters": [
-          {
-            "name": "quotationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Quotation/ByRFQ/{rfqId}": {
-      "get": {
-        "tags": [
-          "Quotation"
-        ],
-        "parameters": [
-          {
-            "name": "rfqId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Quotation/Approve/{quotationId}": {
-      "post": {
-        "tags": [
-          "Quotation"
-        ],
-        "parameters": [
-          {
-            "name": "quotationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Quotation/Reject/{quotationId}": {
-      "post": {
-        "tags": [
-          "Quotation"
-        ],
-        "parameters": [
-          {
-            "name": "quotationId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Review/AddReview": {
-      "post": {
-        "tags": [
-          "Review"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddReviewRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddReviewRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddReviewRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Review/UpdateReview": {
-      "put": {
-        "tags": [
-          "Review"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateReviewRequestViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateReviewRequestViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateReviewRequestViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/Create": {
-      "post": {
-        "tags": [
-          "RFQ"
-        ],
-        "parameters": [
-          {
-            "name": "CustomerId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ProductName",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "maxLength": 200,
-              "minLength": 0,
-              "type": "string"
-            }
-          },
-          {
-            "name": "ProductId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "CategoryId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Description",
-            "in": "query",
-            "schema": {
-              "maxLength": 1000,
-              "minLength": 0,
-              "type": "string"
-            }
-          },
-          {
-            "name": "Quantity",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "maximum": 2147483647,
-              "minimum": 1,
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Unit",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "maxLength": 50,
-              "minLength": 0,
-              "type": "string"
-            }
-          },
-          {
-            "name": "Deadline",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "ShareBusinessCard",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Attachments": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "format": "binary"
-                    }
-                  }
-                }
-              },
-              "encoding": {
-                "Attachments": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/AssignSuppliers": {
-      "post": {
-        "tags": [
-          "RFQ"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AssignSuppliersToRFQViewModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AssignSuppliersToRFQViewModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AssignSuppliersToRFQViewModel"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/Customer/{rfqId}": {
-      "get": {
-        "tags": [
-          "RFQ"
-        ],
-        "parameters": [
-          {
-            "name": "rfqId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/Supplier/{rfqId}": {
-      "get": {
-        "tags": [
-          "RFQ"
-        ],
-        "parameters": [
-          {
-            "name": "rfqId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/Customer": {
-      "get": {
-        "tags": [
-          "RFQ"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/Supplier": {
-      "get": {
-        "tags": [
-          "RFQ"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/RFQ/{rfqId}/RecommendedSuppliers": {
-      "get": {
-        "tags": [
-          "RFQ"
-        ],
-        "parameters": [
-          {
-            "name": "rfqId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Supplier/updateProfile": {
+    "/api/Supplier/updateProfile {SupplierId}": {
       "put": {
         "tags": [
           "Supplier"
+        ],
+        "parameters": [
+          {
+            "name": "supplierId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -1690,43 +892,21 @@
         }
       }
     },
-    "/api/Supplier/GetProfile": {
+    "/api/Supplier/getProfile/{SupplierId}": {
       "get": {
-        "tags": [
-          "Supplier"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Supplier/UpdateFcmToken": {
-      "put": {
         "tags": [
           "Supplier"
         ],
         "parameters": [
           {
-            "name": "fcmToken",
-            "in": "header",
+            "name": "supplierId",
+            "in": "path",
+            "required": true,
             "schema": {
+              "pattern": "^[A-Za-z]*$",
               "type": "string"
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Supplier/GetSuppliers": {
-      "get": {
-        "tags": [
-          "Supplier"
         ],
         "responses": {
           "200": {
@@ -1756,173 +936,6 @@
         },
         "additionalProperties": false
       },
-      "AddProductAttributeRequestViewModel": {
-        "required": [
-          "key",
-          "productId",
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "key": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "value": {
-            "maxLength": 500,
-            "minLength": 0,
-            "type": "string"
-          },
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddProductVariantRequestViewModel": {
-        "required": [
-          "customPrice",
-          "name",
-          "productId",
-          "stock",
-          "type"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "type": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
-          },
-          "customPrice": {
-            "minimum": 0,
-            "type": "number",
-            "format": "double"
-          },
-          "stock": {
-            "maximum": 2147483647,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32"
-          },
-          "productId": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddReviewRequestViewModel": {
-        "required": [
-          "body",
-          "productId",
-          "rate"
-        ],
-        "type": "object",
-        "properties": {
-          "body": {
-            "maxLength": 1000,
-            "minLength": 0,
-            "type": "string"
-          },
-          "rate": {
-            "maximum": 5,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          },
-          "productId": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddToCartRequestViewModel": {
-        "type": "object",
-        "properties": {
-          "productId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AssignSuppliersToRFQViewModel": {
-        "required": [
-          "rfqId",
-          "supplierIds"
-        ],
-        "type": "object",
-        "properties": {
-          "rfqId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "supplierIds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateQuotationViewModel": {
-        "required": [
-          "quotedPrice",
-          "rfqId",
-          "supplierId"
-        ],
-        "type": "object",
-        "properties": {
-          "rfqId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "supplierId": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "quotedPrice": {
-            "minimum": 0.01,
-            "type": "number",
-            "format": "double"
-          },
-          "deliveryTimeInDays": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "notes": {
-            "type": "string",
-            "nullable": true
-          },
-          "validUntil": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "GetFilteredProductsRequestViewModel": {
         "type": "object",
         "properties": {
@@ -1931,39 +944,6 @@
             "additionalProperties": { },
             "nullable": true,
             "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "OrderStatus": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "PlaceOrderRequestViewModel": {
-        "required": [
-          "paymentMethod"
-        ],
-        "type": "object",
-        "properties": {
-          "paymentMethod": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "notes": {
-            "minLength": 1,
-            "type": "string",
-            "nullable": true
-          },
-          "discount": {
-            "type": "number",
-            "format": "double"
           }
         },
         "additionalProperties": false
@@ -2034,48 +1014,6 @@
               "format": "int32"
             },
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateCartRequestViewModel": {
-        "type": "object",
-        "properties": {
-          "itemId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "quantity": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateReviewRequestViewModel": {
-        "required": [
-          "body",
-          "id",
-          "rate"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "maximum": 2147483647,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
-          },
-          "body": {
-            "maxLength": 1000,
-            "minLength": 0,
-            "type": "string"
-          },
-          "rate": {
-            "maximum": 5,
-            "minimum": 1,
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

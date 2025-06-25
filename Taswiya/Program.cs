@@ -115,7 +115,11 @@ builder.Services.AddCors(options =>
         });
 });
 var app = builder.Build();
-
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ConnectChainDbContext>();
+    DataSeeder.SeedAsync(context).Wait();
+}
 
 //if (app.Environment.IsDevelopment())
 //{

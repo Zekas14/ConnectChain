@@ -314,44 +314,6 @@ D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\obj\Debug\net8.0\ConnectChain.
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\CloudinaryDotNet.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Templates\emailTemplate.html
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\FirebaseAdmin.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Api.Gax.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Apis.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Apis.Auth.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Apis.Core.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\System.Management.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Config\firebase-service-account.json
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.Core.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.Data.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.KMeansClustering.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.PCA.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.StandardTrainers.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.Transforms.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.CpuMath.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.DataView.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\System.Numerics.Tensors.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm\native\libLdaNative.so
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm\native\libLdaNative.so.dbg
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm64\native\libLdaNative.so
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm64\native\libLdaNative.so.dbg
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-x64\native\libLdaNative.so
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-x64\native\libLdaNative.so.dbg
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-arm64\native\libLdaNative.dylib
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-arm64\native\libLdaNative.dylib.dwarf
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-x64\native\libLdaNative.dylib
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-x64\native\libLdaNative.dylib.dwarf
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win-arm64\native\LdaNative.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win-x64\native\LdaNative.dll
-D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win-x86\native\LdaNative.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Config\firebase-service-account.json
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Templates\emailTemplate.html
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\appsettings.Development.json
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\appsettings.json
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\ConnectChain.staticwebassets.runtime.json
@@ -368,13 +330,7 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Azure.Core.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Azure.Identity.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\CloudinaryDotNet.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\FirebaseAdmin.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\FluentValidation.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Google.Api.Gax.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Google.Apis.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Google.Apis.Auth.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Google.Apis.Core.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Humanizer.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\MailKit.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\MediatR.dll
@@ -425,13 +381,10 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extens
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Identity.Client.dll
@@ -443,14 +396,6 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.Identi
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.JSInterop.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.Core.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.Data.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.KMeansClustering.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.PCA.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.StandardTrainers.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.Transforms.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.CpuMath.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.ML.DataView.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.NET.StringTools.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
@@ -490,10 +435,7 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Drawing.C
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Formats.Asn1.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.IO.Pipelines.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Management.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Memory.Data.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Numerics.Tensors.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Runtime.Caching.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
@@ -660,29 +602,14 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-arm
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\linux-arm\native\libLdaNative.so
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\linux-arm\native\libLdaNative.so.dbg
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\linux-arm64\native\libLdaNative.so
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\linux-arm64\native\libLdaNative.so.dbg
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\linux-x64\native\libLdaNative.so
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\linux-x64\native\libLdaNative.so.dbg
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\osx-arm64\native\libLdaNative.dylib
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\osx-arm64\native\libLdaNative.dylib.dwarf
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\osx-x64\native\libLdaNative.dylib
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\osx-x64\native\libLdaNative.dylib.dwarf
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-arm64\native\LdaNative.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-x64\native\LdaNative.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win-x86\native\LdaNative.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
-D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.csproj.AssemblyReference.cache
-D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rpswa.dswa.cache.json
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.GeneratedMSBuildEditorConfig.editorconfig
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.AssemblyInfoInputs.cache
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.AssemblyInfo.cs
@@ -690,14 +617,16 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.csp
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.MvcApplicationPartsAssemblyInfo.cs
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.MvcApplicationPartsAssemblyInfo.cache
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.sourcelink.json
-D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rjimswa.dswa.cache.json
-D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
-D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\scopedcss\bundle\ConnectChain.styles.css
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.build.json
-D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.development.json
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets\msbuild.ConnectChain.Microsoft.AspNetCore.StaticWebAssets.props
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets\msbuild.ConnectChain.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets\msbuild.build.ConnectChain.props
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.ConnectChain.props
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.ConnectChain.props
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.pack.json
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectC.D013AE49.Up2Date
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.dll
@@ -705,3 +634,44 @@ D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\refint\ConnectCh
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.pdb
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ConnectChain.genruntimeconfig.cache
 D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\ref\ConnectChain.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Templates\emailTemplate.html
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\FirebaseAdmin.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Api.Gax.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Apis.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Apis.Auth.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Google.Apis.Core.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\System.Management.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Config\firebase-service-account.json
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.Core.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.Data.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.KMeansClustering.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.PCA.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.StandardTrainers.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.Transforms.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.CpuMath.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\Microsoft.ML.DataView.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\System.Numerics.Tensors.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm\native\libLdaNative.so
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm\native\libLdaNative.so.dbg
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm64\native\libLdaNative.so
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-arm64\native\libLdaNative.so.dbg
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-x64\native\libLdaNative.so
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\linux-x64\native\libLdaNative.so.dbg
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-arm64\native\libLdaNative.dylib
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-arm64\native\libLdaNative.dylib.dwarf
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-x64\native\libLdaNative.dylib
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\osx-x64\native\libLdaNative.dylib.dwarf
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win-arm64\native\LdaNative.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win-x64\native\LdaNative.dll
+D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\bin\Debug\net8.0\runtimes\win-x86\native\LdaNative.dll
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\programming\Garbage_c#\ConnectChain\Taswiya\obj\Debug\net8.0\staticwebassets.build.json.cache
