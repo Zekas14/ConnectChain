@@ -22,7 +22,7 @@ namespace ConnectChain.Features.NotificationManagement.AddNotifications.Command
                 {
                     Title = n.Title,
                     Body = n.Body,
-                    SupplierId = n.SupplierId,
+                    UserId= n.SupplierId,
                     Type = n.Type,
                     IsRead = false,
                 }).ToList();

@@ -14,7 +14,7 @@ namespace ConnectChain.Features.NotificationManagement.GetNotification.Queries
 
         public async Task<RequestResult<IReadOnlyList<GetNotificationResponseViewModel>>> Handle(GetNotificationQuery request, CancellationToken cancellationToken)
         {
-            var notifications = repository.Get(N=>N.SupplierId ==request.SupplierId).Select(n=> new GetNotificationResponseViewModel
+            var notifications = repository.Get(N=>N.UserId==request.SupplierId).Select(n=> new GetNotificationResponseViewModel
             {
                 Id = n.ID, 
                 Body = n.Body,

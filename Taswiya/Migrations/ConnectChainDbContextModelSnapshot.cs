@@ -148,6 +148,10 @@ namespace ConnectChain.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("imageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
@@ -206,9 +210,6 @@ namespace ConnectChain.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
-                    b.Property<string>("SupplierId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -218,9 +219,12 @@ namespace ConnectChain.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("SupplierId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Notification");
                 });
@@ -787,6 +791,39 @@ namespace ConnectChain.Migrations
                     b.ToTable("UserShippingAddress");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.WishlistItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CustomerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Deleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("WishlistItem");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -934,6 +971,9 @@ namespace ConnectChain.Migrations
                     b.Property<int?>("ActivityCategoryId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
                     b.HasIndex("ActivityCategoryId");
 
                     b.ToTable("Suppliers");
@@ -978,11 +1018,11 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.Notification", b =>
                 {
-                    b.HasOne("ConnectChain.Models.Supplier", "Supplier")
+                    b.HasOne("ConnectChain.Models.User", "User")
                         .WithMany("Notifications")
-                        .HasForeignKey("SupplierId");
+                        .HasForeignKey("UserId");
 
-                    b.Navigation("Supplier");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Order", b =>
@@ -1156,6 +1196,25 @@ namespace ConnectChain.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ConnectChain.Models.WishlistItem", b =>
+                {
+                    b.HasOne("ConnectChain.Models.Customer", "Customer")
+                        .WithMany("wishlist")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConnectChain.Models.Product", "Product")
+                        .WithMany("wishlist")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1262,6 +1321,8 @@ namespace ConnectChain.Migrations
                     b.Navigation("ProductVariants");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("wishlist");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.RFQ", b =>
@@ -1271,6 +1332,8 @@ namespace ConnectChain.Migrations
 
             modelBuilder.Entity("ConnectChain.Models.User", b =>
                 {
+                    b.Navigation("Notifications");
+
                     b.Navigation("UserPaymentMethods");
 
                     b.Navigation("UserShippingAddresses");
@@ -1286,12 +1349,12 @@ namespace ConnectChain.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("RFQs");
+
+                    b.Navigation("wishlist");
                 });
 
             modelBuilder.Entity("ConnectChain.Models.Supplier", b =>
                 {
-                    b.Navigation("Notifications");
-
                     b.Navigation("Orders");
 
                     b.Navigation("PaymentMethods");

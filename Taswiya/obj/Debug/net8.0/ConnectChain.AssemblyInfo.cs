@@ -15,7 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ConnectChain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7ced95cd0a8c04d7396d1bdc5cac49f680d441cb")]
+=======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c438f38a82164849f4fc5f6eca6b116a4d273c4f")]
+>>>>>>> 748e4aa0db731245807ed2fb6819f045ec5f7098
 [assembly: System.Reflection.AssemblyProductAttribute("ConnectChain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ConnectChain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,7 +22,6 @@ namespace ConnectChain.Features.OrderManagement.GetCheckOutSummary.Query
 
             var cart = cartResult.data;
 
-            // 2. Get Product Data
             var productIds = cart.Items.Select(i => i.ProductId).ToList();
             var productsResult = await _mediator.Send(new GetExistingProductsQuery(productIds), cancellationToken);
             if (!productsResult.isSuccess)
@@ -30,7 +29,6 @@ namespace ConnectChain.Features.OrderManagement.GetCheckOutSummary.Query
 
             var products = productsResult.data;
 
-            // 3. Map Cart Items
             var cartItems = cart.Items.Select(ci =>
             {
                 var product = products.First(p => p.ID == ci.ProductId);

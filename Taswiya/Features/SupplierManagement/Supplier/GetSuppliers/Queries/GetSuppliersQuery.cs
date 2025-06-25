@@ -29,6 +29,7 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.GetSuppliers.Queries
                 .Include(s => s.Products)
                 .ThenInclude(p => p.Category)
                 .Include(s => s.Rate)
+                .Where(s=>s.BusinessType==customer.BusinessType)
                 .Select(s=>new
                 {
                     s.Id,
@@ -55,6 +56,7 @@ namespace ConnectChain.Features.SupplierManagement.Supplier.GetSuppliers.Queries
                 Id = s.Id,
                 Name = s.Name,
                 BusinessType = s.BusinessType,
+                ImageUrl = s.ImageUrl,
                 Rating = s.Rating,
             }).ToList();
             if (result.IsNullOrEmpty())

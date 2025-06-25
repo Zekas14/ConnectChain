@@ -1,6 +1,7 @@
 ﻿    using ConnectChain.Helpers;
     using FirebaseAdmin.Messaging;
-    using MediatR;
+using Google.Apis.Auth.OAuth2.Responses;
+using MediatR;
 
     namespace ConnectChain.Features.NotificationManagement.SendNotification.Command
     {
@@ -29,6 +30,11 @@
             catch (FirebaseMessagingException ex) when (ex.MessagingErrorCode == MessagingErrorCode.Unregistered)
             {
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput,"Invalid Token. Please refresh.");
+
+            } 
+            catch (TokenResponseException ex) 
+            {
+                return RequestResult<bool>.Failure(ErrorCode.InvalidInput,$"{ex.Message}");
 
             } 
             }

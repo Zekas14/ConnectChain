@@ -42,7 +42,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
             });
 
             var groupedBySupplier = itemsWithSupplier.GroupBy(x => x.SupplierId).ToList();
-
+            var orderNumber = Guid.NewGuid();
             foreach (var group in groupedBySupplier)
             {
                 var supplierId = group.Key;
@@ -61,7 +61,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
 
                 var order = new Order
                 {
-                    OrderNumber = Guid.NewGuid(),
+                    OrderNumber = orderNumber,
                     CustomerId = request.CustomerId,
                     SupplierId = supplierId!,
                     CreatedDate = DateTime.UtcNow,
@@ -75,9 +75,14 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
                 await mediator.Publish(new OrderPlacedEvent(order,products), cancellationToken);
             }
 
-            await mediator.Send(new ClearCartCommand(request.CustomerId), cancellationToken);
-
+            var clearCartResult = await mediator.Send(new ClearCartCommand(request.CustomerId), cancellationToken);
+            if (clearCartResult.isSuccess)
+            {
             return RequestResult<bool>.Success(true, "Order placed successfully.");
+
+            }
+            return RequestResult<bool>.Failure(ErrorCode.BadRequest, clearCartResult.message);
+
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ConnectChain.Features.NotificationManagement.AddNotificaitonCommand
             {
                 Title = request.Title,
                 Body = request.Body,
-                SupplierId = request.SupplierId,
+                UserId= request.SupplierId,
                 Type = request.Type,
                 IsRead = false,
             };

@@ -19,7 +19,7 @@ namespace ConnectChain.Features.SupplierManagement.FcmToken.UpdateFcmToken.Comma
             {
                 return RequestResult<bool>.Failure(isSupplierExist.errorCode,isSupplierExist.message);
             }
-            var rowsAffected =  context.Suppliers.Where(s=>s.Id== request.SupplierId).ExecuteUpdate(s=>s.SetProperty(r=>r.FcmToken , request.FcmToken));
+            var rowsAffected =  context.Users.Where(s=>s.Id== request.SupplierId).ExecuteUpdate(s=>s.SetProperty(r=>r.FcmToken , request.FcmToken));
             if (rowsAffected == 1)
             {
                 return RequestResult<bool>.Success(true, "Token Updated Successfully");

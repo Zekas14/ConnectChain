@@ -12,6 +12,7 @@ namespace ConnectChain.Models
         public string? SupplierId { get; set; }
         public int MinimumStock { get; set; }
         public Guid SKU { get; set; }
+        public ICollection<WishlistItem> wishlist { get; set; }
 
         public Supplier? Supplier { get; set; }
         [ForeignKey("Category")]
