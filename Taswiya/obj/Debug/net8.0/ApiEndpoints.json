@@ -112,6 +112,106 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "AddToCart",
+    "RelativePath": "api/Cart/AddItemToCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Cart.AddToCart.AddToCartRequestViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "ClearCart",
+    "RelativePath": "api/Cart/ClearCart",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "DecrementCartItem",
+    "RelativePath": "api/Cart/DecrementCartItem",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "GetCart",
+    "RelativePath": "api/Cart/GetCartItems",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "IncrementCartItem",
+    "RelativePath": "api/Cart/IncrementCartItem",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "RemoveFromCart",
+    "RelativePath": "api/Cart/RemoveFromCart",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "itemId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.CartController",
+    "Method": "RemoveFromCart",
+    "RelativePath": "api/Cart/UpdateCartItem",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Cart.UpdateCartItem.UpdateCartRequestViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ConnectChain.Controllers.CategoryController",
     "Method": "AddCategory",
     "RelativePath": "api/Category/AddCategory",
@@ -146,11 +246,6 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "supplierId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "month",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
@@ -170,13 +265,7 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "supplierId",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -186,13 +275,7 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "supplierId",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -203,11 +286,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "supplierId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
       {
         "Name": "year",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
@@ -224,11 +302,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
-      {
-        "Name": "supplierId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
       {
         "Name": "year",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
@@ -264,6 +337,36 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ConnectChain.Controllers.MLModelController",
+    "Method": "TrainModel",
+    "RelativePath": "api/MLModel/Train",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.NotificationController",
+    "Method": "GetSupplierNotifications",
+    "RelativePath": "api/Notification/GetSupplierNotifications",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.OrderController",
+    "Method": "GetCheckOutSummary",
+    "RelativePath": "api/Order/GetCheckOutSummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ConnectChain.Controllers.OrderController",
     "Method": "GetOrderDetails",
     "RelativePath": "api/Order/GetOrderDetails",
@@ -288,19 +391,25 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "pagination.PageNumber",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "pagination.PageSize",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "SupplierId",
+        "Name": "OrderStatus",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.OrderController",
+    "Method": "PlaceOrder",
+    "RelativePath": "api/Order/PlaceOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Order.PlaceOrder.PlaceOrderRequestViewModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -344,11 +453,6 @@
         "IsRequired": false
       },
       {
-        "Name": "SupplierId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
         "Name": "CategoryId",
         "Type": "System.Int32",
         "IsRequired": false
@@ -379,6 +483,22 @@
   },
   {
     "ContainingType": "ConnectChain.Controllers.ProductController",
+    "Method": "CustomerGetProductDetails",
+    "RelativePath": "api/Product/CustomerGetProductDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductController",
     "Method": "DeleteProduct",
     "RelativePath": "api/Product/DeleteProduct/{productId}",
     "HttpMethod": "DELETE",
@@ -389,6 +509,22 @@
         "Name": "productId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductController",
+    "Method": "DeleteProductImage",
+    "RelativePath": "api/Product/DeleteProductImage",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -480,6 +616,27 @@
   },
   {
     "ContainingType": "ConnectChain.Controllers.ProductController",
+    "Method": "SearchForProduct",
+    "RelativePath": "api/Product/SearchForProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "SupplierId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SearchKey",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductController",
     "Method": "UpdateProduct",
     "RelativePath": "api/Product/UpdateProduct",
     "HttpMethod": "PUT",
@@ -517,13 +674,8 @@
         "IsRequired": false
       },
       {
-        "Name": "RemainingImages",
-        "Type": "System.String[]",
-        "IsRequired": false
-      },
-      {
         "Name": "MinimumStock",
-        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -535,16 +687,353 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ConnectChain.Controllers.SupplierController",
-    "Method": "GetProfile",
-    "RelativePath": "api/Supplier/getProfile/{SupplierId}",
+    "ContainingType": "ConnectChain.Controllers.ProductAttributeController",
+    "Method": "AddProductAttribute",
+    "RelativePath": "api/ProductAttribute/AddProductAttribute",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.ProductAttribute.AddProductAttribute.AddProductAttributeRequestViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductAttributeController",
+    "Method": "DeleteProductAttribute",
+    "RelativePath": "api/ProductAttribute/DeleteProductAttribute/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductAttributeController",
+    "Method": "GetProductAttributes",
+    "RelativePath": "api/ProductAttribute/GetProductAttributes/{productId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "supplierId",
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductVariantController",
+    "Method": "AddProductVariant",
+    "RelativePath": "api/ProductVariant/AddProductVariant",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.ProductVariant.AddProductVariant.AddProductVariantRequestViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductVariantController",
+    "Method": "DeleteProductVariant",
+    "RelativePath": "api/ProductVariant/DeleteProductVariant/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ProductVariantController",
+    "Method": "GetProductVariants",
+    "RelativePath": "api/ProductVariant/GetProductVariants/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.QuotationController",
+    "Method": "GetQuotationById",
+    "RelativePath": "api/Quotation/{quotationId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quotationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.QuotationController",
+    "Method": "ApproveQuotation",
+    "RelativePath": "api/Quotation/Approve/{quotationId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quotationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.QuotationController",
+    "Method": "GetQuotationsByRFQ",
+    "RelativePath": "api/Quotation/ByRFQ/{rfqId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rfqId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.QuotationController",
+    "Method": "CreateQuotation",
+    "RelativePath": "api/Quotation/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Quotation.CreateQuotationViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.QuotationController",
+    "Method": "RejectQuotation",
+    "RelativePath": "api/Quotation/Reject/{quotationId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quotationId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ReviewController",
+    "Method": "AddReview",
+    "RelativePath": "api/Review/AddReview",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Review.AddReview.AddReviewRequestViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.ReviewController",
+    "Method": "UpdateReview",
+    "RelativePath": "api/Review/UpdateReview",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.Review.UpdateReview.UpdateReviewRequestViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "GetRecommendedSuppliers",
+    "RelativePath": "api/RFQ/{rfqId}/RecommendedSuppliers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rfqId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "AssignSuppliers",
+    "RelativePath": "api/RFQ/AssignSuppliers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "viewModel",
+        "Type": "ConnectChain.ViewModel.RFQ.CreateRFQ.AssignSuppliersToRFQViewModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "CreateRFQ",
+    "RelativePath": "api/RFQ/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CustomerId",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Quantity",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Unit",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Deadline",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ShareBusinessCard",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Attachments",
+        "Type": "System.Collections.Generic.List\u00601[[Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "GetCustomerRFQs",
+    "RelativePath": "api/RFQ/Customer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "GetCustomerRFQById",
+    "RelativePath": "api/RFQ/Customer/{rfqId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rfqId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "GetSupplierRFQs",
+    "RelativePath": "api/RFQ/Supplier",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.RFQController",
+    "Method": "GetSupplierRFQById",
+    "RelativePath": "api/RFQ/Supplier/{rfqId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "rfqId",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -552,17 +1041,48 @@
   },
   {
     "ContainingType": "ConnectChain.Controllers.SupplierController",
-    "Method": "UpdateProfile",
-    "RelativePath": "api/Supplier/updateProfile {SupplierId}",
+    "Method": "GetProfile",
+    "RelativePath": "api/Supplier/GetProfile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.SupplierController",
+    "Method": "GetSuppliers",
+    "RelativePath": "api/Supplier/GetSuppliers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.SupplierController",
+    "Method": "UpdateFcmToken",
+    "RelativePath": "api/Supplier/UpdateFcmToken",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "supplierId",
+        "Name": "fcmToken",
         "Type": "System.String",
-        "IsRequired": true
-      },
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ConnectChain.Controllers.SupplierController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Supplier/updateProfile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "model",
         "Type": "ConnectChain.ViewModel.Supplier.SupplierProfileUpdateViewModel",
