@@ -27,34 +27,37 @@ namespace ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query
         public async Task<RequestResult<List<RecommendedSupplierViewModel>>> Handle(RecommendSuppliersByProductCategoryQuery request, CancellationToken cancellationToken)
         {
             var rfq = _rfqRepository.GetAllWithIncludes(q => q.Where(x => x.ID == request.RfqId)
-                .Select(x => new RFQ
-                {
-                    ID = x.ID,
-                    ProductId = x.ProductId,
-                    Product = x.Product,
-                    Description = x.Description
-                })).FirstOrDefault();
+             .Select(x => new RFQ
+             {
+                 ID = x.ID,
+                 CategoryId = x.CategoryId,
+                 ProductId = x.ProductId,
+                 Product = x.Product
+             })).FirstOrDefault();
 
             if (rfq == null)
                 return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "RFQ not found.");
 
-            int? categoryId = null;
-            string categoryName = "";
+            var category = _categoryRepository.Get(c => c.ID == rfq.CategoryId).FirstOrDefault();
+            if (category == null)
+                return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "Category not found for the RFQ.");
 
-            if (rfq.Product != null && rfq.Product.CategoryId != 0)
+            List<Supplier> suppliers;
+
+            if (rfq.ProductId.HasValue)
             {
-                categoryId = rfq.Product.CategoryId;
-                categoryName = rfq.Product.Category?.Name ?? "";
+                
+                suppliers = _supplierRepository.GetAllWithIncludes(s => s
+                    .Where(sup => sup.Products.Any(p => p.ID == rfq.ProductId.Value && p.CategoryId == rfq.CategoryId))
+                ).ToList();
             }
             else
             {
-               return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "Product or Category not found for the RFQ.");
+                suppliers = _supplierRepository.GetAllWithIncludes(s => s
+                    .Where(sup => sup.Products.Any(p => p.CategoryId == rfq.CategoryId))
+                ).ToList();
             }
 
-            var suppliers = _supplierRepository.GetAllWithIncludes(s => s
-                .Where(sup => sup.Products.Any(p => p.CategoryId == categoryId))
-            ).ToList();
-            
 
             var recommended = suppliers.Select(s => new RecommendedSupplierViewModel
             {
@@ -63,11 +66,10 @@ namespace ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query
                 Rating = s.Rate != null && s.Rate.Any()
                     ? s.Rate.Average(r => r.RateNumber)
                     : 0
-
             }).ToList();
 
-
             return RequestResult<List<RecommendedSupplierViewModel>>.Success(recommended, "Recommended suppliers fetched successfully.");
+
         }
     }
 }
