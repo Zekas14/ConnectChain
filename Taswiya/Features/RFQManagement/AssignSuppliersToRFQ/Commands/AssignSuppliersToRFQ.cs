@@ -1,4 +1,5 @@
-﻿using ConnectChain.Data.Repositories.Repository;
+﻿using ConnectChain.Data.Context;
+using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Features.NotificationManagement.SendNotification.Command;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -13,16 +14,17 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
     public class AssignSuppliersToRFQCommandHandler : IRequestHandler<AssignSuppliersToRFQCommand, RequestResult<bool>>
     {
         private readonly IRepository<RfqSupplierAssignment> _assignmentRepository;
-        private readonly IRepository<Supplier> _supplierRepository;
+      
+        private readonly ConnectChainDbContext _context;
         private readonly IMediator _mediator;
 
         public AssignSuppliersToRFQCommandHandler(
             IRepository<RfqSupplierAssignment> assignmentRepository,
-            IRepository<Supplier> supplierRepository,
+            ConnectChainDbContext context,
             IMediator mediator)
         {
             _assignmentRepository = assignmentRepository;
-            _supplierRepository = supplierRepository;
+            _context = context;
             _mediator = mediator;
         }
 
@@ -43,7 +45,7 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
                 _assignmentRepository.AddRange(assignments);
                 await _assignmentRepository.SaveChangesAsync();
 
-                var suppliers = _supplierRepository.Get(s => request.SupplierIds.Contains(s.Id)).ToList();
+                var suppliers = _context.Suppliers.Where(s => request.SupplierIds.Contains(s.Id)).ToList();
                 var deviceTokens = suppliers
                     .Select(s => s.FcmToken)
                     .Where(token => !string.IsNullOrEmpty(token))

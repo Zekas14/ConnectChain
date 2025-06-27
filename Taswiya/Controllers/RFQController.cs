@@ -18,7 +18,6 @@ namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class RFQController(IMediator mediator, IMapper mapper) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;
@@ -33,9 +32,10 @@ namespace ConnectChain.Controllers
                 var errors = string.Join(", ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
                 return BadRequest(new FailureResponseViewModel<int>(ErrorCode.BadRequest, errors));
             }
+            var customerId = Request.GetIdFromToken();
 
             var command = new CreateRFQCommand(
-                 viewModel.CustomerId,
+                 customerId,
                  viewModel.ProductId,
                  viewModel.ProductName,
                  viewModel.CategoryId,

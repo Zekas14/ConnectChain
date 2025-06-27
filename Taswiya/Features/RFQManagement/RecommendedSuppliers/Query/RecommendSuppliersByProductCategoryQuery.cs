@@ -1,8 +1,10 @@
-﻿using ConnectChain.Data.Repositories.Repository;
+﻿using ConnectChain.Data.Context;
+using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using ConnectChain.ViewModel.RFQ.GetRecommendedSuppliers;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query
 {
@@ -11,16 +13,16 @@ namespace ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query
     public class RecommendSuppliersByProductCategoryQueryHandler : IRequestHandler<RecommendSuppliersByProductCategoryQuery, RequestResult<List<RecommendedSupplierViewModel>>>
     {
         private readonly IRepository<RFQ> _rfqRepository;
-        private readonly IRepository<Supplier> _supplierRepository;
+        private readonly ConnectChainDbContext _context;
         private readonly IRepository<Category> _categoryRepository;
 
         public RecommendSuppliersByProductCategoryQueryHandler(
             IRepository<RFQ> rfqRepository,
-            IRepository<Supplier> supplierRepository,
+            ConnectChainDbContext context,
             IRepository<Category> categoryRepository)
         {
             _rfqRepository = rfqRepository;
-            _supplierRepository = supplierRepository;
+            _context = context;
             _categoryRepository = categoryRepository;
         }
 
@@ -46,16 +48,12 @@ namespace ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query
 
             if (rfq.ProductId.HasValue)
             {
-                
-                suppliers = _supplierRepository.GetAllWithIncludes(s => s
-                    .Where(sup => sup.Products.Any(p => p.ID == rfq.ProductId.Value && p.CategoryId == rfq.CategoryId))
-                ).ToList();
+
+                suppliers = _context.Suppliers.Where(sup => sup.Products.Any(p => p.ID == rfq.ProductId.Value && p.CategoryId == rfq.CategoryId)).ToList();
             }
             else
             {
-                suppliers = _supplierRepository.GetAllWithIncludes(s => s
-                    .Where(sup => sup.Products.Any(p => p.CategoryId == rfq.CategoryId))
-                ).ToList();
+                suppliers = _context.Suppliers.Where(sup => sup.Products.Any(p => p.CategoryId == rfq.CategoryId)).ToList();
             }
 
 

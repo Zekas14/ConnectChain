@@ -131,6 +131,5 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.UseMiddleware<GlobalErrorHandlerMiddleware>();
-//app.UseMiddleware<GlobalErrorHandlerMiddleware>();
 
 app.Run();

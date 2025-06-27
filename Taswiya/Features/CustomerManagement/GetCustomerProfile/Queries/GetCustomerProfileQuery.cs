@@ -1,3 +1,4 @@
+using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -9,14 +10,14 @@ namespace ConnectChain.Features.CustomerManagement.GetCustomerProfile.Queries
 {
     public record GetCustomerProfileQuery(string CustomerId) : IRequest<RequestResult<CustomerProfileViewModel>>;
     
-    public class GetCustomerProfileQueryHandler(IRepository<Customer> repository) 
+    public class GetCustomerProfileQueryHandler(ConnectChainDbContext context) 
         : IRequestHandler<GetCustomerProfileQuery, RequestResult<CustomerProfileViewModel>>
     {
-        private readonly IRepository<Customer> _repository = repository;
+        private readonly ConnectChainDbContext _context = context;
 
         public async Task<RequestResult<CustomerProfileViewModel>> Handle(GetCustomerProfileQuery request, CancellationToken cancellationToken)
         {
-            var customer = await _repository.Get(c => c.Id == request.CustomerId)
+            var customer = await _context.Set<Customer>().Where(c => c.Id == request.CustomerId)
                 .Select(c => new CustomerProfileViewModel
                 {
                     Id = c.Id,

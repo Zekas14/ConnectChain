@@ -4,9 +4,7 @@ namespace ConnectChain.ViewModel.RFQ.CreateRFQ
 {
     public class CreateRFQViewModel
     {
-        [Required]
-        public string CustomerId { get; set; }
-
+       
         [Required]
         [StringLength(200)]
         public string ProductName { get; set; }
