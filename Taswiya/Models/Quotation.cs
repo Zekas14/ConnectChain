@@ -13,15 +13,29 @@ namespace ConnectChain.Models
         [ForeignKey("Supplier")]
         public string SupplierId { get; set; }
         public Supplier Supplier { get; set; }
+        [ForeignKey("PaymentTerm")] 
+        public int PaymentTermId { get; set; }
+        public PaymentTerm PaymentTerm { get; set; }
 
         [Required]
         public decimal QuotedPrice { get; set; }
 
-        public int? DeliveryTimeInDays { get; set; }
+        [Required]
+        public int DeliveryTimeInDays { get; set; }
+        
+        [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "Delivery fee must be a non-negative value.")]
+        public double DeliveryFee { get; set; } = 0D;
+
+        [Required]
+        public string DeliveryTerm { get; set; } = string.Empty;
 
         public string? Notes { get; set; }
-
-        public DateTime? ValidUntil { get; set; }
+        
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Valid Until")]
+        public DateTime ValidUntil { get; set; }
         public QuotationStatus Status { get; set; } = QuotationStatus.Pending;
     }
 }

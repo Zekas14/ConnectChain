@@ -41,6 +41,9 @@ namespace ConnectChain.Controllers
                 viewModel.RfqId,
                 viewModel.SupplierId,
                 viewModel.QuotedPrice,
+                viewModel.PaymentTermId,
+                viewModel.DeliveryFee,
+                viewModel.DeliveryTerm,
                 viewModel.DeliveryTimeInDays,
                 viewModel.Notes,
                 viewModel.ValidUntil

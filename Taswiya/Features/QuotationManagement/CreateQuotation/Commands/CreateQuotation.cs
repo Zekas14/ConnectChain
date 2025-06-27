@@ -1,4 +1,5 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.NotificationManagement.AddCustomerNotification.Commands;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
@@ -9,9 +10,12 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
        int RfqId,
        string SupplierId,
        decimal QuotedPrice,
-       int? DeliveryTimeInDays,
+       int PaymentTermId,
+       double DeliveryFee,
+       string DeliveryTerm,
+       int DeliveryTimeInDays,
        string? Notes,
-       DateTime? ValidUntil
+       DateTime ValidUntil
    ) : IRequest<RequestResult<int>>;
 
 
@@ -19,13 +23,16 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
     {
         private readonly IRepository<Quotation> _quotationRepository;
         private readonly IRepository<RFQ> _rfqRepository;
-
+         
+        private readonly IMediator _mediator;
         public CreateQuotationCommandHandler(
             IRepository<Quotation> quotationRepository,
-            IRepository<RFQ> rfqRepository)
+            IRepository<RFQ> rfqRepository,
+                    IMediator mediator)
         {
             _quotationRepository = quotationRepository;
             _rfqRepository = rfqRepository;
+            _mediator = mediator;
         }
 
         public async Task<RequestResult<int>> Handle(CreateQuotationCommand request, CancellationToken cancellationToken)
@@ -48,6 +55,9 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
                 RfqId = request.RfqId,
                 SupplierId = request.SupplierId,
                 QuotedPrice = request.QuotedPrice,
+                PaymentTermId = request.PaymentTermId,
+                DeliveryFee = request.DeliveryFee,
+                DeliveryTerm = request.DeliveryTerm,
                 DeliveryTimeInDays = request.DeliveryTimeInDays,
                 Notes = request.Notes,
                 ValidUntil = request.ValidUntil,
@@ -56,6 +66,14 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
 
             _quotationRepository.Add(quotation);
             await _quotationRepository.SaveChangesAsync();
+            var notificationCommand = new AddCustomerNotificationCommand(
+           Title: "New Quotation Submitted",
+           Body: $"A new quotation has been submitted for your RFQ #{rfq.ID}.",
+           Type: "Quotation",
+           CustomerId: rfq.CustomerId 
+       );
+            
+           await _mediator.Send(notificationCommand, cancellationToken);
 
             return RequestResult<int>.Success(quotation.ID, "Quotation created successfully.");
         }
