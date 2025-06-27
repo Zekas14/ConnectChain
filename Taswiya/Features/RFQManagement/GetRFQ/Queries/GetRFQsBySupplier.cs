@@ -35,7 +35,7 @@ namespace ConnectChain.Features.RFQManagement.GetRFQ.Queries
                 {
                     Id = rfq.ID,
                     ProductName = rfq.ProductName,
-                    CategoryId = rfq.Product?.CategoryId ?? 0,
+                    CategoryId = rfq.CategoryId,
                     CategoryName = rfq.Product?.Category?.Name ?? "",
                     Description = rfq.Description,
                     Quantity = rfq.Quantity,

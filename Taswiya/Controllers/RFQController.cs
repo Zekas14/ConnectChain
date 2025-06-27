@@ -26,7 +26,7 @@ namespace ConnectChain.Controllers
 
         [HttpPost("Create")]
         [Authorization(Role.Customer)]
-        public async Task<IActionResult> CreateRFQ( CreateRFQViewModel viewModel)
+        public async Task<IActionResult> CreateRFQ([FromBody] CreateRFQViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace ConnectChain.Controllers
 
         [HttpPost("AssignSuppliers")]
         [Authorization(Role.Customer)]
-        public async Task<IActionResult> AssignSuppliers(AssignSuppliersToRFQViewModel viewModel)
+        public async Task<IActionResult> AssignSuppliers([FromBody] AssignSuppliersToRFQViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {

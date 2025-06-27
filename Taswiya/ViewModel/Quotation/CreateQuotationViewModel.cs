@@ -14,11 +14,21 @@ namespace ConnectChain.ViewModel.Quotation
         [Range(0.01, double.MaxValue, ErrorMessage = "Quoted price must be greater than zero.")]
         public decimal QuotedPrice { get; set; }
 
+        [Required]
+        public int PaymentTermId { get; set; }
+
         [Range(1, int.MaxValue, ErrorMessage = "Delivery time must be at least 1 day.")]
-        public int? DeliveryTimeInDays { get; set; }
+        public int DeliveryTimeInDays { get; set; }
+
+        [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "Delivery fee must be a non-negative value.")]
+        public double DeliveryFee { get; set; } = 0D;
+        [Required]
+        [StringLength(100, ErrorMessage = "Delivery term cannot exceed 100 characters.")]
+        public string DeliveryTerm { get; set; } = string.Empty;
 
         public string? Notes { get; set; }
 
-        public DateTime? ValidUntil { get; set; }
+        public DateTime ValidUntil { get; set; }
     }
 }

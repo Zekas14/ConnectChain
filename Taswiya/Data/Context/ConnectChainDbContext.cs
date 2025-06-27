@@ -18,7 +18,7 @@ namespace ConnectChain.Data.Context
         public DbSet<RFQ> RFQs { get; set; }
         public DbSet<RfqAttachment> RfqAttachments { get; set; }
         public DbSet<RfqSupplierAssignment> RfqSupplierAssignments { get; set; }
-
+        public DbSet <PaymentTerm> PaymentTerms { get; set; }
         public DbSet<Quotation> Quotations { get; set; }   
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
