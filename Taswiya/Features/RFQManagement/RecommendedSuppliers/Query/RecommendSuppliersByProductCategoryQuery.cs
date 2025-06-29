@@ -37,15 +37,16 @@ namespace ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query
                  Product = x.Product
              })).FirstOrDefault();
 
-            if (rfq.CategoryId <= 0)
-                return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "Invalid category for the RFQ.");
-
             if (rfq == null)
                 return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "RFQ not found.");
 
             var categoryExists = _categoryRepository.Get(c => c.ID == rfq.CategoryId).Any();
             if (!categoryExists)
             return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "Category not found for the RFQ.");
+            
+            if (rfq.CategoryId <= 0)
+                return RequestResult<List<RecommendedSupplierViewModel>>.Failure(ErrorCode.NotFound, "Invalid category for the RFQ.");
+
 
             List<Supplier> suppliers;
 

@@ -1,8 +1,11 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Features.ImageManagement.UploadImage.Command;
+using ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands;
+using ConnectChain.Features.RFQManagement.RecommendedSuppliers.Query;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
+using System.Linq.Expressions;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -139,6 +142,28 @@ namespace ConnectChain.Features.RFQManagement.CreateRFQ.commands
 
                     _attachmentRepository.AddRange(attachments);
                     await _attachmentRepository.SaveChangesAsync();
+                }
+
+                var recommendedSuppliersResult = await _mediator.Send(
+          new RecommendSuppliersByProductCategoryQuery(rfq.ID), cancellationToken);
+
+                if (recommendedSuppliersResult == null)
+                {
+                    return RequestResult<int>.Failure(ErrorCode.InternalServerError, "Failed to recommend suppliers.");
+                }
+
+                var supplierIds = recommendedSuppliersResult.data.Select(s => s.SupplierId).ToList();
+                if (supplierIds.Count == 0)
+                {
+                    return RequestResult<int>.Failure(ErrorCode.NotFound, "No recommended suppliers found for this category.");
+                }
+
+                var assignResult = await _mediator.Send(
+                    new AssignSuppliersToRFQCommand(rfq.ID, supplierIds), cancellationToken);
+
+                if (assignResult is RequestResult<bool> assignRequestResult && !assignRequestResult.isSuccess)
+                {
+                    return RequestResult<int>.Failure(assignRequestResult.errorCode, assignRequestResult.message);
                 }
 
                 return RequestResult<int>.Success(rfq.ID, "RFQ created successfully");

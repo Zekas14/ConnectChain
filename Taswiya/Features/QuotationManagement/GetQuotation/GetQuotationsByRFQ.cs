@@ -33,7 +33,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 RfqId = q.RfqId,
                 SupplierId = q.SupplierId,
                 SupplierName = q.Supplier?.Name ?? "",
-                QuotedPrice = q.QuotedPrice,
+                UnitPrice = q.UnitPrice,
                 PaymentTermId = q.PaymentTermId,
                 DeliveryTerm = q.DeliveryTerm,
                 DeliveryFee = q.DeliveryFee,

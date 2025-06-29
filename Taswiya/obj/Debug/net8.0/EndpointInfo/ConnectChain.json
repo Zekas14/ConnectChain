@@ -2414,9 +2414,11 @@
           "deliveryFee",
           "deliveryTerm",
           "paymentTermId",
-          "quotedPrice",
+          "productId",
+          "quantity",
           "rfqId",
-          "supplierId"
+          "supplierId",
+          "unitPrice"
         ],
         "type": "object",
         "properties": {
@@ -2428,7 +2430,17 @@
             "minLength": 1,
             "type": "string"
           },
-          "quotedPrice": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "unitPrice": {
             "minimum": 0.01,
             "type": "number",
             "format": "double"
@@ -2467,17 +2479,12 @@
       "CreateRFQViewModel": {
         "required": [
           "categoryId",
-          "customerId",
           "productName",
           "quantity",
           "unit"
         ],
         "type": "object",
         "properties": {
-          "customerId": {
-            "minLength": 1,
-            "type": "string"
-          },
           "productName": {
             "maxLength": 200,
             "minLength": 0,

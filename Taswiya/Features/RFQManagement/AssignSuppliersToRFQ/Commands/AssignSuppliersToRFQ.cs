@@ -1,6 +1,7 @@
 ﻿using ConnectChain.Data.Context;
 using ConnectChain.Data.Repositories.Repository;
 using ConnectChain.Features.NotificationManagement.SendNotification.Command;
+using ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Events;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
@@ -44,12 +45,13 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
                 _assignmentRepository.AddRange(assignments);
                 await _assignmentRepository.SaveChangesAsync();
 
-                var suppliers = _context.Suppliers.Where(s => request.SupplierIds.Contains(s.Id)).ToList();
-                var deviceTokens = suppliers
-                    .Select(s => s.FcmToken)
-                    .Where(token => !string.IsNullOrEmpty(token))
-                    .ToList();
+                //var suppliers = _context.Suppliers.Where(s => request.SupplierIds.Contains(s.Id)).ToList();
+                //var deviceTokens = suppliers
+                //    .Select(s => s.FcmToken)
+                //    .Where(token => !string.IsNullOrEmpty(token))
+                //    .ToList();
 
+<<<<<<< HEAD
                /* if (deviceTokens.Any())
                 {
                     var title = "New RFQ Received";
@@ -60,6 +62,10 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
                         return RequestResult<bool>.Failure(notificationResult.errorCode, $"Suppliers assigned, but failed to send notifications: {notificationResult.message}");
                     }
                 }*/
+=======
+            
+                await _mediator.Publish(new AssignSuppliersEvent(request.RfqId, request.SupplierIds), cancellationToken);
+>>>>>>> a87e0a3220390a8d3be9aadb2714756e3a483d0e
 
                 return RequestResult<bool>.Success(true, "Suppliers assigned and notified successfully.");
             

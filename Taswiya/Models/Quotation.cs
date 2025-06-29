@@ -13,12 +13,17 @@ namespace ConnectChain.Models
         [ForeignKey("Supplier")]
         public string SupplierId { get; set; }
         public Supplier Supplier { get; set; }
+
+        [ForeignKey("Product")]
+        public int ProductId { get; set; }
         [ForeignKey("PaymentTerm")] 
         public int PaymentTermId { get; set; }
+
+        public int Quantity { get; set; }
         public PaymentTerm PaymentTerm { get; set; }
 
         [Required]
-        public decimal QuotedPrice { get; set; }
+        public decimal UnitPrice { get; set; }
 
         [Required]
         public int DeliveryTimeInDays { get; set; }
