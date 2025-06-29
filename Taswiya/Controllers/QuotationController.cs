@@ -17,7 +17,7 @@ namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+ 
     public class QuotationController : ControllerBase
     {
         private readonly IMediator _mediator;

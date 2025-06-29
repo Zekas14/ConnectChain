@@ -3,6 +3,7 @@ using ConnectChain.Features.NotificationManagement.AddCustomerNotification.Comma
 using ConnectChain.Helpers;
 using ConnectChain.Models;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
 {
@@ -25,23 +26,29 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
     {
         private readonly IRepository<Quotation> _quotationRepository;
         private readonly IRepository<RFQ> _rfqRepository;
-        private readonly IRepository <Category> _categoryRepository;
-
         private readonly IMediator _mediator;
+        private readonly IRepository<Product> _productRepository;
+
         public CreateQuotationCommandHandler(
             IRepository<Quotation> quotationRepository,
             IRepository<RFQ> rfqRepository,
-            IRepository<Category> categoryRepository,
+            IRepository<Product> productRepository,
                     IMediator mediator)
         {
             _quotationRepository = quotationRepository;
             _rfqRepository = rfqRepository;
+            _productRepository = productRepository;
+
             _mediator = mediator;
         }
 
         public async Task<RequestResult<int>> Handle(CreateQuotationCommand request, CancellationToken cancellationToken)
         {
-            var rfq = _rfqRepository.GetByID(request.RfqId);
+           var rfq = _rfqRepository.GetAllWithIncludes(q => q
+    .Where(x => x.ID == request.RfqId)
+    .Include(x => x.SupplierAssignments)
+    .Include(x => x.Product)
+).FirstOrDefault();
             if (rfq == null)
                 return RequestResult<int>.Failure(ErrorCode.NotFound, "RFQ not found.");
 
@@ -53,16 +60,19 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
             var existingQuotation = _quotationRepository.Get(q => q.RfqId == request.RfqId && q.SupplierId == request.SupplierId).FirstOrDefault();
             if (existingQuotation != null)
                 return RequestResult<int>.Failure(ErrorCode.InvalidInput, "You have already submitted a quotation for this RFQ.");
-            var category = await _categoryRepository.GetByIDAsync(rfq.CategoryId);
-            if (category == null)
-                return RequestResult<int>.Failure(ErrorCode.NotFound, "Category not found for the RFQ.");
 
+            var product = _productRepository.GetByID(request.ProductId);
+            if (product == null)
+                return RequestResult<int>.Failure(ErrorCode.NotFound, "Product not found.");
+
+
+            var categoryId = product.CategoryId;
             var quotation = new Quotation
             {
                 RfqId = request.RfqId,
                 SupplierId = request.SupplierId,
                 ProductId = request.ProductId,
-                CategoryId = category.ID,
+                CategoryId = categoryId,
                 Quantity = request.Quantity,
                 UnitPrice = request.UnitPrice,
                 PaymentTermId = request.PaymentTermId,
