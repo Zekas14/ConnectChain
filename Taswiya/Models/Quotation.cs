@@ -22,6 +22,8 @@ namespace ConnectChain.Models
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
+        
+        public Category Category { get; set; }
 
         public int Quantity { get; set; }
         public PaymentTerm PaymentTerm { get; set; }

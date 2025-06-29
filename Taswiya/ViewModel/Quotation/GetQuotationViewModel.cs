@@ -11,7 +11,7 @@ namespace ConnectChain.ViewModel.Quotation
         public int ProductId { get; set; }
         public string ProductName { get; set;}
         public QuotationStatus Status { get; set; }
-        public int CategoryId { get; set; }
+        public string categoryName { get; set; }
         public int Quantity { get; set; }
         public int PaymentTermId { get; set; }
         public decimal UnitPrice { get; set; }
