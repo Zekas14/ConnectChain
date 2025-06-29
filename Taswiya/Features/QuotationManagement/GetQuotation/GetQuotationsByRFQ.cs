@@ -34,7 +34,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 RfqId = q.RfqId,
                 SupplierId = q.SupplierId,
                 ProductId = q.ProductId,
-                CategoryId = q.CategoryId,
+               categoryName = q.Category.Name?? "",
                 ProductName = q.Product?.Name ?? "",
                 SupplierName = q.Supplier?.Name ?? "",
                 Status = q.Status,

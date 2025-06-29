@@ -39,7 +39,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 UnitPrice = quotation.UnitPrice,
                 ProductId = quotation.ProductId,
                 ProductName = quotation.Product?.Name ?? "",
-                CategoryId = quotation?.Product.CategoryId?? quotation.CategoryId,
+               categoryName = quotation.Category.Name??"",
                 Status = quotation.Status,
                 Quantity = quotation.Quantity,
                 PaymentTermId = quotation.PaymentTermId,

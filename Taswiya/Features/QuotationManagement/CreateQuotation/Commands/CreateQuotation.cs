@@ -10,7 +10,6 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
        int RfqId,
        string SupplierId,
        int ProductId,
-       int CategoryId,
        int Quantity,
        decimal UnitPrice,
        int PaymentTermId,
@@ -26,11 +25,13 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
     {
         private readonly IRepository<Quotation> _quotationRepository;
         private readonly IRepository<RFQ> _rfqRepository;
-         
+        private readonly IRepository <Category> _categoryRepository;
+
         private readonly IMediator _mediator;
         public CreateQuotationCommandHandler(
             IRepository<Quotation> quotationRepository,
             IRepository<RFQ> rfqRepository,
+            IRepository<Category> categoryRepository,
                     IMediator mediator)
         {
             _quotationRepository = quotationRepository;
@@ -52,13 +53,16 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
             var existingQuotation = _quotationRepository.Get(q => q.RfqId == request.RfqId && q.SupplierId == request.SupplierId).FirstOrDefault();
             if (existingQuotation != null)
                 return RequestResult<int>.Failure(ErrorCode.InvalidInput, "You have already submitted a quotation for this RFQ.");
+            var category = await _categoryRepository.GetByIDAsync(rfq.CategoryId);
+            if (category == null)
+                return RequestResult<int>.Failure(ErrorCode.NotFound, "Category not found for the RFQ.");
 
             var quotation = new Quotation
             {
                 RfqId = request.RfqId,
                 SupplierId = request.SupplierId,
                 ProductId = request.ProductId,
-                CategoryId = request.CategoryId,
+                CategoryId = category.ID,
                 Quantity = request.Quantity,
                 UnitPrice = request.UnitPrice,
                 PaymentTermId = request.PaymentTermId,
