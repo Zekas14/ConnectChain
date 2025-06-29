@@ -47,10 +47,14 @@ namespace ConnectChain.Features.QuotationManagement.ApproveQuotation
                 if (q.ID == quotation.ID)
                 {
                     q.Status = Models.Enums.QuotationStatus.Approved;
+
+                    _quotationRepository.Update(q);
+
                 }
                 else if (q.Status != Models.Enums.QuotationStatus.Rejected)
                 {
                     q.Status = Models.Enums.QuotationStatus.Rejected;
+                    _quotationRepository.Update(q);
                 }
 
                
