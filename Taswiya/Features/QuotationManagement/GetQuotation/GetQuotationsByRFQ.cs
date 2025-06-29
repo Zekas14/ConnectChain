@@ -26,6 +26,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 .Where(x => x.RfqId == request.RfqId)
                 .Include(x => x.Supplier)
                 .Include(x => x.Product)
+                .Include(x=>x.Category)
             ).ToList();
 
             var result = quotations.Select(q => new GetQuotationViewModel
@@ -47,7 +48,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 Notes = q.Notes,
                 ValidUntil = q.ValidUntil,
                 CreatedAt = q.CreatedDate
-            }).ToList();
+            })?.ToList();
 
             return RequestResult<List<GetQuotationViewModel>>.Success(result, "Quotations fetched successfully.");
         }

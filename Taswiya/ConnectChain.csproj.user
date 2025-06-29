@@ -7,7 +7,7 @@
     <WebStackScaffolding_ControllerDialogWidth>650.4</WebStackScaffolding_ControllerDialogWidth>
     <_SelectedScaffolderID>MvcControllerWithActionsScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Common</_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>D:\Ahmed\Study\Graduation Project\Taswiya\Taswiya\Properties\PublishProfiles\site20156-WebDeploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\programming\Garbage_c#\ConnectChain\Taswiya\Properties\PublishProfiles\site20156-WebDeploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
