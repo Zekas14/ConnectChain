@@ -45,22 +45,22 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
                 _assignmentRepository.AddRange(assignments);
                 await _assignmentRepository.SaveChangesAsync();
 
-                var suppliers = _context.Suppliers.Where(s => request.SupplierIds.Contains(s.Id)).ToList();
-                var deviceTokens = suppliers
-                    .Select(s => s.FcmToken)
-                    .Where(token => !string.IsNullOrEmpty(token))
-                    .ToList();
+                //var suppliers = _context.Suppliers.Where(s => request.SupplierIds.Contains(s.Id)).ToList();
+                //var deviceTokens = suppliers
+                //    .Select(s => s.FcmToken)
+                //    .Where(token => !string.IsNullOrEmpty(token))
+                //    .ToList();
 
-                if (deviceTokens.Any())
-                {
-                    var title = "New RFQ Received";
-                    var body = $"You have been assigned to a new RFQ (ID: {request.RfqId}).";
-                    var notificationResult = await _mediator.Send(new SendNotificationsCommand(deviceTokens, title, body, "RFQ"), cancellationToken);
-                    if (!notificationResult.isSuccess)
-                    {
-                        return RequestResult<bool>.Failure(notificationResult.errorCode, $"Suppliers assigned, but failed to send notifications: {notificationResult.message}");
-                    }
-                }
+                //if (deviceTokens.Any())
+                //{
+                //    var title = "New RFQ Received";
+                //    var body = $"You have been assigned to a new RFQ (ID: {request.RfqId}).";
+                //    var notificationResult = await _mediator.Send(new SendNotificationsCommand(deviceTokens, title, body, "RFQ"), cancellationToken);
+                //    if (!notificationResult.isSuccess)
+                //    {
+                //        return RequestResult<bool>.Failure(notificationResult.errorCode, $"Suppliers assigned, but failed to send notifications: {notificationResult.message}");
+                //    }
+                //}
 
                 return RequestResult<bool>.Success(true, "Suppliers assigned and notified successfully.");
             }

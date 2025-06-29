@@ -11,8 +11,14 @@ namespace ConnectChain.ViewModel.Quotation
         public string SupplierId { get; set; }
 
         [Required]
+        public int ProductId { get; set; }
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1.")]
+        public int Quantity { get; set; }
+
+        [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Quoted price must be greater than zero.")]
-        public decimal QuotedPrice { get; set; }
+        public decimal UnitPrice { get; set; }
 
         [Required]
         public int PaymentTermId { get; set; }

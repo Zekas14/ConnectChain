@@ -540,8 +540,11 @@ namespace ConnectChain.Migrations
                     b.Property<int>("PaymentTermId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("QuotedPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<int>("RfqId")
                         .HasColumnType("int");
@@ -552,6 +555,9 @@ namespace ConnectChain.Migrations
                     b.Property<string>("SupplierId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");

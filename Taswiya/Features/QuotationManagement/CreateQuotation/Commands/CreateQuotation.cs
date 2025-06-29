@@ -9,7 +9,9 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
     public record CreateQuotationCommand(
        int RfqId,
        string SupplierId,
-       decimal QuotedPrice,
+       int ProductId,
+       int Quantity,
+       decimal UnitPrice,
        int PaymentTermId,
        double DeliveryFee,
        string DeliveryTerm,
@@ -54,7 +56,9 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
             {
                 RfqId = request.RfqId,
                 SupplierId = request.SupplierId,
-                QuotedPrice = request.QuotedPrice,
+                ProductId = request.ProductId,
+                Quantity = request.Quantity,
+                UnitPrice = request.UnitPrice,
                 PaymentTermId = request.PaymentTermId,
                 DeliveryFee = request.DeliveryFee,
                 DeliveryTerm = request.DeliveryTerm,

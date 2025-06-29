@@ -6,8 +6,10 @@
         public int RfqId { get; set; }
         public string SupplierId { get; set; }
         public string SupplierName { get; set; }
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
         public int PaymentTermId { get; set; }
-        public decimal QuotedPrice { get; set; }
+        public decimal UnitPrice { get; set; }
         public int? DeliveryTimeInDays { get; set; }
         public string DeliveryTerm{ get; set; }
         public double DeliveryFee { get; set; }
