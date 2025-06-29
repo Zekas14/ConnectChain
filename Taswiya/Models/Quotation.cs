@@ -16,8 +16,12 @@ namespace ConnectChain.Models
 
         [ForeignKey("Product")]
         public int ProductId { get; set; }
+        public Product Product { get; set; }
         [ForeignKey("PaymentTerm")] 
         public int PaymentTermId { get; set; }
+
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
 
         public int Quantity { get; set; }
         public PaymentTerm PaymentTerm { get; set; }

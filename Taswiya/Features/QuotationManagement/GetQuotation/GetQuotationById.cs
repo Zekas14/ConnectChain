@@ -24,6 +24,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
             var quotation = _quotationRepository.GetAllWithIncludes(q => q
                 .Where(x => x.ID == request.QuotationId)
                 .Include(x => x.Supplier)
+                .Include(x => x.Product)
             ).FirstOrDefault();
 
             if (quotation == null)
@@ -37,6 +38,9 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 SupplierName = quotation.Supplier?.Name ?? "",
                 UnitPrice = quotation.UnitPrice,
                 ProductId = quotation.ProductId,
+                ProductName = quotation.Product?.Name ?? "",
+                CategoryId = quotation?.Product.CategoryId?? quotation.CategoryId,
+                Status = quotation.Status,
                 Quantity = quotation.Quantity,
                 PaymentTermId = quotation.PaymentTermId,
                 DeliveryTerm = quotation.DeliveryTerm,
