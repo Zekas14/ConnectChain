@@ -283,7 +283,7 @@ namespace ConnectChain.Controllers
             [FromQuery] int categoryId
             )
         {
-            string? customerId = Request.GetIdFromToken(); // Optional for wishlist checking
+            string? customerId = Request.GetIdFromToken(); 
             var result = await mediator.Send(new GetProductsByCategoryQuery(categoryId, customerId));
             return result.isSuccess
                 ? new SuccessResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>(result.data, result.message)

@@ -19,8 +19,8 @@ namespace ConnectChain.Features.NotificationManagement.SendNotification.EventHan
 
             var notificationData = new Notification
             {
-                Body = $"تم تعيين موردين للطلب رقم {notification.RfqId} , راجع الطلب من قائمة الطلبات",
-                Title = $"موردين جدد",
+                Body = $"تم تعيينك كمورد للطلب رقم {notification.RfqId} , راجع الطلب من قائمة الطلبات",
+                Title = $"طلب عرض سعر جدد",
                 Type = "RFQ"
             };
             var fcmTokenResult = mediator.Send(new GetFcmTokensQuery(notification.SupplierIds), cancellationToken);
