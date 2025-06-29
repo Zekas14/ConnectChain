@@ -39,6 +39,7 @@ namespace ConnectChain.Controllers
             var command = new CreateQuotationCommand(
                 viewModel.RfqId,
                 viewModel.SupplierId,
+                viewModel.CategoryId,
                 viewModel.ProductId,
                 viewModel.Quantity,
                 viewModel.UnitPrice,
