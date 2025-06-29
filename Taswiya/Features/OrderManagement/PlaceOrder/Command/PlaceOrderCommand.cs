@@ -72,7 +72,7 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
                 };
 
                 repository.Add(order);
-                await mediator.Publish(new OrderPlacedEvent(order,products), cancellationToken);
+                await mediator.Publish(new OrderPlacedEvent(order, orderItems.Select(oi => oi.Product).ToList()), cancellationToken);
             }
 
             var clearCartResult = await mediator.Send(new ClearCartCommand(request.CustomerId), cancellationToken);

@@ -120,7 +120,7 @@ namespace ConnectChain.Controllers
         public async Task<IActionResult> GetRecommendedSuppliers(int rfqId)
         {
             var result = await _mediator.Send(new RecommendSuppliersByProductCategoryQuery(rfqId));
-            if (result.isSuccess)
+            if (result.isSuccess)   
                 return new SuccessResponseViewModel<List<RecommendedSupplierViewModel>>(result.data, result.message);
             return new FailureResponseViewModel<List<RecommendedSupplierViewModel>>(result.errorCode, result.message);
         }

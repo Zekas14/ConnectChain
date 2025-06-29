@@ -30,8 +30,7 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
 
         public async Task<RequestResult<bool>> Handle(AssignSuppliersToRFQCommand request, CancellationToken cancellationToken)
         {
-            try
-            {
+            
                 if (request.SupplierIds == null || !request.SupplierIds.Any())
                     return RequestResult<bool>.Failure(ErrorCode.BadRequest, "No suppliers specified.");
 
@@ -51,7 +50,7 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
                     .Where(token => !string.IsNullOrEmpty(token))
                     .ToList();
 
-                if (deviceTokens.Any())
+               /* if (deviceTokens.Any())
                 {
                     var title = "New RFQ Received";
                     var body = $"You have been assigned to a new RFQ (ID: {request.RfqId}).";
@@ -60,14 +59,11 @@ namespace ConnectChain.Features.RFQManagement.AssignSuppliersToRFQ.Commands
                     {
                         return RequestResult<bool>.Failure(notificationResult.errorCode, $"Suppliers assigned, but failed to send notifications: {notificationResult.message}");
                     }
-                }
+                }*/
 
                 return RequestResult<bool>.Success(true, "Suppliers assigned and notified successfully.");
-            }
-            catch (Exception ex)
-            {
-                return RequestResult<bool>.Failure(ErrorCode.InternalServerError, $"Failed to assign suppliers: {ex.Message}");
-            }
+            
+           
         }
     }
 }

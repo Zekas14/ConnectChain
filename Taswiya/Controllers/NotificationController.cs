@@ -16,7 +16,7 @@ namespace ConnectChain.Controllers
     {
         private readonly IMediator mediator = mediator;
         [HttpGet("GetSupplierNotifications")]
-        [Authorization(Role.Supplier)]
+        [Authorization(Role.Supplier,Role.Customer)]
         public async Task<ResponseViewModel<IReadOnlyList<GetNotificationResponseViewModel>>> GetSupplierNotifications()
         {
             var supplierId = Request.GetIdFromToken();

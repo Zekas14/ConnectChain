@@ -30,7 +30,6 @@ namespace ConnectChain.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
     public class ProductController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator mediator = mediator;
@@ -279,6 +278,7 @@ namespace ConnectChain.Controllers
         }
 
         [HttpGet("GetProductsByCategory")]
+        [Authorization(Role.Customer)]
         public async Task<ResponseViewModel<IReadOnlyList<GetCustomerProductsResponseViewModel>>> GetProductsByCategory(
             [FromQuery] int categoryId
             )

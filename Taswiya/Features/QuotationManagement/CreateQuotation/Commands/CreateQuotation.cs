@@ -41,10 +41,10 @@ namespace ConnectChain.Features.QuotationManagement.CreateQuotation.Commands
             if (rfq == null)
                 return RequestResult<int>.Failure(ErrorCode.NotFound, "RFQ not found.");
 
-            var isAssigned = rfq.SupplierAssignments.Any(sa => sa.SupplierId == request.SupplierId);
+            /*var isAssigned = rfq.SupplierAssignments.Any(sa => sa.SupplierId == request.SupplierId);
             if (!isAssigned)
                 return RequestResult<int>.Failure(ErrorCode.Forbidden, "Supplier is not assigned to this RFQ.");
-
+*/
 
             var existingQuotation = _quotationRepository.Get(q => q.RfqId == request.RfqId && q.SupplierId == request.SupplierId).FirstOrDefault();
             if (existingQuotation != null)

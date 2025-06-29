@@ -21,7 +21,7 @@ namespace ConnectChain.Features.ProductManagement.GetProductsByCategory.Queries
 
         public async Task<RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>> Handle(GetProductsByCategoryQuery request, CancellationToken cancellationToken)
         {
-            var isCategoryExist = await _mediator.Send(new IsCategoryExistQuery(request.CategoryId));
+            var isCategoryExist = await _mediator.Send(new IsCategoryExistQuery(request.CategoryId),cancellationToken);
             if(!isCategoryExist.isSuccess)
             {
                 return RequestResult<IReadOnlyList<GetCustomerProductsResponseViewModel>>.Failure(isCategoryExist.errorCode,isCategoryExist.message);
