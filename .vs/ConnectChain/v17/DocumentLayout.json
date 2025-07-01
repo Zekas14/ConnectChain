@@ -3,24 +3,38 @@
   "WorkspaceRootPath": "D:\\programming\\Garbage_c#\\ConnectChain\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Migrations\\20250629062804_updateQuotationAttributes3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Taswiya\\Migrations\\20250629062804_updateQuotationAttributes3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\quotationmanagement\\approvequotation\\approvequotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\quotationmanagement\\approvequotation\\approvequotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\quotationmanagement\\getquotation\\getquotationsbyrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\quotationmanagement\\getquotation\\getquotationsbyrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loai2\\AppData\\Local\\Temp\\goclzsp1..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\quotationmanagement\\getquotation\\getquotationbyid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\quotationmanagement\\getquotation\\getquotationbyid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\quotation\\getquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\quotation\\getquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\quotationmanagement\\getquotation\\getquotationsbyrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\quotationmanagement\\getquotation\\getquotationsbyrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\quotation\\createquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\quotation\\createquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\rfqmanagement\\createrfq\\commands\\createrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\rfqmanagement\\createrfq\\commands\\createrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\connectchain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\connectchain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\connectchain.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\connectchain.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\quotationmanagement\\createquotation\\commands\\createquotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,19 +45,16 @@
       "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\models\\quotation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\rfqmanagement\\createrfq\\commands\\createrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\rfqmanagement\\createrfq\\commands\\createrfq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\quotation\\createquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\quotation\\createquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\controllers\\quotationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loai2\\AppData\\Local\\Temp\\mds22rn4..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Migrations\\20250629053651_QuotationUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Taswiya\\Migrations\\20250629053651_QuotationUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\viewmodel\\quotation\\getquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\viewmodel\\quotation\\getquotationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\features\\notificationmanagement\\sendnotification\\command\\sendnotificationscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -74,10 +85,14 @@
       "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\features\\rfqmanagement\\assignsupplierstorfq\\events\\assignsuppliersevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loai2\\AppData\\Local\\Temp\\mds22rn4..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+      "AbsoluteMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|d:\\programming\\garbage_c#\\connectchain\\taswiya\\migrations\\20250629053651_quotationupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB4A3135-06CA-4A8D-9939-947289422A4B}|Taswiya\\ConnectChain.csproj|solutionrelative:taswiya\\migrations\\20250629053651_quotationupdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loai2\\AppData\\Local\\Temp\\mds22rn4..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loai2\\AppData\\Local\\Temp\\goclzsp1..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\loai2\\AppData\\Local\\Temp\\goclzsp1..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -87,8 +102,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CreateRFQ.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
+              "RelativeToolTip": "Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDAAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T02:09:15.35Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApproveQuotation.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\ApproveQuotation\\ApproveQuotation.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\QuotationManagement\\ApproveQuotation\\ApproveQuotation.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\ApproveQuotation\\ApproveQuotation.cs",
+              "RelativeToolTip": "Taswiya\\Features\\QuotationManagement\\ApproveQuotation\\ApproveQuotation.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwDgAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T10:18:29.614Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -123,28 +165,62 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250629062804_updateQuotationAttributes3.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Migrations\\20250629062804_updateQuotationAttributes3.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Migrations\\20250629062804_updateQuotationAttributes3.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Migrations\\20250629062804_updateQuotationAttributes3.cs*",
-              "RelativeToolTip": "Taswiya\\Migrations\\20250629062804_updateQuotationAttributes3.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T06:28:04.891Z",
+              "DocumentIndex": 1,
+              "Title": "SQLQuery2.sql ",
+              "DocumentMoniker": "C:\\Users\\loai2\\AppData\\Local\\Temp\\goclzsp1..sql",
+              "ToolTip": "SQLQuery2.sql *",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-06-29T10:16:39.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.301\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "ViewState": "AgIAAI0BAAAAAAAAAAAmwJgBAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-06-29T08:51:32.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "ConnectChain",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ConnectChain.csproj",
+              "RelativeDocumentMoniker": "Taswiya\\ConnectChain.csproj",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ConnectChain.csproj",
+              "RelativeToolTip": "Taswiya\\ConnectChain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-29T08:45:21.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "CreateQuotation.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\CreateQuotation\\Commands\\CreateQuotation.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\QuotationManagement\\CreateQuotation\\Commands\\CreateQuotation.cs",
               "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\CreateQuotation\\Commands\\CreateQuotation.cs",
               "RelativeToolTip": "Taswiya\\Features\\QuotationManagement\\CreateQuotation\\Commands\\CreateQuotation.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAYwEAAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAWwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T05:09:29.339Z",
+              "WhenOpened": "2025-06-29T07:35:26.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetQuotationsByRFQ.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
+              "RelativeToolTip": "Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAWwDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T04:48:56.701Z",
               "EditorCaption": ""
             },
             {
@@ -155,53 +231,53 @@
               "RelativeDocumentMoniker": "Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationById.cs",
               "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationById.cs",
               "RelativeToolTip": "Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationById.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAuwCkAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwBsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-29T05:02:29.415Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
+              "Title": "ConnectChain.http",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ConnectChain.http",
+              "RelativeDocumentMoniker": "Taswiya\\ConnectChain.http",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ConnectChain.http",
+              "RelativeToolTip": "Taswiya\\ConnectChain.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-06-29T09:26:48.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "QuotationController.cs",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Controllers\\QuotationController.cs",
+              "RelativeDocumentMoniker": "Taswiya\\Controllers\\QuotationController.cs",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Controllers\\QuotationController.cs",
+              "RelativeToolTip": "Taswiya\\Controllers\\QuotationController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwCwAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-29T03:16:50.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Quotation.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Models\\Quotation.cs",
               "RelativeDocumentMoniker": "Taswiya\\Models\\Quotation.cs",
               "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Models\\Quotation.cs",
               "RelativeToolTip": "Taswiya\\Models\\Quotation.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAuwBkAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-29T04:49:25.024Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetQuotationsByRFQ.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
-              "RelativeToolTip": "Taswiya\\Features\\QuotationManagement\\GetQuotation\\GetQuotationsByRFQ.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAqwCQAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T04:48:56.701Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CreateRFQ.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
-              "RelativeToolTip": "Taswiya\\Features\\RFQManagement\\CreateRFQ\\commands\\CreateRFQ.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwGQAAABtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T02:09:15.35Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "CreateQuotationViewModel.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Quotation\\CreateQuotationViewModel.cs",
               "RelativeDocumentMoniker": "Taswiya\\ViewModel\\Quotation\\CreateQuotationViewModel.cs",
@@ -214,7 +290,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\appsettings.json",
+              "RelativeDocumentMoniker": "Taswiya\\appsettings.json",
+              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\appsettings.json",
+              "RelativeToolTip": "Taswiya\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-29T07:15:48.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "GetQuotationViewModel.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\ViewModel\\Quotation\\GetQuotationViewModel.cs",
               "RelativeDocumentMoniker": "Taswiya\\ViewModel\\Quotation\\GetQuotationViewModel.cs",
@@ -227,43 +316,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "QuotationController.cs",
-              "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Controllers\\QuotationController.cs",
-              "RelativeDocumentMoniker": "Taswiya\\Controllers\\QuotationController.cs",
-              "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Controllers\\QuotationController.cs",
-              "RelativeToolTip": "Taswiya\\Controllers\\QuotationController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAA2wCgAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-29T03:16:50.827Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 21,
               "Title": "20250629053651_QuotationUpdate.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Migrations\\20250629053651_QuotationUpdate.cs",
               "RelativeDocumentMoniker": "Taswiya\\Migrations\\20250629053651_QuotationUpdate.cs",
               "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Migrations\\20250629053651_QuotationUpdate.cs",
               "RelativeToolTip": "Taswiya\\Migrations\\20250629053651_QuotationUpdate.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwBcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-29T05:36:51.61Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SQLQuery2.sql ",
-              "DocumentMoniker": "C:\\Users\\loai2\\AppData\\Local\\Temp\\mds22rn4..sql",
-              "ToolTip": "SQLQuery2.sql *",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-06-29T06:04:20.674Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "SendNotificationsCommand.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\NotificationManagement\\SendNotification\\Command\\SendNotificationsCommand.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\NotificationManagement\\SendNotification\\Command\\SendNotificationsCommand.cs",
@@ -276,7 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "AssignSuppliersEventHandler.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\NotificationManagement\\SendNotification\\EventHandlers\\AssignSuppliersEventHandler.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\NotificationManagement\\SendNotification\\EventHandlers\\AssignSuppliersEventHandler.cs",
@@ -289,7 +355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "AssignSuppliersEvent.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\AssignSuppliersToRFQ\\Events\\AssignSuppliersEvent.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\RFQManagement\\AssignSuppliersToRFQ\\Events\\AssignSuppliersEvent.cs",
@@ -302,20 +368,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "AssignSuppliersToRFQ.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\AssignSuppliersToRFQ\\Commands\\AssignSuppliersToRFQ.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\RFQManagement\\AssignSuppliersToRFQ\\Commands\\AssignSuppliersToRFQ.cs",
               "ToolTip": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\RFQManagement\\AssignSuppliersToRFQ\\Commands\\AssignSuppliersToRFQ.cs",
               "RelativeToolTip": "Taswiya\\Features\\RFQManagement\\AssignSuppliersToRFQ\\Commands\\AssignSuppliersToRFQ.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwDkAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAzwDkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T23:52:54.689Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "PlaceOrderCommand.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\OrderManagement\\PlaceOrder\\Command\\PlaceOrderCommand.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\OrderManagement\\PlaceOrder\\Command\\PlaceOrderCommand.cs",
@@ -328,7 +394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "OrderPlacedEventHandler.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\NotificationManagement\\SendNotification\\EventHandlers\\OrderPlacedEventHandler.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\NotificationManagement\\SendNotification\\EventHandlers\\OrderPlacedEventHandler.cs",
@@ -341,7 +407,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "OrderPlacedEvent.cs",
               "DocumentMoniker": "D:\\programming\\Garbage_c#\\ConnectChain\\Taswiya\\Features\\OrderManagement\\PlaceOrder\\Events\\OrderPlacedEvent.cs",
               "RelativeDocumentMoniker": "Taswiya\\Features\\OrderManagement\\PlaceOrder\\Events\\OrderPlacedEvent.cs",

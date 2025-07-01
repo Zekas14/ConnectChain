@@ -37,6 +37,7 @@ namespace ConnectChain.Features.QuotationManagement.RejectQuotation
                 return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Quotation is already rejected.");
 
             quotation.Status = Models.Enums.QuotationStatus.Rejected;
+            _quotationRepository.Update(quotation);
             await _quotationRepository.SaveChangesAsync();
 
             return RequestResult<bool>.Success(true, "Quotation rejected successfully.");

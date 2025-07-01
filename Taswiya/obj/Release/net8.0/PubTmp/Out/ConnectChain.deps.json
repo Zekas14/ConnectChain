@@ -18,7 +18,7 @@
           "MediatR": "12.4.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.13",
-          "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": "8.0.11",
+          "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": "8.0.10",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "8.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.13",
           "Microsoft.AspNetCore.OpenApi": "8.0.11",
@@ -810,85 +810,85 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.11": {
+      "Microsoft.AspNetCore.Authorization/8.0.10": {
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.11",
+          "Microsoft.AspNetCore.Metadata": "8.0.10",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.2",
           "Microsoft.Extensions.Options": "9.0.2"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Authorization.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1124.52116"
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
       "Microsoft.AspNetCore.Authorization.Policy/2.3.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Abstractions": "2.3.0",
-          "Microsoft.AspNetCore.Authorization": "8.0.11"
+          "Microsoft.AspNetCore.Authorization": "8.0.10"
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.11": {
+      "Microsoft.AspNetCore.Components/8.0.10": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.11",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
+          "Microsoft.AspNetCore.Authorization": "8.0.10",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1124.52116"
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {},
-      "Microsoft.AspNetCore.Components.Forms/8.0.11": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {},
+      "Microsoft.AspNetCore.Components.Forms/8.0.10": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components": "8.0.11"
+          "Microsoft.AspNetCore.Components": "8.0.10"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.Forms.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1124.52116"
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
-      "Microsoft.AspNetCore.Components.QuickGrid/8.0.11": {
+      "Microsoft.AspNetCore.Components.QuickGrid/8.0.10": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "8.0.11"
+          "Microsoft.AspNetCore.Components.Web": "8.0.10"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.dll": {
-            "assemblyVersion": "8.0.11.0",
-            "fileVersion": "8.0.1124.52116"
+            "assemblyVersion": "8.0.10.0",
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
-      "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter/8.0.11": {
+      "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter/8.0.10": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components.QuickGrid": "8.0.11",
+          "Microsoft.AspNetCore.Components.QuickGrid": "8.0.10",
           "Microsoft.EntityFrameworkCore": "9.0.2"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter.dll": {
-            "assemblyVersion": "8.0.11.0",
-            "fileVersion": "8.0.1124.52116"
+            "assemblyVersion": "8.0.10.0",
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Web/8.0.11": {
+      "Microsoft.AspNetCore.Components.Web/8.0.10": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components": "8.0.11",
-          "Microsoft.AspNetCore.Components.Forms": "8.0.11",
+          "Microsoft.AspNetCore.Components": "8.0.10",
+          "Microsoft.AspNetCore.Components.Forms": "8.0.10",
           "Microsoft.Extensions.DependencyInjection": "9.0.2",
           "Microsoft.Extensions.Primitives": "9.0.2",
-          "Microsoft.JSInterop": "8.0.11",
+          "Microsoft.JSInterop": "8.0.10",
           "System.IO.Pipelines": "9.0.2"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Components.Web.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1124.52116"
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
@@ -1001,11 +1001,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.11": {
+      "Microsoft.AspNetCore.Metadata/8.0.10": {
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1124.52116"
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
@@ -1060,7 +1060,7 @@
       },
       "Microsoft.AspNetCore.SignalR.Core/1.2.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Authorization": "8.0.10",
           "Microsoft.AspNetCore.SignalR.Common": "1.2.0",
           "Microsoft.AspNetCore.SignalR.Protocols.Json": "1.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.2",
@@ -1996,11 +1996,11 @@
           }
         }
       },
-      "Microsoft.JSInterop/8.0.11": {
+      "Microsoft.JSInterop/8.0.10": {
         "runtime": {
           "lib/net8.0/Microsoft.JSInterop.dll": {
             "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1124.52116"
+            "fileVersion": "8.0.1024.46804"
           }
         }
       },
@@ -3653,12 +3653,12 @@
       "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.13",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.13.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authorization/8.0.11": {
+    "Microsoft.AspNetCore.Authorization/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ACaLyjBSz9WUzbaJe0Sv09/FihRNHYlRUIj3uQ8CZFFByf6Qwv3+PXnbltidFKz2iOyqdvppQias3emdQUY2nA==",
-      "path": "microsoft.aspnetcore.authorization/8.0.11",
-      "hashPath": "microsoft.aspnetcore.authorization.8.0.11.nupkg.sha512"
+      "sha512": "sha512-mENBehQP1H9oTB4Diu1l7vR1BeZrBNWA9sHZsln4l2oIs7D3qH3fokopU/8FWa9JSxQYNBT1MeYBCwguYOBjMQ==",
+      "path": "microsoft.aspnetcore.authorization/8.0.10",
+      "hashPath": "microsoft.aspnetcore.authorization.8.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization.Policy/2.3.0": {
       "type": "package",
@@ -3667,47 +3667,47 @@
       "path": "microsoft.aspnetcore.authorization.policy/2.3.0",
       "hashPath": "microsoft.aspnetcore.authorization.policy.2.3.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Components/8.0.11": {
+    "Microsoft.AspNetCore.Components/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kyhSQcVEQvMnv2BNRn7JRgYCr+PIO5Uh1mhIFdCNycxE/k8NsI72sV693s1KVmVebMA8g3hTBmfBEheWb3hhww==",
-      "path": "microsoft.aspnetcore.components/8.0.11",
-      "hashPath": "microsoft.aspnetcore.components.8.0.11.nupkg.sha512"
+      "sha512": "sha512-qTsPBcK6Z2Yyt+A5GPub9CiUxfmSIrNQ22BT8efzXiz50Vx0KKTsE82pxbipgGU9XNXZhEtYSNTqQFuWyRlIRw==",
+      "path": "microsoft.aspnetcore.components/8.0.10",
+      "hashPath": "microsoft.aspnetcore.components.8.0.10.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
+    "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4JtFt5IR0ixuFpwY6D2Xi5R+vZQ6iykd2EuG3puHETCOZOgYG8M538LCY1lbgQTkHOL04YKDjQTQu8PU/BaXRQ==",
-      "path": "microsoft.aspnetcore.components.analyzers/8.0.11",
-      "hashPath": "microsoft.aspnetcore.components.analyzers.8.0.11.nupkg.sha512"
+      "sha512": "sha512-czb81hXe2a+w1py/U2MrO3aSb0Ht0r1/I+4vJucjTZwbhHtGubneifS3h05DB6CakT8dgKyS0eypQaLuDKkWtQ==",
+      "path": "microsoft.aspnetcore.components.analyzers/8.0.10",
+      "hashPath": "microsoft.aspnetcore.components.analyzers.8.0.10.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Components.Forms/8.0.11": {
+    "Microsoft.AspNetCore.Components.Forms/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-60g+idqaiVhPVNOqauy/vH5lREpjcuKl3/w6zJhdU1PFWg4jtdoyIPQH+qxBKsUohkELhH3cRfzGRKElVuZuwg==",
-      "path": "microsoft.aspnetcore.components.forms/8.0.11",
-      "hashPath": "microsoft.aspnetcore.components.forms.8.0.11.nupkg.sha512"
+      "sha512": "sha512-YOdsdG/da7xc5uA0dRIe8qUz1rVbbptnYA2CrsxPNka3Nv7Sbh3rArlACGWPBkST3qTRollCx4dLEXpwg/6eEw==",
+      "path": "microsoft.aspnetcore.components.forms/8.0.10",
+      "hashPath": "microsoft.aspnetcore.components.forms.8.0.10.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Components.QuickGrid/8.0.11": {
+    "Microsoft.AspNetCore.Components.QuickGrid/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xDxFxyniO4UDQNSB9HoNsIENHYqPRGtyuY/s0ZAcEjFJrIhaRFfW/lkfnvSdwWtLnR/0k+2BM6x6PkUFNRT5QQ==",
-      "path": "microsoft.aspnetcore.components.quickgrid/8.0.11",
-      "hashPath": "microsoft.aspnetcore.components.quickgrid.8.0.11.nupkg.sha512"
+      "sha512": "sha512-QU1z+VQVxlVzumqNYI+MHbvaOsQB8nc/L+HvJbaRRj+aEiP2hGIFxJoJerHnQkHtID3ylF4PkwV8fb2guZdtYQ==",
+      "path": "microsoft.aspnetcore.components.quickgrid/8.0.10",
+      "hashPath": "microsoft.aspnetcore.components.quickgrid.8.0.10.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter/8.0.11": {
+    "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sgZUrf6UK/gtP16cMw0LCgVDr+7+y4b/uAvMV3aQzGc2zl3i3eOostVy8brdRtKuWcBdXXL57ABEVujFFRlZdw==",
-      "path": "microsoft.aspnetcore.components.quickgrid.entityframeworkadapter/8.0.11",
-      "hashPath": "microsoft.aspnetcore.components.quickgrid.entityframeworkadapter.8.0.11.nupkg.sha512"
+      "sha512": "sha512-R1QvJzReBykTOpX45oL24CUFhSLsKIL9P8/+6/Ii6EkxEK2rLc5yd5UhfsfCgsbZg4+pgEy+9jMRi1yOCkagxA==",
+      "path": "microsoft.aspnetcore.components.quickgrid.entityframeworkadapter/8.0.10",
+      "hashPath": "microsoft.aspnetcore.components.quickgrid.entityframeworkadapter.8.0.10.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Components.Web/8.0.11": {
+    "Microsoft.AspNetCore.Components.Web/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IDmjQ/K7hv6zUEz2LsCkQBngZx6PMnty8OdSPf0hYGMpC+4Yi37pgCc/25fFu3CSBe8nDirqTrqKtfToHWCpbw==",
-      "path": "microsoft.aspnetcore.components.web/8.0.11",
-      "hashPath": "microsoft.aspnetcore.components.web.8.0.11.nupkg.sha512"
+      "sha512": "sha512-gJa07Ni77Eoer/+3tocjnCzxfRcL0TJbKnzBP5auk/cxO5nxzJEHuTADX8gAzlyuLvdrnrtfqRAhR66MGkHmww==",
+      "path": "microsoft.aspnetcore.components.web/8.0.10",
+      "hashPath": "microsoft.aspnetcore.components.web.8.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Connections.Abstractions/2.3.0": {
       "type": "package",
@@ -3800,12 +3800,12 @@
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/8.0.13",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.8.0.13.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Metadata/8.0.11": {
+    "Microsoft.AspNetCore.Metadata/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cy04xnMSTXTkRPjEwseRz57R5zjR/CWsdEOHH6NhWbNl97k+U1w6dSjqIOC7kv08tyzmM30FzIilSDtE5HdL/A==",
-      "path": "microsoft.aspnetcore.metadata/8.0.11",
-      "hashPath": "microsoft.aspnetcore.metadata.8.0.11.nupkg.sha512"
+      "sha512": "sha512-E9YwEujZjXhMLi1hqJh+7iLk2DzNxa4dB9wYY8lHYpAzZdVqoGjaFsaaIzwCvSZZxd7S7Cds01Trlye2mTqeZA==",
+      "path": "microsoft.aspnetcore.metadata/8.0.10",
+      "hashPath": "microsoft.aspnetcore.metadata.8.0.10.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/8.0.11": {
       "type": "package",
@@ -4248,12 +4248,12 @@
       "path": "microsoft.identitymodel.tokens/7.1.2",
       "hashPath": "microsoft.identitymodel.tokens.7.1.2.nupkg.sha512"
     },
-    "Microsoft.JSInterop/8.0.11": {
+    "Microsoft.JSInterop/8.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UYSbAkNGTWVUne3I04/9IRQel3Bt1Ww6Y5cjvZEZ89rWhBD1yWu7YDotvQS62V6mgSfFaXXPGrCUm1VG824QXw==",
-      "path": "microsoft.jsinterop/8.0.11",
-      "hashPath": "microsoft.jsinterop.8.0.11.nupkg.sha512"
+      "sha512": "sha512-VxiFlNValVtpRQomua6h1FOUBK0fiyQbNIh+PMRs9DMHczOHIZpLJmm5LO5h9voBXjW+V/cUE8aNH2GcWps40A==",
+      "path": "microsoft.jsinterop/8.0.10",
+      "hashPath": "microsoft.jsinterop.8.0.10.nupkg.sha512"
     },
     "Microsoft.ML/4.0.2": {
       "type": "package",

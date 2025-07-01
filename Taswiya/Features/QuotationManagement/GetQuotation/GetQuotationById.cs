@@ -25,6 +25,7 @@ namespace ConnectChain.Features.QuotationManagement.GetQuotation
                 .Where(x => x.ID == request.QuotationId)
                 .Include(x => x.Supplier)
                 .Include(x => x.Product)
+                .Include(x=>x.Category)
             ).FirstOrDefault();
 
             if (quotation == null)
