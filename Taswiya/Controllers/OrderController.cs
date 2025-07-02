@@ -17,6 +17,7 @@ using ConnectChain.ViewModel.Order.PlaceOrder;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
+using ConnectChain.Models;
 
 namespace ConnectChain.Controllers
 {
@@ -194,6 +195,18 @@ namespace ConnectChain.Controllers
                 ? new SuccessResponseViewModel<IReadOnlyList<CancellableOrderResponseViewModel>>(result.data, result.message)
                 : new FailureResponseViewModel<IReadOnlyList<CancellableOrderResponseViewModel>>(result.errorCode, result.message);
         }
+        #endregion
+        #region Place Order From Quotation 
+        [HttpPost("PlaceOrderFromQuotation")]
+        [Authorization(Role.Customer)]
+        public async Task<IActionResult> PlaceOrderFromQuotation([FromQuery]int quotationId)
+        {
+            var result = await _mediator.Send(new PlaceOrderFromQuotationCommand(quotationId));
+        return result.isSuccess
+                ? new SuccessResponseViewModel<bool>(result.data, result.message)
+                : new FailureResponseViewModel<bool>(result.errorCode, result.message);
+        }  
+       
         #endregion
     }
 }

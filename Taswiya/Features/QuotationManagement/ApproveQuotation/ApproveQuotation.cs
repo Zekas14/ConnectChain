@@ -24,6 +24,7 @@ namespace ConnectChain.Features.QuotationManagement.ApproveQuotation
         public async Task<RequestResult<bool>> Handle(ApproveQuotationCommand request, CancellationToken cancellationToken)
         {
             var quotation = _quotationRepository.GetAllWithIncludes(q => q
+                .AsTracking()
                 .Where(x => x.ID == request.QuotationId)
                 .Include(x => x.RFQ)
             ).FirstOrDefault();

@@ -10,7 +10,7 @@ using ConnectChain.ViewModel.Order.PlaceOrder;
 using MediatR;
 
 namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
-{
+{   
     public record PlaceOrderCommand(string CustomerId,decimal Discount ,string Notes) 
         : IRequest<RequestResult<bool>>;
     public class PlaceOrderCommandHandler(IMediator mediator, IRepository<Order> repository)
