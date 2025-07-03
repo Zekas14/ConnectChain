@@ -1,4 +1,5 @@
 ﻿using ConnectChain.Data.Repositories.Repository;
+using ConnectChain.Features.OrderManagement.PlaceOrder.Command;
 using ConnectChain.Features.QuotationManagement.ApproveQuotation.Event;
 using ConnectChain.Helpers;
 using ConnectChain.Models;
@@ -27,7 +28,6 @@ namespace ConnectChain.Features.QuotationManagement.ApproveQuotation
         public async Task<RequestResult<bool>> Handle(ApproveQuotationCommand request, CancellationToken cancellationToken)
         {
             var quotation = _quotationRepository.GetAllWithIncludes(q => q
-                .AsTracking()
                 .Where(x => x.ID == request.QuotationId)
                 .Include(x => x.RFQ)
             ).FirstOrDefault();
@@ -53,8 +53,11 @@ namespace ConnectChain.Features.QuotationManagement.ApproveQuotation
                     q.Status = Models.Enums.QuotationStatus.Approved;
                     
                     _quotationRepository.Update(q);
-                   await _mediator.Publish(new ApproveQuotationEvent(request.QuotationId),cancellationToken);
-                   
+                   var orderResult = await _mediator.Send(new PlaceOrderFromQuotationCommand(request.QuotationId),cancellationToken);
+                    if (!orderResult.isSuccess)
+                    {
+                        return RequestResult<bool>.Failure(orderResult.errorCode,orderResult.message);
+                    }
                 }
                 else if (q.Status != Models.Enums.QuotationStatus.Rejected)
                 {
@@ -66,7 +69,7 @@ namespace ConnectChain.Features.QuotationManagement.ApproveQuotation
             }
             await _quotationRepository.SaveChangesAsync();
 
-            return RequestResult<bool>.Success(true, "Quotation approved successfully.");
+            return RequestResult<bool>.Success(true, "Quotation approved successfully, Order Placed");
         }
     }
 

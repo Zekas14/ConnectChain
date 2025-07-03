@@ -40,13 +40,19 @@ namespace ConnectChain.Features.OrderManagement.PlaceOrder.Command
                 x.UnitPrice,
                PaymentMethodName = x.PaymentTerm.Name,
                 x.DeliveryFee,
-                x.DeliveryTerm
+                x.DeliveryTerm,
+                x.Status
             })
             .FirstOrDefault();
 
             if (quotation == null)
             {
                 return RequestResult<bool>.Failure(ErrorCode.NotFound, "Quotation not found.");
+            }
+            if (quotation.Status == QuotationStatus.Ordered)
+            {
+                return RequestResult<bool>.Failure(ErrorCode.InvalidInput, "Quotation Already Ordered.");
+
             }
             if (quotation.Product.Stock < quotation.Quantity)
             {
