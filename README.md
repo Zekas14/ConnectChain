@@ -1,5 +1,5 @@
 <h1 align="center">ConnectChain</h1>
-<h3 align="center">ASP.NET Core Web API — Clean Architecture & CQRS</h3>
+<h3 align="center">ASP.NET Core Web API</h3>
 
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;Clean+Architecture;CQRS+with+MediatR&center=true&width=600&height=45">
