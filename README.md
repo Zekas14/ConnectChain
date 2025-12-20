@@ -1,19 +1,9 @@
-<<<<<<< HEAD
 
-- Business logic is handled inside **CQRS Pattern**
-- Repositories are accessed via abstractions to ensure testability
----
-
-## 🚀 Supplier Matching Logic
-- Customers submit RFQs with specific categories
-- Suppliers are ranked using **ML.NET** based on historical data
-- Matching accuracy improved by **~30%**
-=======
 <h1 align="center">ConnectChain</h1>
 <h3 align="center">ASP.NET Core Web API</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;Clean+Architecture;CQRS+with+MediatR&center=true&width=600&height=45">
+  <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;CQRS+with+MediatR; InMemoryCache;Firebase CloudMessaging&center=true&width=600&height=45">
 </p>
 
 ---
@@ -173,24 +163,5 @@ FCM integration is handled as an external service within the Infrastructure laye
 - Implementing in-memory caching responsibly
 - Integrating ML and real-time notifications
 - Writing maintainable and testable backend code
->>>>>>> fa4a7c8fdf2464c2e76f1cfac7c0f624cfa6fc0f
 
 ---
-
-## 👨‍💻 Author
-**Ahmed Zakarya**  
-<<<<<<< HEAD
-=======
-Backend-focused Full-Stack Developer  
-📍 Egypt
->>>>>>> fa4a7c8fdf2464c2e76f1cfac7c0f624cfa6fc0f
-
-<p>
-  <a href="https://www.linkedin.com/in/ahmed-zakarya">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" width="28"/>
-  </a>
-  &nbsp;
-  <a href="mailto:ahmedzrks123@gmail.com">
-    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" width="28"/>
-  </a>
-</p>
