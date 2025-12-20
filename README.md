@@ -3,7 +3,7 @@
 <h3 align="center">ASP.NET Core Web API</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;CQRS+with+MediatR; InMemoryCache;Firebase CloudMessaging;&center=true&width=600&height=45">
+  <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;CQRS+with+MediatR;InMemoryCache;Firebase+Cloud+Messaging;&center=true&width=600&height=45">
 </p>
 
 ---
