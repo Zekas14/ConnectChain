@@ -1,0 +1,214 @@
+### Seed Electronics Products for Specific Supplier
+### This will add products for supplier ID: 20044e2f-7c63-4ea5-a458-c39729d93e62
+### Category ID: 15 (Electronics)
+
+### Add iPhone 15 Pro Max
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+iPhone 15 Pro Max
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Apple's latest flagship smartphone with titanium design and advanced camera system.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+45000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+25
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add MacBook Air M3
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+MacBook Air M3
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Ultra-thin laptop with Apple M3 chip for exceptional performance and battery life.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+55000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+15
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+2
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add iPad Pro 12.9-inch
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+iPad Pro 12.9-inch
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Professional tablet with M2 chip, perfect for creative work and productivity.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+35000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+20
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add AirPods Pro 2nd Generation
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+AirPods Pro 2nd Generation
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Wireless earbuds with active noise cancellation and spatial audio.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+8500
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+40
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+5
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add Apple Watch Series 9
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+Apple Watch Series 9
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Advanced smartwatch with health monitoring and fitness tracking features.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+12000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+30
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+4
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add iMac 24-inch M3
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+iMac 24-inch M3
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+All-in-one desktop computer with stunning Retina display and M3 chip.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+65000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+10
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+2
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add Mac Studio
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+Mac Studio
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Professional desktop computer designed for creative professionals and developers.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+85000
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+8
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+1
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Add Apple TV 4K
+POST {{baseUrl}}/api/Product/AddProductForElectronicsSupplier
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Name"
+
+Apple TV 4K
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Description"
+
+Streaming device with 4K HDR support and advanced audio features.
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Price"
+
+3500
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Stock"
+
+25
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="MinimumStock"
+
+3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Get Products for the Specific Supplier
+GET {{baseUrl}}/api/Product/GetSupplierProducts?supplierId=20044e2f-7c63-4ea5-a458-c39729d93e62 
