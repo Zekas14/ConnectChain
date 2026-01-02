@@ -1,9 +1,14 @@
-
 <h1 align="center">ConnectChain</h1>
 <h3 align="center">ASP.NET Core Web API</h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;CQRS+with+MediatR;InMemoryCache;Firebase+Cloud+Messaging;&center=true&width=600&height=45">
+  <img src="https://readme-typing-svg.herokuapp.com?lines=ASP.NET+Core+Backend;CQRS+with+MediatR;In-Memory+Caching;Firebase+Cloud+Messaging&center=true&width=600&height=45">
+</p>
+
+<p align="center">
+  <a href="https://connectchainapisdoc.apidog.io/" target="_blank">
+    <img src="https://img.shields.io/badge/API%20Documentation-Apidog-blue?style=for-the-badge&logo=swagger&logoColor=white"/>
+  </a>
 </p>
 
 ---
@@ -17,6 +22,8 @@ The project is designed as a **backend-only system**, focusing on architecture,
 performance, and maintainability rather than UI.
 
 ---
+
+## 🧱 Architecture Overview
 
 ### Layer Responsibilities
 - **Domain**
@@ -41,12 +48,12 @@ performance, and maintainability rather than UI.
 ---
 
 ## 🔁 CQRS (Command Query Responsibility Segregation)
-
 The project applies **CQRS** to clearly separate read and write operations:
 
 - **Commands**
   - Handle state-changing operations
   - Encapsulate business logic
+
 - **Queries**
   - Handle read-only operations
   - Optimized for data retrieval
@@ -64,7 +71,7 @@ keeping controllers thin and focused.
 - Async database operations
 - LINQ-based querying
 
-EF Core is used only inside the **Infrastructure layer**, fully isolated
+EF Core is used exclusively inside the **Infrastructure layer**, fully isolated
 from the API layer.
 
 ---
@@ -82,7 +89,6 @@ Caching logic is handled at the application level to keep controllers clean.
 ---
 
 ## 🧠 Machine Learning Integration (ML.NET)
-
 - **ML.NET** is used to recommend suitable suppliers
 - Model trained on historical supplier–category matching data
 - ML logic is isolated from core business logic
@@ -90,22 +96,10 @@ Caching logic is handled at the application level to keep controllers clean.
 
 This demonstrates how ML can be integrated into a backend system
 without polluting the domain layer.
->>>>>>> fa4a7c8fdf2464c2e76f1cfac7c0f624cfa6fc0f
 
 ---
 
 ## 🔔 Real-Time Notifications
-<<<<<<< HEAD
-- Instant updates sent to suppliers when new RFQs are created
-- Implemented using **Firebase Cloud Messaging**
-- Average delivery latency under **2 seconds**
----
-
-## 📈 Project Highlights
-- Designed for **scalable B2B workflows**
-- Clean, maintainable, and extensible backend
-- Suitable for enterprise-level systems
-=======
 
 ### Firebase Cloud Messaging (FCM)
 - Push notifications triggered on key business events
@@ -113,6 +107,19 @@ without polluting the domain layer.
 - Enables near real-time communication with clients
 
 FCM integration is handled as an external service within the Infrastructure layer.
+
+---
+
+## 📄 API Documentation
+Interactive API documentation is available via **Apidog**:
+
+👉 **https://connectchainapisdoc.apidog.io/**
+
+The documentation includes:
+- All available endpoints
+- Request & response schemas
+- Authentication details
+- Example payloads
 
 ---
 
@@ -124,9 +131,9 @@ FCM integration is handled as an external service within the Infrastructure laye
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" width="36"/>
 </p>
 
-- ASP.NET Core Web API
-- C#
-- MediatR
+- ASP.NET Core Web API  
+- C#  
+- MediatR  
 
 ---
 
@@ -136,15 +143,16 @@ FCM integration is handled as an external service within the Infrastructure laye
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/entityframework/entityframework-original.svg" width="36"/>
 </p>
 
-- SQL Server
-- Entity Framework Core
-- In-Memory Caching (`IMemoryCache`)
+- SQL Server  
+- Entity Framework Core  
+- In-Memory Caching (`IMemoryCache`)  
 
 ---
 
 ### Architecture & Patterns
-- CQRS
-- Repository Pattern
+- CQRS  
+- Repository Pattern  
+
 ---
 
 ### Integrations
@@ -152,7 +160,7 @@ FCM integration is handled as an external service within the Infrastructure laye
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" width="36"/>
 </p>
 
-- ML.NET
+- ML.NET  
 - Firebase Cloud Messaging (FCM)
 
 ---
@@ -163,5 +171,3 @@ FCM integration is handled as an external service within the Infrastructure laye
 - Implementing in-memory caching responsibly
 - Integrating ML and real-time notifications
 - Writing maintainable and testable backend code
-
----
